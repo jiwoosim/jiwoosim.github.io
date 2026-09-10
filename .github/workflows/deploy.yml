@@ -43,9 +43,9 @@ jobs:
 
       - name: Stage site
         run: |
-          mkdir -p _site
+          mkdir -p _site/assets
           cp index.html support.js .nojekyll _site/
-          cp -r assets _site/assets
+          if [ -d assets ]; then cp -r assets/. _site/assets/ ; fi
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
