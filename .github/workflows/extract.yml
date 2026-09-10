@@ -1,0 +1,22 @@
+name: Extract seed CSV
+
+# 최초 1회. portfolio.dc.html 의 현재 데이터를 CSV로 뽑아 아티팩트로 올린다.
+# Actions 탭 → "Extract seed CSV" → Run workflow → 완료 후 Artifacts 에서 seed-csv.zip 다운로드
+# → 각 CSV를 구글 시트의 같은 이름 탭에 붙여넣기
+
+on:
+  workflow_dispatch:
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node scripts/extract.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: seed-csv
+          path: data/*.csv
