@@ -1,0 +1,2023 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+    <rect width="400" height="300" fill="#F6F5F4"></rect>
+    <rect x="120" y="120" width="160" height="14" rx="7" fill="#17171A"></rect>
+    <rect x="120" y="146" width="104" height="14" rx="7" fill="#FF5A2B"></rect>
+    <circle cx="248" cy="153" r="7" fill="#17171A"></circle>
+  </svg>
+</template>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>심지우 | 콘텐츠 마케팅 포트폴리오</title>
+<meta name="description" content="SIM JIWOO | CONTENT MARKETING PORTFOLIO">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: #F6F5F4; color: #17171A; font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  * { box-sizing: border-box; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: #FF5A2B; }
+  ::selection { background: #FFD8CA; color: #17171A; }
+  [data-h]::-webkit-scrollbar { height: 3px; }
+  [data-h]::-webkit-scrollbar-thumb { background: #FFC3AE; border-radius: 9px; }
+  [data-h]::-webkit-scrollbar-track { background: #ECEAE7; border-radius: 9px; }
+  @keyframes mkIn { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+  @keyframes mkFade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes mkPanel { from { opacity: 0; transform: translateY(46px); } to { opacity: 1; transform: none; } }
+  @keyframes mkPulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .3; transform: scale(.72); } }
+  @keyframes mkMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes mkSlide { from { transform: translateX(100%); } to { transform: none; } }
+  a:hover [data-cta-arrow] { transform: translateX(7px); background: rgba(255,255,255,.24); }
+  @keyframes mkFloat { 0%,100% { transform: translate3d(0,0,0) scale(1); } 50% { transform: translate3d(2%,-3%,0) scale(1.06); } }
+  @media (prefers-reduced-motion: reduce) { *, *::before { animation-duration: .001ms !important; transition-duration: .001ms !important; } }
+</style>
+</helmet>
+
+<div style="position:relative;background:#F6F5F4">
+
+<sc-if value="{{ introOn }}" hint-placeholder-val="{{ true }}">
+  <div data-intro="1" role="presentation" style="position:fixed;inset:0;z-index:200;background:#0B0A0A;display:flex;align-items:center;justify-content:center;padding:32px 26px;overflow:hidden;transition:opacity .9s ease">
+
+    <div data-tiles="1" aria-hidden="true" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:0;opacity:0;transition:opacity 1.4s ease;pointer-events:none">
+      <sc-for list="{{ introRows }}" as="row" hint-placeholder-count="3">
+        <div style="overflow:hidden;height:clamp(120px,23vh,240px)">
+          <div data-tilerow="1" style="display:flex;width:max-content;height:100%;animation:mkMarquee 68s linear infinite;animation-duration:{{ row.dur }};animation-direction:{{ row.dir }}">
+            <sc-for list="{{ row.items }}" as="tile" hint-placeholder-count="12">
+              <div style="flex:0 0 clamp(150px,20vw,290px);height:100%;background:linear-gradient(150deg,#181614,#111010);border-right:1px solid #0B0A0A;display:flex;align-items:flex-end;padding:14px">
+                <span style="font-size:12px;line-height:1.4;color:#4E4842">{{ tile }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div data-scrim="1" aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(11,10,10,.94) 0%,rgba(11,10,10,.8) 46%,rgba(11,10,10,.62) 100%);opacity:0;transition:opacity 1.4s ease;pointer-events:none"></div>
+
+    <div style="position:relative;z-index:2;width:100%;max-width:1040px;text-align:center">
+      <div data-scenea="1" style="opacity:0;transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.3,1)">
+        <div style="height:clamp(46px,11vw,132px);display:flex;align-items:center;justify-content:center">
+          <span data-bignum="1" style="color:#F7F5F2;font-size:clamp(34px,9.6vw,124px);font-weight:600;letter-spacing:-0.055em;line-height:1;font-variant-numeric:tabular-nums;transition:color .5s ease"></span>
+        </div>
+        <div data-introlabel="1" style="margin-top:clamp(18px,2.6vw,30px);font-family:'IBM Plex Mono',monospace;font-size:clamp(11px,1.2vw,13px);letter-spacing:0.22em;color:#7A736B;opacity:0;transition:opacity .6s ease"></div>
+      </div>
+
+      <div data-mid="1" style="opacity:0;transform:translateY(14px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.3,1);position:absolute;left:0;right:0;top:50%;margin-top:-0.6em">
+        <div style="color:#F7F5F2;font-size:clamp(26px,6.2vw,74px);font-weight:600;letter-spacing:-0.05em;line-height:1.24;text-wrap:pretty">더 큰 성과를<br>더 적은 리소스로.</div>
+      </div>
+
+      <div data-final="1" style="opacity:0;transform:translateY(18px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.3,1)">
+        <div style="color:#F7F5F2;font-size:clamp(23px,5.4vw,64px);font-weight:600;letter-spacing:-0.048em;line-height:1.28;text-wrap:pretty">성과를 만드는 콘텐츠,<br><span style="color:#FF5A2B">만드는 방식</span>까지 바꿉니다.</div>
+        <p style="margin:clamp(20px,2.6vw,28px) auto 0;max-width:620px;font-size:clamp(14px,1.8vw,17.5px);line-height:1.8;color:#948C83;text-wrap:pretty">데이터로 방향을 잡고,<br>다양한 포맷과 고객 접점으로 직접 구현하며<br><span style="color:#F7F5F2">성과가 반복되는 구조까지 만듭니다.</span></p>
+      </div>
+    </div>
+
+    <button type="button" data-enterbtn="1" onClick="{{ skipIntro }}" style="all:unset;cursor:pointer;position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:3;display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:0.04em;color:#8E877E;background:rgba(255,255,255,.04);border:1px solid #292622;border-radius:999px;padding:14px 26px;transition:all .45s cubic-bezier(.2,.7,.3,1)" style-hover="color:#F7F5F2;border-color:#F7F5F2">숫자 뒤의 전략 확인하기 <span>→</span></button>
+  </div>
+</sc-if>
+
+<div aria-hidden="true" style="position:fixed;top:0;left:0;height:2px;width:100%;transform-origin:0 50%;background:#FF5A2B;z-index:90" data-progress="1"></div>
+
+<button type="button" data-proftab="1" onClick="{{ openProfile }}" aria-label="프로필 펼치기" style="all:unset;cursor:pointer;position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:80;display:flex;flex-direction:column;align-items:center;gap:12px;padding:20px 11px;background:#17171A;color:#F6F5F4;border-radius:16px 0 0 16px;box-shadow:-6px 0 22px rgba(23,23,26,.16);font-family:inherit;transition:padding-right .35s ease,background .35s ease" style-hover="padding-right:16px;background:#FF5A2B">
+  <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;writing-mode:vertical-rl">PROFILE</span>
+  <span aria-hidden="true" style="font-size:13px;line-height:1">＋</span>
+</button>
+
+<sc-if value="{{ profileOpen }}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-modal="true" aria-label="프로필" style="position:fixed;inset:0;z-index:120">
+    <div onClick="{{ closeProfile }}" style="position:absolute;inset:0;background:rgba(12,11,11,.5);backdrop-filter:blur(6px);animation:mkFade .35s ease both"></div>
+    <div data-profpanel="1" style="position:absolute;top:0;right:0;bottom:0;width:min(760px,100%);background:#FFFFFF;box-shadow:-18px 0 60px rgba(23,23,26,.22);overflow-y:auto;animation:mkSlide .5s cubic-bezier(.16,.84,.28,1) both">
+      <div style="position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px clamp(20px,4vw,30px);background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid #EFECE8">
+        <span></span>
+        <button type="button" onClick="{{ closeProfile }}" aria-label="닫기" style="all:unset;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#6E6A63;border:1px solid #EAE7E3;border-radius:999px;padding:9px 15px;transition:all .3s ease" style-hover="border-color:#FF5A2B;color:#FF5A2B">CLOSE ✕</button>
+      </div>
+
+      <div style="padding:clamp(30px,5vw,44px) clamp(20px,4vw,34px) 72px;max-width:860px">
+
+        <div style="display:flex;gap:clamp(18px,3.4vw,28px);align-items:flex-start">
+          <div style="flex:0 0 auto;width:clamp(132px,30vw,178px);aspect-ratio:4/5;border-radius:14px;background:repeating-linear-gradient(135deg,#F2EFEB 0 6px,#EDE9E3 6px 12px);border:1px solid #EFECE8;display:flex;align-items:flex-end;padding:12px">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.5;color:#6E6A63">[PHOTO]<br>프로필 사진 4:5</span>
+          </div>
+          <div style="flex:1 1 0;min-width:0">
+            <h2 style="margin:0 0 4px;font-size:clamp(26px,4.4vw,38px);font-weight:700;letter-spacing:-0.042em;line-height:1.1">심지우</h2>
+            <div style="font-size:13.5px;color:#6E6A63;letter-spacing:0.04em;margin-bottom:12px">Sim Jiwoo</div>
+            <div style="font-size:15px;font-weight:600;letter-spacing:-0.02em;color:#C7370E;margin-bottom:18px">Content Marketer</div>
+            <p style="margin:0;font-size:14.5px;line-height:1.9;color:#4A4740;text-wrap:pretty">고객이 무엇을 궁금해하고 어디에서 반응하는지부터 봅니다. 데이터를 바탕으로 전략을 세우고, 웹·영상·SNS·에디토리얼부터 오프라인 브랜드 경험까지 직접 구현하며 성과를 다음 실행의 기준으로 남깁니다.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:26px">
+          <sc-for list="{{ profileExpertise }}" as="ex" hint-placeholder-count="4">
+            <span style="display:inline-flex;align-items:baseline;gap:8px;font-size:12.5px;padding:9px 15px;background:#F6F5F4;border:1px solid #EFECE8;border-radius:999px;color:#17171A;transition:all .3s ease" style-hover="border-color:#FFC3AE;background:#FFF6F2">
+              {{ ex.name }}<span style="font-size:11px;color:#6E6A63;font-weight:400">{{ ex.sub }}</span>
+            </span>
+          </sc-for>
+        </div>
+
+        <div style="height:1px;background:#EFECE8;margin:clamp(30px,4.6vw,42px) 0"></div>
+
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.24em;color:#6E6A63;margin-bottom:22px">EXPERIENCE</div>
+        <div style="display:flex;flex-direction:column">
+          <sc-for list="{{ profileExp }}" as="ex" hint-placeholder-count="3">
+            <div style="display:grid;grid-template-columns:clamp(108px,22vw,142px) 1fr;gap:clamp(14px,2.6vw,22px);position:relative;padding-bottom:26px">
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.04em;color:#6E6A63;padding-top:3px;white-space:nowrap">{{ ex.when }}</div>
+              <div style="position:relative;padding-left:22px;border-left:1px solid #EAE7E3">
+                <span aria-hidden="true" style="position:absolute;left:-4.5px;top:6px;width:8px;height:8px;border-radius:50%;background:#FF5A2B"></span>
+                <div style="font-size:16px;font-weight:700;letter-spacing:-0.025em">{{ ex.org }}</div>
+                <div style="font-size:13.5px;color:#17171A;margin-top:3px">{{ ex.role }}</div>
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.06em;color:#C7370E;margin-top:9px">{{ ex.keys }}</div>
+                <div style="font-size:13px;color:#7A756D;margin-top:8px;line-height:1.75;text-wrap:pretty">{{ ex.desc }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="height:1px;background:#EFECE8;margin:clamp(18px,3vw,26px) 0 clamp(30px,4.6vw,42px)"></div>
+
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.24em;color:#6E6A63;margin-bottom:22px">ACTIVITIES</div>
+        <div style="display:flex;flex-direction:column">
+          <sc-for list="{{ profileActivities }}" as="ac" hint-placeholder-count="1">
+            <div style="display:grid;grid-template-columns:clamp(108px,22vw,142px) 1fr;gap:clamp(14px,2.6vw,22px);padding-bottom:26px">
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.04em;color:#6E6A63;padding-top:3px;white-space:nowrap">{{ ac.when }}</div>
+              <div style="position:relative;padding-left:22px;border-left:1px solid #EAE7E3">
+                <span aria-hidden="true" style="position:absolute;left:-4.5px;top:6px;width:8px;height:8px;border-radius:50%;background:#DCD6CE"></span>
+                <div style="font-size:16px;font-weight:700;letter-spacing:-0.025em">{{ ac.org }}</div>
+                <div style="font-size:13.5px;color:#17171A;margin-top:3px">{{ ac.role }}</div>
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.06em;color:#C7370E;margin-top:9px">{{ ac.keys }}</div>
+                <div style="font-size:13px;color:#7A756D;margin-top:8px;line-height:1.75;text-wrap:pretty">{{ ac.desc }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="height:1px;background:#EFECE8;margin:clamp(18px,3vw,26px) 0 clamp(30px,4.6vw,42px)"></div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:clamp(22px,4vw,40px)">
+          <div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.24em;color:#6E6A63;margin-bottom:14px">EDUCATION</div>
+            <div style="font-size:15px;font-weight:600;letter-spacing:-0.02em">한국공학대학교</div>
+            <div style="font-size:13.5px;color:#4A4740;margin-top:5px;line-height:1.7">IT경영학 · 이커머스 복수전공</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6E6A63;margin-top:7px">2020.03 — 2024.02</div>
+          </div>
+          <div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.24em;color:#6E6A63;margin-bottom:14px">LANGUAGE</div>
+            <div style="font-size:15px;font-weight:600;letter-spacing:-0.02em">OPIc IH</div>
+            <div style="font-size:13.5px;color:#4A4740;margin-top:5px;line-height:1.7">영문 콘텐츠 제작 · 해외 파트너 커뮤니케이션 실무</div>
+          </div>
+        </div>
+
+        <div style="height:1px;background:#EFECE8;margin:clamp(30px,4.6vw,42px) 0"></div>
+
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.24em;color:#6E6A63;margin-bottom:20px">TOOLS</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:22px clamp(22px,4vw,40px)">
+          <sc-for list="{{ profileTools }}" as="tc" hint-placeholder-count="5">
+            <div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;color:#C7370E;margin-bottom:10px">{{ tc.cat }}</div>
+              <div style="display:flex;flex-wrap:wrap;gap:7px">
+                <sc-for list="{{ tc.items }}" as="tl" hint-placeholder-count="3">
+                  <span title="{{ tl.d }}" style="position:relative;display:inline-flex;flex-direction:column;font-size:13px;color:#17171A;background:#F6F5F4;border:1px solid #EFECE8;border-radius:999px;padding:8px 15px;cursor:default;transition:all .3s ease" style-hover="border-color:#FFC3AE;background:#FFF6F2;color:#FF5A2B">{{ tl.n }}</span>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="height:1px;background:#EFECE8;margin:clamp(30px,4.6vw,42px) 0 26px"></div>
+
+        <div style="font-size:14px;color:#6E6A63;line-height:1.7;margin-bottom:16px">좋은 콘텐츠와 더 나은 방식에 대해 이야기하고 싶다면</div>
+        <a href="mailto:jiwoosim@naver.com" style="display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:96px;padding:clamp(22px,3.4vw,28px) clamp(26px,4vw,36px);background:#17171A;color:#fff;border-radius:20px;box-shadow:0 14px 34px rgba(23,23,26,.22);transition:background .45s cubic-bezier(.2,.7,.3,1),box-shadow .45s ease,transform .45s cubic-bezier(.2,.7,.3,1)" style-hover="background:#FF5A2B;color:#fff;box-shadow:0 22px 52px rgba(255,90,43,.4);transform:translateY(-3px)">
+          <span style="display:flex;flex-direction:column;gap:7px;min-width:0">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#FF8A5C">CONTACT</span>
+            <span style="font-size:clamp(24px,4.4vw,34px);font-weight:700;letter-spacing:-0.035em;line-height:1.15">Let’s Work Together</span>
+          </span>
+          <span data-cta-arrow="1" aria-hidden="true" style="flex:0 0 auto;display:flex;align-items:center;justify-content:center;width:clamp(46px,7vw,56px);height:clamp(46px,7vw,56px);border-radius:50%;background:rgba(255,255,255,.12);font-size:22px;transition:transform .45s cubic-bezier(.2,.7,.3,1),background .45s ease">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+<header style="position:fixed;top:0;left:0;right:0;z-index:70;background:rgba(246,245,244,.76);backdrop-filter:blur(18px);border-bottom:1px solid #EAE7E3">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding:13px clamp(14px,4vw,22px);max-width:1440px;margin:0 auto">
+    <a href="#s01" style="display:flex;align-items:center;gap:10px;flex:0 0 auto">
+      <span style="font-size:14px;font-weight:600;letter-spacing:-0.015em;white-space:nowrap">심지우 <span style="color:#6E6A63;font-weight:400">Content Marketing Portfolio</span></span>
+    </a>
+    <nav aria-label="섹션 내비게이션" data-nav="1" style="display:none;align-items:center;gap:2px;font-size:12px;letter-spacing:-0.005em">
+      <a href="#s02" data-r="s02" style="padding:9px 13px;border-radius:999px;color:#6E6A63;transition:all .3s ease" style-hover="color:#17171A;background:#EDEAE6">How I Work</a>
+      <a href="#s04" data-r="s04" style="padding:9px 13px;border-radius:999px;color:#6E6A63;transition:all .3s ease" style-hover="color:#17171A;background:#EDEAE6">Work</a>
+      <a href="#s06" data-r="s06" style="padding:9px 13px;border-radius:999px;color:#6E6A63;transition:all .3s ease" style-hover="color:#17171A;background:#EDEAE6">Archive</a>
+      <a href="#s08" data-r="s08" style="padding:9px 13px;border-radius:999px;color:#6E6A63;transition:all .3s ease" style-hover="color:#17171A;background:#EDEAE6">Impact</a>
+      <a href="#s09" data-r="s09" style="padding:9px 13px;border-radius:999px;color:#6E6A63;transition:all .3s ease" style-hover="color:#17171A;background:#EDEAE6">AI Workflow</a>
+      <a href="#s10" data-r="s10" style="padding:9px 13px;border-radius:999px;color:#6E6A63;transition:all .3s ease" style-hover="color:#17171A;background:#EDEAE6">What I Bring</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:12px;flex:0 0 auto">
+      <span data-counter="1" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#6E6A63;white-space:nowrap">01 <span style="color:#6E6A63">/ 08</span></span>
+      <a href="#s11" style="display:inline-flex;align-items:center;height:34px;padding:0 17px;background:#FF5A2B;color:#17171A;font-size:12.5px;font-weight:600;border-radius:999px;box-shadow:0 6px 18px rgba(255,90,43,.24);transition:transform .3s cubic-bezier(.2,.7,.3,1)" style-hover="transform:translateY(-2px);color:#fff">Contact</a>
+      <button type="button" data-menu="1" aria-label="메뉴 열기" style="all:unset;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;background:#fff;border:1px solid #EAE7E3;border-radius:999px;color:#17171A;font-size:13px">☰</button>
+    </div>
+  </div>
+  <div data-sheet="1" style="display:none;flex-wrap:wrap;gap:8px;padding:10px 16px 18px;background:rgba(246,245,244,.96);border-top:1px solid #EAE7E3">
+    <a href="#s02" data-sheetlink="1" style="flex:1 1 44%;background:#fff;border:1px solid #EAE7E3;border-radius:14px;padding:14px 16px;font-size:13px;color:#4A4740">02 How I Work</a>
+    <a href="#s04" data-sheetlink="1" style="flex:1 1 44%;background:#fff;border:1px solid #EAE7E3;border-radius:14px;padding:14px 16px;font-size:13px;color:#4A4740">03 Work</a>
+    <a href="#s06" data-sheetlink="1" style="flex:1 1 44%;background:#fff;border:1px solid #EAE7E3;border-radius:14px;padding:14px 16px;font-size:13px;color:#4A4740">04 Archive</a>
+    <a href="#s08" data-sheetlink="1" style="flex:1 1 44%;background:#fff;border:1px solid #EAE7E3;border-radius:14px;padding:14px 16px;font-size:13px;color:#4A4740">05 Impact</a>
+    <a href="#s09" data-sheetlink="1" style="flex:1 1 44%;background:#fff;border:1px solid #EAE7E3;border-radius:14px;padding:14px 16px;font-size:13px;color:#4A4740">06 AI Workflow</a>
+    <a href="#s10" data-sheetlink="1" style="flex:1 1 44%;background:#fff;border:1px solid #EAE7E3;border-radius:14px;padding:14px 16px;font-size:13px;color:#4A4740">07 What I Bring</a>
+    <a href="#s11" data-sheetlink="1" style="flex:1 1 44%;background:#fff;border:1px solid #EAE7E3;border-radius:14px;padding:14px 16px;font-size:13px;color:#4A4740">08 Contact</a>
+    <button type="button" onClick="{{ openProfile }}" data-sheetlink="1" style="all:unset;cursor:pointer;box-sizing:border-box;font-family:inherit;flex:1 1 100%;background:#17171A;border-radius:14px;padding:14px 16px;font-size:13px;color:#F6F5F4;text-align:center">Profile 펼쳐보기</button>
+  </div>
+</header>
+
+<section id="s01" style="position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:clamp(104px,14vw,130px) clamp(16px,4vw,22px) 70px;max-width:1240px;margin:0 auto;overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;top:-6%;right:-16%;width:62vw;height:62vw;max-width:820px;max-height:820px;border-radius:50%;background:radial-gradient(circle at 40% 40%,rgba(255,90,43,.34),rgba(255,144,105,.16) 42%,rgba(246,245,244,0) 70%);filter:blur(28px);animation:mkFloat 16s ease-in-out infinite;pointer-events:none"></div>
+  <div aria-hidden="true" style="position:absolute;bottom:4%;left:-12%;width:34vw;height:34vw;max-width:420px;max-height:420px;border-radius:50%;background:radial-gradient(circle,rgba(255,90,43,.14),rgba(246,245,244,0) 68%);filter:blur(24px);animation:mkFloat 22s ease-in-out infinite reverse;pointer-events:none"></div>
+  <div style="position:relative">
+    <div style="display:inline-flex;align-items:center;gap:9px;padding:8px 15px 8px 11px;background:#fff;border:1px solid #EFECE8;border-radius:999px;box-shadow:0 4px 18px rgba(23,23,26,.04);font-size:12px;color:#6E6A63;margin-bottom:38px;animation:mkFade .8s ease both">
+      <span style="width:7px;height:7px;border-radius:50%;background:#FF5A2B;display:inline-block"></span>CONTENT MARKETING PORTFOLIO · 2026
+    </div>
+    <h1 style="margin:0;font-size:clamp(30px,7.4vw,92px);line-height:1.14;font-weight:700;letter-spacing:-0.045em">
+      <span style="display:block;animation:mkIn .9s cubic-bezier(.2,.7,.3,1) .05s both">좋은 콘텐츠는</span>
+      <span style="display:block;animation:mkIn .9s cubic-bezier(.2,.7,.3,1) .2s both;color:#FF5A2B">결과물에서 끝나지 않습니다.</span>
+    </h1>
+    <div style="margin:32px 0 0;font-size:clamp(17px,2.1vw,24px);font-weight:600;letter-spacing:-0.028em;line-height:1.5;max-width:620px;text-wrap:pretty;animation:mkIn .9s ease .42s both">고객의 질문을 발견하고,<br>전략부터 실행·성과까지 연결하는<br>콘텐츠 마케터, <span style="color:#C7370E">심지우</span>입니다.</div>
+    <p style="margin:20px 0 0;font-size:clamp(14.5px,1.6vw,17px);line-height:1.85;color:#6E6A63;max-width:600px;text-wrap:pretty;animation:mkIn .9s ease .52s both">데이터로 기회를 찾고, 메시지와 경험을 설계하며, 웹·영상·SNS·오프라인 등 필요한 접점으로 직접 구현해 실제 행동과 성과로 연결합니다.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:42px;animation:mkIn .9s ease .58s both">
+      <a href="#s04" style="display:inline-flex;align-items:center;gap:10px;height:54px;padding:0 30px;background:#FF5A2B;color:#17171A;font-size:15px;font-weight:600;border-radius:999px;box-shadow:0 10px 28px rgba(255,90,43,.26);transition:transform .3s cubic-bezier(.2,.7,.3,1)" style-hover="transform:translateY(-3px);color:#fff">View Projects <span>→</span></a>
+      <button type="button" onClick="{{ openProfile }}" style="all:unset;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;height:54px;padding:0 30px;background:#fff;border:1px solid #EAE7E3;color:#17171A;font-size:15px;font-weight:600;border-radius:999px;transition:all .3s ease" style-hover="border-color:#17171A;color:#17171A">About Me</button>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:76px;animation:mkFade 1s ease .78s both">
+      <span style="font-size:13px;color:#6E6A63">Content Strategy</span><span style="color:#CFCAC2">·</span>
+      <span style="font-size:13px;color:#6E6A63">Multi-format Execution</span><span style="color:#CFCAC2">·</span>
+      <span style="font-size:13px;color:#6E6A63">Integrated Experience</span><span style="color:#CFCAC2">·</span>
+      <span style="font-size:13px;color:#6E6A63">Performance</span>
+    </div>
+  </div>
+</section>
+
+<div aria-hidden="true" style="overflow:hidden;border-top:1px solid #EAE7E3;border-bottom:1px solid #EAE7E3;background:#F1EFEC;padding:15px 0">
+  <div style="display:flex;width:max-content;animation:mkMarquee 38s linear infinite;font-size:clamp(15px,2vw,19px);color:#B6B1A9;white-space:nowrap">
+    <span style="padding-right:26px">AI 영상</span><span style="padding-right:26px;color:#FF5A2B">✳</span><span style="padding-right:26px">브로슈어</span><span style="padding-right:26px;color:#FF5A2B">✳</span><span style="padding-right:26px">홈페이지</span><span style="padding-right:26px;color:#FF5A2B">✳</span><span style="padding-right:26px">백서</span><span style="padding-right:26px;color:#FF5A2B">✳</span><span style="padding-right:26px">인포그래픽</span><span style="padding-right:26px;color:#FF5A2B">✳</span><span style="padding-right:26px">뉴스레터</span><span style="padding-right:26px;color:#FF5A2B">✳</span><span style="padding-right:26px">영업자료</span><span style="padding-right:26px;color:#FF5A2B">✳</span><span style="padding-right:26px">4컷 만화</span><span style="padding-right:26px;color:#FF5A2B">✳</span><span style="padding-right:26px">전시 콘텐츠</span><span style="padding-right:26px;color:#FF5A2B">✳</span><span style="padding-right:26px">캘린더</span><span style="padding-right:26px;color:#FF5A2B">✳</span>
+    <span style="padding-right:26px">AI 영상</span><span style="padding-right:26px;color:#FF5A2B">✳</span><span style="padding-right:26px">브로슈어</span><span style="padding-right:26px;color:#FF5A2B">✳</span><span style="padding-right:26px">홈페이지</span><span style="padding-right:26px;color:#FF5A2B">✳</span><span style="padding-right:26px">백서</span><span style="padding-right:26px;color:#FF5A2B">✳</span><span style="padding-right:26px">인포그래픽</span><span style="padding-right:26px;color:#FF5A2B">✳</span><span style="padding-right:26px">뉴스레터</span><span style="padding-right:26px;color:#FF5A2B">✳</span><span style="padding-right:26px">영업자료</span><span style="padding-right:26px;color:#FF5A2B">✳</span><span style="padding-right:26px">4컷 만화</span><span style="padding-right:26px;color:#FF5A2B">✳</span><span style="padding-right:26px">전시 콘텐츠</span><span style="padding-right:26px;color:#FF5A2B">✳</span><span style="padding-right:26px">캘린더</span><span style="padding-right:26px;color:#FF5A2B">✳</span>
+  </div>
+</div>
+
+<section id="s02" data-inv="1" style="background:#F6F5F4">
+  <div data-pin="1" style="min-height:100svh;display:flex;align-items:center;padding:clamp(22px,4vh,70px) clamp(16px,4vw,22px)">
+  <div style="max-width:1240px;margin:0 auto;width:100%">
+    <div data-reveal="1" style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin-bottom:clamp(16px,3.2vh,46px)">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:18px">
+          <span data-inv-dim="1" style="font-size:min(clamp(30px,4vw,48px),5vh);font-weight:300;color:#948C83;letter-spacing:-0.03em;line-height:1">02</span>
+          <span data-inv-strong="1" style="font-size:min(clamp(22px,3vw,34px),4.4vh);font-weight:600;letter-spacing:-0.035em">How I Work</span>
+          <span data-withai="1" style="font-size:min(clamp(22px,3vw,34px),4.4vh);font-weight:600;letter-spacing:-0.035em;color:#C7370E;opacity:0;margin-left:-16px">with AI</span>
+        </div>
+        <div style="display:grid">
+          <h2 data-inv-strong="1" data-basehead="1" style="grid-area:1/1;margin:0;font-size:min(clamp(26px,4.2vw,50px),5.4vh);font-weight:500;letter-spacing:-0.042em;line-height:1.24">무엇을 만들지보다,<br><span style="font-weight:700">무엇을 움직일지</span> 먼저 생각합니다.</h2>
+          <h2 data-althead="1" style="grid-area:1/1;margin:0;opacity:0;font-size:min(clamp(26px,4.2vw,50px),5.4vh);font-weight:500;letter-spacing:-0.042em;line-height:1.24;color:#FFFFFF;pointer-events:none">AI로 <span style="font-weight:700">더 빠르게</span><br>기획하고, 만들고, 분석합니다.</h2>
+        </div>
+      </div>
+    </div>
+
+    <div data-reveal="1" style="padding:0 0 4px">
+      <div style="position:relative;width:100%;padding:56px 0 8px">
+        <svg viewBox="0 0 1270 60" preserveAspectRatio="none" aria-hidden="true" style="position:absolute;top:0;left:0;width:100%;height:60px;display:none">
+          <path d="M 1177 54 C 1177 6, 93 6, 93 54" fill="none" stroke="#FFC3AE" stroke-width="1.2" stroke-dasharray="3 6"></path>
+          <circle cx="1177" cy="54" r="3.5" fill="#FF5A2B"></circle>
+          <circle cx="93" cy="54" r="3.5" fill="#FF5A2B"></circle>
+        </svg>
+        <div data-aibracket="1" aria-hidden="true" style="position:absolute;opacity:0;pointer-events:none;border:2.5px dashed rgba(255,90,43,.75);border-radius:999px;transform-origin:50% 50%;will-change:opacity,transform"></div>
+        <div data-ailabel="1" aria-hidden="true" style="position:absolute;opacity:0;pointer-events:none;font-family:'IBM Plex Mono',monospace;font-size:clamp(11px,1vw,12px);font-weight:600;letter-spacing:0.2em;color:#FF7A4D;background:#101A2B;padding:0 14px;white-space:nowrap;transform:translate(-50%,-50%)">AI-ENHANCED WORKFLOW</div>
+        <div data-steprow="1" style="position:relative;display:flex;align-items:flex-start;justify-content:space-between;gap:clamp(4px,1vw,10px);flex-wrap:wrap">
+          <sc-for list="{{ steps }}" as="st" hint-placeholder-count="5">
+            <div data-stepnode="{{ st.no }}" data-reveal="1" style="flex:1 1 118px;min-width:102px;display:flex;flex-direction:column;align-items:center;gap:clamp(14px,2.4vh,30px)">
+              <div data-inv-card="1" style="position:relative;width:100%;max-width:min(168px,21vh);aspect-ratio:1;border-radius:50%;background:#fff;border:1px solid #EFECE8;box-shadow:0 10px 34px rgba(23,23,26,.05);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;transition:transform .45s cubic-bezier(.2,.7,.3,1),box-shadow .45s ease" style-hover="transform:translateY(-6px);box-shadow:0 18px 44px rgba(255,90,43,.18)">
+                <span style="position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 50% 118%,rgba(255,90,43,.16),rgba(255,255,255,0) 62%);pointer-events:none"></span>
+                <div data-steplabel="1" style="font-family:'IBM Plex Mono',monospace;font-size:clamp(11px,0.9vw,11.5px);letter-spacing:0.14em;color:#C7370E">STEP {{ st.no }}</div>
+                <div data-inv-strong="1" style="font-size:clamp(16px,1.6vw,21px);font-weight:700;letter-spacing:-0.03em;text-align:center">{{ st.name }}</div>
+                <div data-enlabel="1" style="font-family:'IBM Plex Mono',monospace;font-size:clamp(11px,0.9vw,11.5px);letter-spacing:0.16em;color:#6E6A63">{{ st.en }}</div>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:10px;width:100%">
+                <div style="position:relative;width:100%;display:grid;place-items:start center;min-height:calc(2 * 1.7em);font-size:clamp(12.5px,1.05vw,14px)">
+                  <p data-inv-soft="1" data-basedesc="1" style="grid-area:1/1;margin:0;font-size:clamp(12.5px,1.05vw,14px);line-height:1.7;color:#4A4740;text-align:center;text-wrap:pretty;word-break:keep-all;padding:0 2px">{{ st.desc }}</p>
+                  <sc-if value="{{ st.altDesc }}" hint-placeholder-val="{{ false }}">
+                    <p data-altdesc="1" style="grid-area:1/1;margin:0;opacity:0;font-size:clamp(12.5px,1.05vw,14px);line-height:1.7;color:#FFB596;font-weight:600;text-align:center;text-wrap:pretty;word-break:keep-all;padding:0 2px;pointer-events:none">{{ st.altDesc }}</p>
+                  </sc-if>
+                </div>
+                <div style="position:relative;display:grid;place-items:center">
+                  <span data-inv-chip="1" data-basechip="1" style="grid-area:1/1;font-size:clamp(11px,0.95vw,12px);color:#6E6A63;background:#fff;border:1px solid #EFECE8;border-radius:999px;padding:6px 12px;text-align:center;line-height:1.4;word-break:keep-all;white-space:nowrap">{{ st.key }}</span>
+                  <sc-if value="{{ st.altKey }}" hint-placeholder-val="{{ false }}">
+                    <span data-altchip="1" style="grid-area:1/1;white-space:nowrap;opacity:0;font-size:clamp(11px,0.95vw,12px);color:#FF8A5C;background:rgba(255,90,43,.12);border:1px solid rgba(255,90,43,.45);border-radius:999px;padding:6px 12px;text-align:center;line-height:1.4;pointer-events:none">{{ st.altKey }}</span>
+                  </sc-if>
+                </div>
+              </div>
+            </div>
+            <sc-if value="{{ st.arrow }}" hint-placeholder-val="{{ true }}">
+              <div data-arrow="{{ st.no }}" aria-hidden="true" style="flex:0 0 auto;align-self:flex-start;display:flex;align-items:center;gap:3px;width:clamp(9px,1.6vw,26px);padding-top:calc(min(168px,21vh) / 2)">
+                <span data-arrowline="1" style="flex:1;height:1px;background:repeating-linear-gradient(90deg,#DCD8D2 0 4px,transparent 4px 9px)"></span>
+                <span style="color:#C7370E;font-size:11px">▶</span>
+              </div>
+            </sc-if>
+          </sc-for>
+        </div>
+
+        <div data-aicap="1" style="margin-top:clamp(18px,3.2vh,48px);text-align:center;opacity:0;transform:translateY(18px);will-change:opacity,transform">
+          <div data-inv-strong="1" style="font-size:clamp(15px,1.7vw,20px);font-weight:500;letter-spacing:-0.02em;line-height:1.7">체계적인 프로세스 위에 AI를 더해,<br>업무 효율과 실행력을 높입니다.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section id="s04" style="padding:clamp(84px,11.5vw,124px) clamp(16px,4vw,22px) clamp(84px,11.5vw,124px)">
+  <div style="max-width:1240px;margin:0 auto">
+    <div data-reveal="1" style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:18px">
+      <span style="font-size:clamp(30px,4vw,48px);font-weight:300;color:#948C83;letter-spacing:-0.03em;line-height:1">03</span>
+      <span style="font-size:clamp(22px,3vw,34px);font-weight:600;letter-spacing:-0.035em">Selected Work</span>
+    </div>
+    <h2 data-reveal="1" style="margin:0 0 14px;font-size:clamp(27px,4.3vw,52px);font-weight:700;letter-spacing:-0.045em;line-height:1.18">문제를 발견하고,<br><span style="color:#FF5A2B">콘텐츠와 경험으로 답했습니다.</span></h2>
+    <p data-reveal="1" style="margin:0 0 clamp(22px,3vw,32px);font-size:clamp(15px,1.7vw,17.5px);line-height:1.8;color:#6E6A63;max-width:760px;text-wrap:pretty">고객과 데이터를 이해해 기회를 찾고, 전략부터 제작·현장 실행·분석·개선까지 연결합니다.</p>
+
+    <div style="display:flex;flex-direction:column;gap:clamp(20px,3.4vw,32px)">
+      <sc-for list="{{ projects }}" as="p" hint-placeholder-count="4">
+        <div data-reveal="1" style="background:#fff;border:1px solid #EFECE8;border-radius:30px;overflow:hidden">
+
+          <div style="position:relative;background:{{ p.visualBg }};padding:clamp(20px,3vw,28px);display:flex;align-items:center;overflow:hidden;height:clamp(240px,34vh,360px)">
+            <sc-if value="{{ p.banner }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,#EFEAE3 0 6px,#F4F1EC 6px 12px);display:flex;align-items:flex-end;padding:14px">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6E6A63;line-height:1.5;word-break:keep-all">{{ p.banner.slot }}</span>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ p.montage }}" hint-placeholder-val="{{ false }}">
+              <div aria-hidden="true" style="position:absolute;inset:-4%;display:flex;flex-direction:column;justify-content:center;gap:10px;pointer-events:none">
+                <sc-for list="{{ p.montage }}" as="row" hint-placeholder-count="2">
+                  <div style="overflow:hidden;height:clamp(88px,13vh,132px)">
+                    <div style="display:flex;gap:10px;width:max-content;height:100%;animation:mkMarquee 80s linear infinite;animation-duration:{{ row.dur }};animation-direction:{{ row.dir }}">
+                      <sc-for list="{{ row.items }}" as="tile" hint-placeholder-count="10">
+                        <div style="flex:0 0 clamp(140px,17vw,220px);height:100%;border-radius:12px;background:repeating-linear-gradient(135deg,#4A4540 0 6px,#3B3733 6px 12px);border:1px solid #5A544D;display:flex;align-items:flex-end;padding:11px">
+                          <span style="font-size:11px;line-height:1.4;color:#D8D2C9">{{ tile }}</span>
+                        </div>
+                      </sc-for>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+              <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(23,23,26,.96) 0%,rgba(23,23,26,.9) 52%,rgba(23,23,26,.6) 78%,rgba(23,23,26,.32) 100%);pointer-events:none"></div>
+            </sc-if>
+
+            <sc-if value="{{ p.orbit }}" hint-placeholder-val="{{ false }}">
+              <div style="position:relative;z-index:2;width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;gap:12px">
+                <div style="display:inline-flex;align-items:baseline;gap:12px;align-self:flex-start;background:#17171A;color:#fff;border-radius:14px;padding:11px 16px">
+                  <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;color:#FF8A5C">CORE MESSAGE</span>
+                  <span style="font-size:14px;font-weight:600;letter-spacing:-0.02em">하나의 정보, 채널별로 다르게</span>
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(132px,100%),1fr));gap:9px">
+                  <sc-for list="{{ p.orbit }}" as="ob" hint-placeholder-count="3">
+                    <div style="background:#fff;border:1px solid #E4E0DA;border-radius:13px;padding:12px 13px 13px">
+                      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#C7370E;margin-bottom:9px">{{ ob.who }}</div>
+                      <div style="display:flex;flex-wrap:wrap;gap:5px">
+                        <sc-for list="{{ ob.items }}" as="oi" hint-placeholder-count="3">
+                          <span style="font-size:11px;color:#4A4740;background:#F6F5F4;border:1px solid #EFECE8;border-radius:999px;padding:5px 9px;white-space:nowrap">{{ oi }}</span>
+                        </sc-for>
+                      </div>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ p.stage }}" hint-placeholder-val="{{ false }}">
+              <div aria-hidden="true" style="position:absolute;inset:0;background:repeating-linear-gradient(115deg,#26292C 0 9px,#1C1F22 9px 18px)"></div>
+              <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,16,18,.18) 0%,rgba(14,16,18,.9) 100%)"></div>
+              <div style="position:relative;z-index:2;align-self:flex-end;width:100%;display:flex;flex-direction:column;gap:16px">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#FFB596;line-height:1.6;word-break:keep-all">{{ p.stage.slot }}</span>
+                <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px">
+                  <sc-for list="{{ p.stage.flow }}" as="fl" hint-placeholder-count="5">
+                    <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#F7F5F2;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.24);border-radius:999px;padding:9px 15px;white-space:nowrap">{{ fl.v }}</span>
+                    <sc-if value="{{ fl.arrow }}" hint-placeholder-val="{{ true }}"><span aria-hidden="true" style="color:#C7370E;font-size:12px">→</span></sc-if>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="padding:clamp(26px,4vw,42px)">
+            <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:16px">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#C7370E">CASE {{ p.no }}</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#6E6A63">{{ p.kicker }}</span>
+            </div>
+            <h3 style="margin:0 0 16px;font-size:clamp(23px,3.6vw,42px);font-weight:700;letter-spacing:-0.042em;line-height:1.25;text-wrap:pretty">{{ p.title1 }}<sc-if value="{{ p.title2 }}" hint-placeholder-val="{{ true }}"><br><span style="color:#FF5A2B">{{ p.title2 }}</span></sc-if></h3>
+            <p style="margin:0 0 clamp(24px,3.4vw,32px);font-size:15px;line-height:1.85;color:#6E6A63;max-width:900px;text-wrap:pretty">{{ p.summary }}</p>
+
+            <div style="display:flex;flex-wrap:wrap;gap:clamp(24px,5vw,56px);padding-bottom:clamp(24px,3.4vw,30px);border-bottom:1px solid #EFECE8">
+              <sc-for list="{{ p.figures }}" as="fg" hint-placeholder-count="2">
+                <div>
+                  <div style="font-size:clamp(26px,3.8vw,46px);font-weight:700;letter-spacing:-0.045em;line-height:1.1;color:#17171A;word-break:keep-all">{{ fg.value }}</div>
+                  <sc-if value="{{ fg.en }}" hint-placeholder-val="{{ true }}"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#C7370E;margin-top:12px">{{ fg.en }}</div></sc-if>
+                  <div style="font-size:14px;color:#4A4740;margin-top:12px;line-height:1.6">{{ fg.label }}</div>
+                  <sc-if value="{{ fg.sub }}" hint-placeholder-val="{{ true }}"><div style="font-size:12.5px;color:#6E6A63;margin-top:7px;line-height:1.6">{{ fg.sub }}</div></sc-if>
+                </div>
+              </sc-for>
+            </div>
+
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:clamp(22px,3vw,28px)">
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <sc-for list="{{ p.tags }}" as="tg" hint-placeholder-count="3">
+                  <span style="font-size:11.5px;color:#6E6A63;background:#F6F5F4;border:1px solid #EFECE8;border-radius:999px;padding:7px 12px">{{ tg }}</span>
+                </sc-for>
+              </div>
+              <button type="button" onClick="{{ p.open }}" aria-label="{{ p.aria }}" style="all:unset;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 26px;background:#17171A;color:#fff;font-size:14px;font-weight:600;border-radius:999px;transition:background .4s ease,transform .4s cubic-bezier(.2,.7,.3,1)" style-hover="background:#FF5A2B;transform:translateY(-2px)">CASE 자세히 보기 <span>→</span></button>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div data-reveal="1" style="text-align:center;padding:clamp(56px,9vw,100px) 20px clamp(10px,2vw,20px)">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#6E6A63;margin-bottom:20px">BEYOND SELECTED WORK.</div>
+      <h3 style="margin:0 0 30px;font-size:clamp(24px,4.2vw,48px);font-weight:700;letter-spacing:-0.045em;line-height:1.22">네 개의 케이스보다,<br>더 많은 방식으로 일해왔습니다.</h3>
+      <a href="#s06" style="display:inline-flex;align-items:center;gap:12px;height:56px;padding:0 30px;background:#fff;border:1px solid #17171A;color:#17171A;font-size:14.5px;font-weight:600;letter-spacing:0.02em;border-radius:999px;transition:all .4s cubic-bezier(.2,.7,.3,1)" style-hover="background:#17171A;color:#fff;transform:translateY(-3px)">EXPLORE ARCHIVE <span data-cta-arrow="1" style="transition:transform .4s cubic-bezier(.2,.7,.3,1)">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="s06" style="padding:clamp(84px,11.5vw,124px) clamp(16px,4vw,22px) clamp(84px,11.5vw,124px)">
+  <div style="max-width:1240px;margin:0 auto">
+    <div data-reveal="1" style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:20px">
+      <span style="font-size:clamp(30px,4vw,48px);font-weight:300;color:#948C83;letter-spacing:-0.03em;line-height:1">04</span>
+      <span style="font-size:clamp(22px,3vw,34px);font-weight:600;letter-spacing:-0.035em">Archive</span>
+    </div>
+    <div data-reveal="1" style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:34px">
+      <div>
+        <h2 style="margin:0 0 14px;font-size:clamp(27px,4.3vw,52px);font-weight:700;letter-spacing:-0.045em;line-height:1.18">기획한 만큼,<br>직접 만들었습니다.</h2>
+        <p style="margin:0;font-size:15px;line-height:1.8;color:#6E6A63;max-width:500px;text-wrap:pretty">영상·웹·SNS·브로슈어·백서·영업자료·전시 콘텐츠까지. 문제에 맞는 포맷을 선택하고, 아이디어를 실제 고객 접점에 닿는 결과물로 구현해왔습니다.</p>
+      </div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#6E6A63;text-align:right;line-height:1.9">{{ archiveSpan }}<br>CONTENT ARCHIVE</div>
+    </div>
+
+    <div data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(160px,45vw),1fr));gap:1px;background:#E7E3DE;border:1px solid #E7E3DE;border-radius:18px;overflow:hidden;margin-bottom:34px">
+      <sc-for list="{{ archiveStats }}" as="st" hint-placeholder-count="4">
+        <div style="background:#F6F5F4;padding:22px 20px 24px">
+          <div style="font-size:clamp(20px,2.6vw,30px);font-weight:600;letter-spacing:-0.04em;color:#C7370E;line-height:1.1">{{ st.value }}</div>
+          <div style="margin-top:9px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#6E6A63">{{ st.label }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div data-reveal="1" style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px">
+      <sc-for list="{{ archiveTabs }}" as="tb" hint-placeholder-count="8">
+        <button type="button" onClick="{{ tb.pick }}" aria-pressed="{{ tb.on }}" style="all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:7px;font-family:inherit;font-size:13px;border-radius:999px;padding:10px 16px;transition:all .3s ease;font-weight:{{ tb.weight }};color:{{ tb.color }};background:{{ tb.bg }};border:1px solid {{ tb.border }}">
+          {{ tb.label }}<span style="font-size:11px;opacity:.55">{{ tb.count }}</span>
+        </button>
+      </sc-for>
+    </div>
+    <div style="display:flex;justify-content:flex-end;margin-bottom:18px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#6E6A63">{{ archiveCount }}</div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(232px,44vw),1fr));gap:clamp(10px,2vw,14px);align-items:start">
+      <sc-for list="{{ archiveItems }}" as="a" hint-placeholder-count="16">
+        <article style="grid-column:{{ a.span }};background:#fff;border:1px solid #EFECE8;border-radius:14px;overflow:hidden;transition:border-color .35s ease,box-shadow .35s ease" style-hover="border-color:#DCD6CE;box-shadow:0 12px 28px rgba(23,23,26,.07)">
+          <div style="position:relative;width:100%;padding-top:{{ a.pad }};background:{{ a.bg }};overflow:hidden">
+            <sc-if value="{{ a.img }}" hint-placeholder-val="{{ false }}">
+              <img src="{{ a.img }}" alt="{{ a.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:{{ a.fit }};padding:8px;transition:transform .5s cubic-bezier(.2,.7,.3,1)" style-hover="transform:scale(1.03)">
+            </sc-if>
+            <sc-if value="{{ a.noImg }}" hint-placeholder-val="{{ true }}">
+              <span aria-hidden="true" style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,#F2EFEB 0 6px,#EDE9E3 6px 12px)"></span>
+            </sc-if>
+            <sc-if value="{{ a.isVideo }}" hint-placeholder-val="{{ false }}">
+              <span aria-hidden="true" style="position:absolute;top:11px;left:11px;width:22px;height:22px;border-radius:50%;background:rgba(23,23,26,.55);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;padding-left:2px">▶</span>
+            </sc-if>
+            <div style="position:absolute;inset:0;background:rgba(23,23,26,.86);opacity:0;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;padding:12px;transition:opacity .35s ease" style-hover="opacity:1">
+              <sc-for list="{{ a.roles }}" as="r" hint-placeholder-count="3">
+                <span style="font-size:11.5px;line-height:1.4;color:#F7F5F2">{{ r }}</span>
+              </sc-for>
+            </div>
+          </div>
+          <div style="padding:12px 13px 15px">
+            <div style="display:flex;align-items:center;gap:7px;margin-bottom:7px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em">
+              <span style="color:#C7370E">{{ a.cat }}</span><span style="color:#CFCAC2">·</span><span style="color:#6E6A63">{{ a.year }}</span>
+            </div>
+            <div style="font-size:13.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.45;text-wrap:pretty">{{ a.title }}</div>
+            <sc-if value="{{ a.live }}" hint-placeholder-val="{{ false }}">
+              <a href="{{ a.live }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#C7370E;border:1px solid #FFD8CA;border-radius:999px;padding:5px 10px;transition:background .3s ease" style-hover="background:#FFF1EC;color:#FF5A2B">VIEW LIVE ↗</a>
+            </sc-if>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+
+    <sc-if value="{{ archiveMoreOn }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;justify-content:center;margin-top:clamp(22px,3vw,32px)">
+        <button type="button" onClick="{{ archiveMore }}" style="all:unset;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:600;letter-spacing:-0.02em;color:#17171A;background:#fff;border:1px solid #DDD8D1;border-radius:999px;padding:15px 26px;transition:border-color .3s ease,background .3s ease" style-hover="border-color:#FF5A2B;background:#FFF1EC">
+          {{ archiveMoreLabel }}<span aria-hidden="true" style="color:#FF5A2B">↓</span>
+        </button>
+      </div>
+    </sc-if>
+
+    <div data-reveal="1" style="margin-top:56px;padding-top:44px;border-top:1px solid #E7E3DE">
+      <h3 style="margin:0 0 20px;font-size:clamp(22px,3.6vw,42px);font-weight:700;letter-spacing:-0.042em;line-height:1.3;max-width:860px;text-wrap:pretty">한 가지 포맷을 반복한 것이 아니라,<br>문제에 맞는 형태를 계속 선택해왔습니다.</h3>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.1em;color:#6E6A63">{{ archiveFormatLine }}</div>
+    </div>
+  </div>
+</section>
+
+<section id="s08" style="padding:clamp(96px,13vw,140px) clamp(16px,4vw,22px) clamp(96px,13vw,140px);background:#17171A;color:#F7F5F2">
+  <div style="max-width:1240px;margin:0 auto">
+    <div data-reveal="1" style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:20px">
+      <span style="font-size:clamp(30px,4vw,48px);font-weight:300;color:#6E6A63;letter-spacing:-0.03em;line-height:1">05</span>
+      <span style="font-size:clamp(22px,3vw,34px);font-weight:600;letter-spacing:-0.035em;color:#F7F5F2">Impact</span>
+    </div>
+    <h2 data-reveal="1" style="margin:0 0 14px;font-size:clamp(27px,4.3vw,52px);font-weight:700;letter-spacing:-0.044em;line-height:1.24;color:#F7F5F2">확인 가능한 숫자만<br>적었습니다.</h2>
+    <p data-reveal="1" style="margin:0 0 46px;font-size:15.5px;line-height:1.85;color:#A9A39B;max-width:560px">숫자보다 중요한 것은 무엇을 바꿨는지입니다. 각 수치는 서로 다른 프로젝트의 결과입니다.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:16px">
+      <sc-for list="{{ impacts }}" as="i" hint-placeholder-count="6">
+        <div data-reveal="1" style="position:relative;background:#1E1E22;border:1px solid #2E2E33;border-radius:24px;padding:30px 26px 26px;display:flex;flex-direction:column;gap:10px;min-height:230px;overflow:hidden;transition:transform .45s cubic-bezier(.2,.7,.3,1),border-color .45s ease" style-hover="transform:translateY(-5px);border-color:#FF5A2B">
+          <span aria-hidden="true" style="position:absolute;top:-40px;right:-40px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(255,90,43,.22),rgba(23,23,26,0) 68%);pointer-events:none"></span>
+          <div data-num="{{ i.value }}" data-pre="{{ i.pre }}" data-suf="{{ i.suf }}" style="font-size:clamp(40px,5.6vw,62px);font-weight:300;letter-spacing:-0.05em;line-height:1;color:#FF5A2B">{{ i.display }}</div>
+          <div style="font-size:15.5px;font-weight:600;letter-spacing:-0.02em;color:#F7F5F2">{{ i.label }}</div>
+          <div style="font-size:13px;line-height:1.75;color:#A9A39B">{{ i.note }}</div>
+          <div style="margin-top:auto;padding-top:16px">
+            <sc-if value="{{ i.link }}" hint-placeholder-val="{{ false }}">
+              <a href="{{ i.link }}" style="display:inline-flex;align-items:center;gap:7px;font-size:11px;color:#FF8A5C;background:rgba(255,90,43,.1);border:1px solid rgba(255,90,43,.34);border-radius:999px;padding:6px 12px;transition:all .3s ease" style-hover="background:rgba(255,90,43,.2);color:#FFB596">{{ i.source }} <span>→</span></a>
+            </sc-if>
+            <sc-if value="{{ i.plain }}" hint-placeholder-val="{{ true }}">
+              <span style="font-size:11px;color:#A9A39B;background:rgba(255,255,255,.05);border:1px solid #33333A;border-radius:999px;padding:6px 12px">{{ i.source }}</span>
+            </sc-if>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="s09" style="padding:clamp(84px,11.5vw,124px) clamp(16px,4vw,22px) clamp(84px,11.5vw,124px)">
+  <div style="max-width:1240px;margin:0 auto">
+    <div data-reveal="1" style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:20px">
+      <span style="font-size:clamp(30px,4vw,48px);font-weight:300;color:#948C83;letter-spacing:-0.03em;line-height:1">06</span>
+      <span style="font-size:clamp(22px,3vw,34px);font-weight:600;letter-spacing:-0.035em">AI Workflow</span>
+    </div>
+    <h2 data-reveal="1" style="margin:0 0 14px;font-size:clamp(27px,4.3vw,52px);font-weight:700;letter-spacing:-0.044em;line-height:1.24">AI를 쓰는 것보다,<br>AI가 잘 일하는 구조를 만듭니다.</h2>
+    <p data-reveal="1" style="margin:0 0 42px;font-size:15.5px;line-height:1.85;color:#6E6A63;max-width:560px">생성 자체보다 기준·검수·재사용 구조를 먼저 설계해, AI를 반복 가능한 업무 방식으로 연결합니다.</p>
+    <div data-reveal="1" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:26px">
+      <span style="font-size:13.5px;color:#6E6A63;background:#fff;border:1px solid #EFECE8;border-radius:999px;padding:10px 17px">Individual AI Use</span>
+      <span style="color:#FF5A2B">→</span>
+      <span style="font-size:13.5px;color:#17171A;font-weight:600;background:#FFF1EC;border:1px solid #FFD8CA;border-radius:999px;padding:10px 17px">Reusable Workflow</span>
+      <span style="color:#FF5A2B">→</span>
+      <span style="font-size:13.5px;color:#6E6A63;background:#fff;border:1px solid #EFECE8;border-radius:999px;padding:10px 17px">Team Productivity</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:16px">
+      <sc-for list="{{ workflow }}" as="w" hint-placeholder-count="5">
+        <div data-reveal="1" style="background:#fff;border:1px solid #EFECE8;border-radius:24px;overflow:hidden;transition:transform .4s cubic-bezier(.2,.7,.3,1),box-shadow .4s ease" style-hover="transform:translateY(-4px);box-shadow:0 16px 38px rgba(23,23,26,.06)">
+          <div style="padding:26px 24px 22px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#C7370E">{{ w.no }}</span>
+              <span style="font-size:11.5px;letter-spacing:0.06em;color:#6E6A63;background:#F6F5F4;border-radius:999px;padding:5px 11px">{{ w.tag }}</span>
+            </div>
+            <div style="font-size:18px;font-weight:700;margin-bottom:16px;letter-spacing:-0.028em">{{ w.name }}</div>
+            <div style="display:flex;flex-direction:column;gap:11px">
+              <div style="display:grid;grid-template-columns:58px 1fr;gap:10px"><span style="font-size:11px;letter-spacing:0.06em;color:#7A756D;padding-top:2px">PROBLEM</span><span style="font-size:13.5px;line-height:1.7;color:#6E6A63">{{ w.problem }}</span></div>
+              <div style="display:grid;grid-template-columns:58px 1fr;gap:10px"><span style="font-size:11px;letter-spacing:0.06em;color:#C7370E;padding-top:2px">SYSTEM</span><span style="font-size:14px;font-weight:500;line-height:1.7;color:#17171A">{{ w.system }}</span></div>
+              <div style="display:grid;grid-template-columns:58px 1fr;gap:10px"><span style="font-size:11px;letter-spacing:0.06em;color:#7A756D;padding-top:2px">IMPACT</span><span style="font-size:13.5px;line-height:1.7;color:#6E6A63">{{ w.impact }}</span></div>
+            </div>
+          </div>
+          <div style="aspect-ratio:16/9;background:linear-gradient(135deg,#F4F2EF,#EDEAE5);display:flex;align-items:flex-end;padding:13px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6E6A63">{{ w.slot }}</span></div>
+        </div>
+      </sc-for>
+    </div>
+    <div data-reveal="1" style="margin-top:26px;background:#101A2B;border-radius:26px;padding:clamp(30px,5vw,44px) clamp(22px,4vw,34px)">
+      <div style="font-size:clamp(19px,2.6vw,26px);font-weight:600;letter-spacing:-0.03em;color:#F7F5F2;margin-bottom:30px">AI를 쓰고 끝내지 않습니다.</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:clamp(22px,4vw,40px)">
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.13em;color:#FF8A5C;margin-bottom:14px">01 SPEED</div>
+          <div style="font-size:15.5px;line-height:1.85;color:#F7F5F2;text-wrap:pretty">반복 작업과 초기 제작 시간을 줄여<br>실행 속도를 높입니다.</div>
+        </div>
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.13em;color:#FF8A5C;margin-bottom:14px">02 QUALITY</div>
+          <div style="font-size:15.5px;line-height:1.85;color:#F7F5F2;text-wrap:pretty">제품·브랜드·캐릭터 기준으로<br>결과물의 일관성을 검수합니다.</div>
+        </div>
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.13em;color:#FF8A5C;margin-bottom:14px">03 SCALE</div>
+          <div style="font-size:15.5px;line-height:1.85;color:#F7F5F2;text-wrap:pretty">프롬프트·템플릿·완성 자산을<br>다음 프로젝트와 팀이 재사용하게 만듭니다.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="s10" style="position:relative;padding:clamp(84px,11.5vw,124px) clamp(16px,4vw,22px) clamp(84px,11.5vw,124px);background:#FFFFFF;border-top:1px solid #EFECE8;border-bottom:1px solid #EFECE8;overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;top:-14%;right:-8%;width:44vw;height:44vw;max-width:560px;max-height:560px;border-radius:50%;background:radial-gradient(circle,rgba(255,90,43,.14),rgba(255,255,255,0) 68%);filter:blur(20px);pointer-events:none"></div>
+  <div style="position:relative;max-width:1240px;margin:0 auto">
+    <div data-reveal="1" style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:30px">
+      <span style="font-size:clamp(30px,4vw,48px);font-weight:300;color:#948C83;letter-spacing:-0.03em;line-height:1">07</span>
+      <span style="font-size:clamp(22px,3vw,34px);font-weight:600;letter-spacing:-0.035em">What I Bring</span>
+    </div>
+    <h2 data-reveal="1" style="margin:0 0 26px;font-size:clamp(27px,4.3vw,52px);font-weight:700;letter-spacing:-0.044em;line-height:1.28;max-width:900px;text-wrap:pretty">산업이 달라도,<br><span style="color:#FF5A2B">성과를 만드는 방식</span>은 같습니다.</h2>
+    <p data-reveal="1" style="margin:0 0 22px;font-size:16px;line-height:1.9;color:#4A4740;max-width:640px;text-wrap:pretty">저는 특정 포맷이나 산업에서 출발하지 않습니다. 고객이 무엇을 궁금해하고 어떤 행동을 해야 하는지부터 정의한 뒤, 그에 맞는 메시지와 콘텐츠 경험을 설계합니다.</p>
+    <p data-reveal="1" style="margin:0 0 44px;font-size:16px;line-height:1.9;color:#4A4740;max-width:640px;text-wrap:pretty">필요한 결과물은 웹·영상·SNS·오프라인 등 적합한 접점으로 직접 구현하고, 성과를 데이터로 확인해 다음 실행의 기준으로 남깁니다. 새로운 산업에서도 빠르게 맥락을 이해하고 콘텐츠를 실제 사업 성과에 연결하는 방식입니다.</p>
+    <div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(285px,100%),1fr));gap:clamp(12px,1.6vw,18px);align-items:stretch">
+        <sc-for list="{{ bringItems }}" as="n" hint-placeholder-count="4">
+          <div data-reveal="1" style="position:relative;background:#F6F5F4;border:1px solid #EFECE8;border-radius:22px;padding:26px 22px 30px;overflow:hidden">
+            <span aria-hidden="true" style="position:absolute;top:0;left:0;width:100%;height:3px;background:#FF5A2B"></span>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#C7370E;margin-bottom:16px">{{ n.no }}</div>
+            <div style="font-size:16px;font-weight:700;margin-bottom:10px;letter-spacing:-0.025em">{{ n.name }}</div>
+            <p style="margin:0;font-size:13.5px;line-height:1.8;color:#6E6A63;text-wrap:pretty">{{ n.desc }}</p>
+
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="s11" style="padding:clamp(84px,11.5vw,124px) clamp(16px,4vw,22px) 70px">
+  <div style="max-width:1240px;margin:0 auto">
+    <div data-reveal="1" style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:34px">
+      <span style="font-size:clamp(30px,4vw,48px);font-weight:300;color:#948C83;letter-spacing:-0.03em;line-height:1">08</span>
+      <span style="font-size:clamp(22px,3vw,34px);font-weight:600;letter-spacing:-0.035em">Contact</span>
+    </div>
+    <div data-reveal="1" style="font-size:13px;letter-spacing:0.14em;color:#C7370E;margin-bottom:18px">LET'S TALK</div>
+    <h2 data-reveal="1" style="margin:0 0 44px;font-size:clamp(27px,4.3vw,52px);font-weight:700;letter-spacing:-0.045em;line-height:1.26;max-width:900px;text-wrap:pretty">다음에는,<br>어떤 문제를 콘텐츠로<br>해결할 수 있을까요?</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:14px">
+      <a href="mailto:jiwoosim@naver.com" style="background:#fff;border:1px solid #EFECE8;border-radius:22px;padding:26px 24px;display:flex;flex-direction:column;gap:9px;transition:transform .4s cubic-bezier(.2,.7,.3,1),box-shadow .4s ease" style-hover="transform:translateY(-4px);box-shadow:0 16px 38px rgba(23,23,26,.07);color:#17171A">
+        <span style="font-size:12px;letter-spacing:0.06em;color:#6E6A63">EMAIL</span>
+        <span style="font-size:16px;font-weight:600">jiwoosim@naver.com</span>
+      </a>
+      <a href="tel:01073062545" style="background:#fff;border:1px solid #EFECE8;border-radius:22px;padding:26px 24px;display:flex;flex-direction:column;gap:9px;transition:transform .4s cubic-bezier(.2,.7,.3,1),box-shadow .4s ease" style-hover="transform:translateY(-4px);box-shadow:0 16px 38px rgba(23,23,26,.07);color:#17171A">
+        <span style="font-size:12px;letter-spacing:0.06em;color:#6E6A63">MOBILE</span>
+        <span style="font-size:16px;font-weight:600">010-7306-2545</span>
+      </a>
+      <a href="https://instagram.com/simju_01" target="_blank" rel="noopener" style="background:#fff;border:1px solid #EFECE8;border-radius:22px;padding:26px 24px;display:flex;flex-direction:column;gap:9px;transition:transform .4s cubic-bezier(.2,.7,.3,1),box-shadow .4s ease" style-hover="transform:translateY(-4px);box-shadow:0 16px 38px rgba(23,23,26,.07);color:#17171A">
+        <span style="font-size:12px;letter-spacing:0.06em;color:#6E6A63">INSTAGRAM</span>
+        <span style="font-size:16px;font-weight:600">@simju_01</span>
+      </a>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;margin-top:60px;padding-top:24px;border-top:1px solid #EAE7E3;font-size:12px;letter-spacing:0.04em;color:#6E6A63">
+      <span>2026 SIM JIWOO · CONTENT MARKETING PORTFOLIO</span>
+    </div>
+    <div style="margin-top:34px;text-align:center;font-size:11px;letter-spacing:0.06em;color:#6E6A63">© 2026 Sim Jiwoo. All rights reserved.</div>
+  </div>
+</section>
+
+<sc-if value="{{ activeCase }}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" data-modal="1" onScroll="{{ paintStepNav }}" aria-modal="true" aria-label="프로젝트 상세" style="position:fixed;inset:0;z-index:100;background:#F6F5F4;overflow-y:auto;animation:mkFade .3s ease both">
+    <div style="position:sticky;top:0;z-index:3;background:rgba(246,245,244,.94);backdrop-filter:blur(14px);border-bottom:1px solid #EAE7E3">
+      <div style="max-width:1080px;margin:0 auto;padding:14px clamp(16px,4vw,28px);display:flex;align-items:center;justify-content:space-between;gap:16px">
+        <div style="display:flex;align-items:baseline;gap:12px;min-width:0">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#C7370E">CASE {{ activeCase.no }}</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#6E6A63;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ activeCase.kicker }}</span>
+        </div>
+        <button type="button" onClick="{{ close }}" aria-label="닫기" style="all:unset;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#6E6A63;background:#fff;border:1px solid #EAE7E3;border-radius:999px;padding:10px 16px;transition:all .3s ease" style-hover="border-color:#FF5A2B;color:#FF5A2B">CLOSE ✕</button>
+      </div>
+      <div data-h="1" style="max-width:1080px;margin:0 auto;padding:0 clamp(16px,4vw,28px) 12px;overflow-x:auto">
+        <div style="display:flex;align-items:center;gap:8px;width:max-content">
+          {{ caseStepRow }}
+        </div>
+      </div>
+    </div>
+
+    <div style="max-width:1080px;margin:0 auto;padding:clamp(34px,6vw,60px) clamp(16px,4vw,28px) 100px">
+      <h3 style="margin:0 0 18px;font-size:clamp(26px,4.4vw,50px);font-weight:700;letter-spacing:-0.045em;line-height:1.2;text-wrap:pretty">{{ activeCase.title1 }}<sc-if value="{{ activeCase.title2 }}" hint-placeholder-val="{{ true }}"><br><span style="color:#FF5A2B">{{ activeCase.title2 }}</span></sc-if></h3>
+      <p style="margin:0 0 26px;font-size:clamp(15px,1.8vw,18px);line-height:1.9;color:#4A4740;max-width:660px;text-wrap:pretty">{{ activeCase.summary }}</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:1px;background:#EAE7E3;border-top:1px solid #EAE7E3;border-bottom:1px solid #EAE7E3;margin-bottom:clamp(40px,6vw,70px)">
+        <sc-for list="{{ activeCase.meta }}" as="mt" hint-placeholder-count="3">
+          <div style="background:#F6F5F4;padding:18px 4px 20px 0">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;color:#6E6A63;margin-bottom:9px">{{ mt.k }}</div>
+            <div style="font-size:13.5px;color:#17171A;line-height:1.6;word-break:keep-all">{{ mt.v }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:clamp(50px,8vw,96px)">
+        <sc-for list="{{ activeCase.steps }}" as="st" hint-placeholder-count="5">
+          <div id="{{ st.anchor }}" data-casestep="1" style="scroll-margin-top:120px">
+            <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:20px">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#C7370E">{{ st.no }}</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;color:#6E6A63">{{ st.label }}</span>
+            </div>
+            <h4 style="margin:0 0 18px;font-size:clamp(21px,3.2vw,36px);font-weight:700;letter-spacing:-0.04em;line-height:1.3;text-wrap:pretty">{{ st.head1 }}<sc-if value="{{ st.head2 }}" hint-placeholder-val="{{ true }}"><br>{{ st.head2 }}</sc-if></h4>
+            <p style="margin:0;font-size:15.5px;line-height:1.95;color:#4A4740;max-width:640px;text-wrap:pretty">{{ st.body }}</p>
+
+            <sc-if value="{{ st.compare }}" hint-placeholder-val="{{ false }}">
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:12px;margin-top:30px">
+                <sc-for list="{{ st.compare }}" as="cp" hint-placeholder-count="2">
+                  <div style="background:{{ cp.bg }};border:1px solid {{ cp.border }};border-radius:20px;padding:24px 22px 26px">
+                    <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;color:{{ cp.kColor }};margin-bottom:14px">{{ cp.k }}</div>
+                    <div style="font-size:15px;font-weight:600;letter-spacing:-0.02em;margin-bottom:16px;color:{{ cp.fg }}">{{ cp.title }}</div>
+                    <div style="display:flex;flex-direction:column;gap:8px">
+                      <sc-for list="{{ cp.items }}" as="ci" hint-placeholder-count="3">
+                        <div style="display:flex;gap:9px;align-items:flex-start;font-size:13.5px;line-height:1.7;color:{{ cp.itemFg }}">
+                          <span aria-hidden="true" style="flex:0 0 auto;width:4px;height:4px;border-radius:50%;background:{{ cp.dot }};margin-top:8px"></span>{{ ci }}
+                        </div>
+                      </sc-for>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ st.chain }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:30px">
+                <sc-for list="{{ st.chain }}" as="ch" hint-placeholder-count="4">
+                  <span style="font-size:13.5px;font-weight:600;color:#17171A;background:#fff;border:1px solid #EAE7E3;border-radius:999px;padding:11px 17px;white-space:nowrap">{{ ch.v }}</span>
+                  <sc-if value="{{ ch.arrow }}" hint-placeholder-val="{{ true }}">
+                    <span aria-hidden="true" style="color:#C7370E;font-size:13px">→</span>
+                  </sc-if>
+                </sc-for>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ st.figures }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-wrap:wrap;gap:clamp(26px,5vw,64px);margin-top:34px">
+                <sc-for list="{{ st.figures }}" as="fg" hint-placeholder-count="2">
+                  <div>
+                    <div style="font-size:clamp(30px,4.6vw,58px);font-weight:700;letter-spacing:-0.05em;line-height:1;color:#FF5A2B;word-break:keep-all">{{ fg.value }}</div>
+                    <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#6E6A63;margin-top:14px">{{ fg.en }}</div>
+                    <div style="font-size:14px;font-weight:600;margin-top:8px;letter-spacing:-0.015em">{{ fg.label }}</div>
+                    <sc-if value="{{ fg.sub }}" hint-placeholder-val="{{ true }}"><div style="font-size:12.5px;font-weight:400;color:#6E6A63;margin-top:7px;line-height:1.6">{{ fg.sub }}</div></sc-if>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ st.assets }}" hint-placeholder-val="{{ false }}">
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:10px;margin-top:30px">
+                <sc-for list="{{ st.assets }}" as="as" hint-placeholder-count="4">
+                  <div style="background:#fff;border:1px solid #EFECE8;border-radius:18px;padding:20px 20px 22px">
+                    <div style="font-size:14.5px;font-weight:700;letter-spacing:-0.02em;margin-bottom:8px">{{ as.n }}</div>
+                    <div style="font-size:13px;color:#6E6A63;line-height:1.7;word-break:keep-all">{{ as.d }}</div>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ st.slots }}" hint-placeholder-val="{{ false }}">
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:12px;margin-top:30px">
+                <sc-for list="{{ st.slots }}" as="sl" hint-placeholder-count="3">
+                  <div style="aspect-ratio:4/3;border-radius:18px;background:repeating-linear-gradient(135deg,#EFEAE3 0 6px,#F4F1EC 6px 12px);border:1px solid #E4E0DA;display:flex;align-items:flex-end;padding:14px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6E6A63;line-height:1.5;word-break:keep-all">{{ sl }}</span></div>
+                </sc-for>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ st.board }}" hint-placeholder-val="{{ false }}">
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:1px;background:#EAE7E3;border:1px solid #EAE7E3;border-radius:24px;overflow:hidden;margin-top:32px">
+                <sc-for list="{{ st.board }}" as="bd" hint-placeholder-count="2">
+                  <div style="background:#fff;padding:clamp(28px,4vw,42px) clamp(22px,3vw,32px)">
+                    <div style="font-size:clamp(34px,5.6vw,64px);font-weight:700;letter-spacing:-0.05em;line-height:1;color:#FF5A2B;word-break:keep-all">{{ bd.value }}</div>
+                    <div style="font-size:15px;font-weight:600;margin-top:16px;letter-spacing:-0.02em">{{ bd.label }}</div>
+                    <sc-if value="{{ bd.lines }}" hint-placeholder-val="{{ false }}">
+                      <div style="display:flex;flex-direction:column;gap:6px;margin-top:16px;padding-top:16px;border-top:1px solid #EFECE8">
+                        <sc-for list="{{ bd.lines }}" as="bl" hint-placeholder-count="2">
+                          <div style="font-size:clamp(16px,2.1vw,22px);font-weight:700;letter-spacing:-0.03em;color:#17171A">{{ bl }}</div>
+                        </sc-for>
+                      </div>
+                    </sc-if>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ st.subs }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:clamp(40px,6vw,72px);margin-top:clamp(34px,5vw,56px)">
+                <sc-for list="{{ st.subs }}" as="sb" hint-placeholder-count="4">
+                  <div style="padding-top:clamp(24px,3.4vw,34px);border-top:1px solid #EAE7E3">
+                    <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;color:#C7370E;margin-bottom:16px">{{ sb.no }}</div>
+                    <h5 style="margin:0 0 14px;font-size:clamp(18px,2.5vw,28px);font-weight:700;letter-spacing:-0.035em;line-height:1.35;text-wrap:pretty">{{ sb.head1 }}<sc-if value="{{ sb.head2 }}" hint-placeholder-val="{{ true }}"><br>{{ sb.head2 }}</sc-if></h5>
+                    <p style="margin:0;font-size:15px;line-height:1.9;color:#4A4740;max-width:620px;text-wrap:pretty">{{ sb.body }}</p>
+
+                    <sc-if value="{{ sb.split }}" hint-placeholder-val="{{ false }}">
+                      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:12px;margin-top:28px">
+                        <sc-for list="{{ sb.split }}" as="sp" hint-placeholder-count="2">
+                          <div style="background:{{ sp.bg }};border:1px solid {{ sp.border }};border-radius:22px;padding:26px 24px 30px">
+                            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;color:{{ sp.kColor }};margin-bottom:8px">{{ sp.k }}</div>
+                            <div style="font-size:15.5px;font-weight:700;letter-spacing:-0.025em;margin-bottom:20px">{{ sp.title }}</div>
+                            <div style="display:flex;flex-direction:column;gap:0">
+                              <sc-for list="{{ sp.steps }}" as="ss" hint-placeholder-count="4">
+                                <div style="font-size:14px;line-height:1.6;color:{{ sp.itemFg }}">{{ ss.v }}</div>
+                                <sc-if value="{{ ss.arrow }}" hint-placeholder-val="{{ true }}">
+                                  <span aria-hidden="true" style="color:{{ sp.dot }};font-size:11px;line-height:1.9">↓</span>
+                                </sc-if>
+                              </sc-for>
+                            </div>
+                          </div>
+                        </sc-for>
+                      </div>
+                    </sc-if>
+
+                    <sc-if value="{{ sb.ladder }}" hint-placeholder-val="{{ false }}">
+                      <div style="display:flex;flex-direction:column;gap:10px;margin-top:28px">
+                        <sc-for list="{{ sb.ladder }}" as="ld" hint-placeholder-count="4">
+                          <div style="display:grid;grid-template-columns:clamp(96px,18vw,132px) 1fr;gap:clamp(12px,2.4vw,22px);background:#fff;border:1px solid #EFECE8;border-radius:18px;padding:18px 20px">
+                            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#C7370E;padding-top:4px">{{ ld.k }}</div>
+                            <div style="display:flex;flex-wrap:wrap;gap:6px">
+                              <sc-for list="{{ ld.items }}" as="li" hint-placeholder-count="3">
+                                <span style="font-size:13px;color:#4A4740;background:#F6F5F4;border:1px solid #EFECE8;border-radius:999px;padding:7px 12px">{{ li }}</span>
+                              </sc-for>
+                            </div>
+                          </div>
+                          <sc-if value="{{ ld.arrow }}" hint-placeholder-val="{{ true }}">
+                            <span aria-hidden="true" style="color:#C7370E;font-size:12px;padding-left:clamp(38px,8vw,56px)">↓</span>
+                          </sc-if>
+                        </sc-for>
+                      </div>
+                    </sc-if>
+
+                    <sc-if value="{{ sb.compare }}" hint-placeholder-val="{{ false }}">
+                      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:12px;margin-top:28px">
+                        <sc-for list="{{ sb.compare }}" as="cp" hint-placeholder-count="2">
+                          <div style="background:{{ cp.bg }};border:1px solid {{ cp.border }};border-radius:22px;padding:24px 22px 26px">
+                            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;color:{{ cp.kColor }};margin-bottom:14px">{{ cp.k }}</div>
+                            <div style="font-size:15px;font-weight:600;letter-spacing:-0.02em;margin-bottom:16px">{{ cp.title }}</div>
+                            <div style="display:flex;flex-direction:column;gap:8px">
+                              <sc-for list="{{ cp.items }}" as="ci" hint-placeholder-count="3">
+                                <div style="display:flex;gap:9px;align-items:flex-start;font-size:13.5px;line-height:1.7;color:{{ cp.itemFg }}">
+                                  <span aria-hidden="true" style="flex:0 0 auto;width:4px;height:4px;border-radius:50%;background:{{ cp.dot }};margin-top:8px"></span>{{ ci }}
+                                </div>
+                              </sc-for>
+                            </div>
+                          </div>
+                        </sc-for>
+                      </div>
+                    </sc-if>
+
+                    <sc-if value="{{ sb.ecosystem }}" hint-placeholder-val="{{ false }}">
+                      <div data-eco="1" style="margin-top:28px;display:flex;flex-direction:column;align-items:center">
+                        <div style="display:inline-flex;flex-direction:column;align-items:center;gap:5px;background:#17171A;color:#fff;border-radius:16px;padding:14px 24px">
+                          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;color:#FF8A5C">CORE TOPIC</span>
+                          <span style="font-size:15px;font-weight:600;letter-spacing:-0.02em">{{ sb.ecoTopic }}</span>
+                        </div>
+                        <span aria-hidden="true" style="width:1px;height:22px;background:#DCD6CE"></span>
+                        <div style="position:relative;width:100%">
+                          <div data-ecobar="1" aria-hidden="true" style="position:absolute;top:0;left:0;right:0;height:1px;background:#DCD6CE"></div>
+                          <div data-ecogrid="1" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px">
+                            <sc-for list="{{ sb.ecosystem }}" as="ec" hint-placeholder-count="3">
+                              <div style="display:flex;flex-direction:column;align-items:stretch">
+                                <span data-ecodrop="1" aria-hidden="true" style="align-self:center;width:1px;height:22px;background:#DCD6CE"></span>
+                                <div style="background:#fff;border:1px solid #EFECE8;border-radius:20px;padding:22px 20px 24px">
+                                  <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;color:#C7370E;margin-bottom:10px">{{ ec.k }}</div>
+                                  <div style="font-size:15px;font-weight:700;letter-spacing:-0.025em;margin-bottom:14px">{{ ec.role }}</div>
+                                  <div style="display:flex;flex-direction:column;gap:7px">
+                                    <sc-for list="{{ ec.items }}" as="ei" hint-placeholder-count="3">
+                                      <div style="font-size:13px;line-height:1.7;color:#6E6A63">{{ ei }}</div>
+                                    </sc-for>
+                                  </div>
+                                </div>
+                              </div>
+                            </sc-for>
+                          </div>
+                        </div>
+                      </div>
+                    </sc-if>
+
+                    <sc-if value="{{ sb.pills }}" hint-placeholder-val="{{ false }}">
+                      <div style="margin-top:26px;padding-top:22px;border-top:1px solid #EFECE8">
+                        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;color:#6E6A63;margin-bottom:14px">{{ sb.pillsLabel }}</div>
+                        <div style="display:flex;flex-wrap:wrap;gap:7px">
+                          <sc-for list="{{ sb.pills }}" as="pl" hint-placeholder-count="6">
+                            <span style="font-size:13px;color:#4A4740;background:#fff;border:1px solid #EAE7E3;border-radius:999px;padding:9px 14px">{{ pl }}</span>
+                          </sc-for>
+                        </div>
+                      </div>
+                    </sc-if>
+
+                    <sc-if value="{{ sb.note }}" hint-placeholder-val="{{ false }}">
+                      <div style="margin-top:24px;padding-top:18px;border-top:2px solid #17171A;max-width:640px">
+                        <div style="font-size:15px;font-weight:700;letter-spacing:-0.022em;line-height:1.65;text-wrap:pretty">{{ sb.note }}</div>
+                      </div>
+                    </sc-if>
+
+                    <sc-if value="{{ sb.slots }}" hint-placeholder-val="{{ false }}">
+                      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px;margin-top:26px">
+                        <sc-for list="{{ sb.slots }}" as="sl" hint-placeholder-count="2">
+                          <div style="aspect-ratio:16/10;border-radius:18px;background:repeating-linear-gradient(135deg,#EFEAE3 0 6px,#F4F1EC 6px 12px);border:1px solid #E4E0DA;display:flex;align-items:flex-end;padding:14px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6E6A63;line-height:1.5;word-break:keep-all">{{ sl }}</span></div>
+                        </sc-for>
+                      </div>
+                    </sc-if>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ st.note }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top:26px;padding-top:20px;border-top:2px solid #17171A;max-width:640px">
+                <div style="font-size:15.5px;font-weight:700;letter-spacing:-0.025em;line-height:1.6;text-wrap:pretty">{{ st.note }}</div>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:clamp(50px,8vw,90px)">
+        <button type="button" onClick="{{ prev }}" style="all:unset;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;color:#6E6A63;background:#fff;border:1px solid #EAE7E3;border-radius:999px;padding:15px 24px;transition:all .3s ease" style-hover="border-color:#17171A;color:#17171A">← 이전 케이스</button>
+        <button type="button" onClick="{{ next }}" style="all:unset;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;color:#fff;background:#FF5A2B;border-radius:999px;padding:15px 24px;box-shadow:0 10px 26px rgba(255,90,43,.24);transition:transform .3s ease" style-hover="transform:translateY(-2px)">다음 케이스 →</button>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { active: null, step: null, intro: 0, introDone: false, tab: "ALL", narrow: typeof window !== "undefined" && window.innerWidth < 560 };
+
+  // 숫자는 확정 자료 확인 후 여기만 수정하면 됩니다.
+  archiveSpan = "2022 — 2026";
+
+  // 실제 확인된 작업물만 등록합니다. 자료를 주시면 한 건씩 추가합니다.
+  archive = [
+    { cat: "EXHIBITION", year: "2025", title: "전시 부스 기획 · 공간 구성", roles: ["Concept", "Space Planning", "Message", "Field Operation"], media: "photo", featured: true },
+    { cat: "VIDEO", year: "2026", title: "CES Innovation Award 출품 영상", roles: ["Concept", "Storyboard", "AI Production", "Editing"], media: "video", featured: true },
+    { cat: "WEB", year: "2026", title: "UBio-X LiveGuard — CES 2027 출품 랜딩페이지", roles: ["Audience Definition", "IA", "Narrative", "Build"], media: "web", featured: true, url: "https://unionbiometrics.com/ces2027/ubio-x-liveguard/", bg: "#17171A" },
+    { cat: "EDITORIAL", year: "2025", title: "기술 백서 (Whitepaper)", roles: ["Structure", "Writing", "Editing"], media: "print", featured: true },
+    { cat: "WEB", year: "2024", title: "보험 정보 설명 페이지 (외주)", roles: ["Information Priority", "Build"], media: "web", featured: true },
+    { cat: "SOCIAL", year: "2022", title: "청년 타깃 숏폼 콘텐츠", roles: ["Audience Insight", "Concept", "Editing"], media: "video", featured: true },
+    { cat: "SALES", year: "2025", title: "SK쉴더스 영업용 4컷 만화", roles: ["Scenario", "Panel Design"], media: "image", featured: true },
+    { cat: "SALES", year: "2026", title: "PetID 영문 3단 브로슈어", roles: ["Message Structure", "Copy", "Layout"], media: "print", featured: true, url: "https://unionbiometrics.com/wp-content/uploads/2026/08/260511-%EC%98%81%EB%AC%B8-ProjectPet-3%EB%8B%A8-%EB%B8%8C%EB%A1%9C%EC%8A%88%EC%96%B4-0.1.pdf" },
+    { cat: "WEB", year: "2026", title: "UBio PetID — CES 2027 출품 랜딩페이지", roles: ["Audience Definition", "IA", "Narrative", "Build"], media: "web", url: "https://unionbiometrics.com/ces2027/ubio-petid", img: "https://unionbiometrics.com/wp-content/uploads/2026/08/2.2958.png", fit: "contain", bg: "#F0EDE8" },
+    { cat: "VIDEO", year: "2026", title: "PetID 4-in-1 등록 시연 영상", roles: ["Scenario", "Scene Design", "Editing"], media: "video", url: "https://unionbiometrics.com/wp-content/uploads/2026/08/0821-CES-2027-%ED%98%81%EC%8B%A0%EC%83%81-%EC%B6%9C%ED%92%88-%ED%99%88%ED%8E%98%EC%9D%B4%EC%A7%80_PetID.mp4" },
+    { cat: "AI VISUAL", year: "2026", title: "PetID 생애주기 일러스트", roles: ["Concept", "Prompt Design", "Generation"], media: "image", img: "https://unionbiometrics.com/wp-content/uploads/2026/08/Puppy.png", fit: "contain", bg: "#F4F2EF" },
+    { cat: "AI VISUAL", year: "2026", title: "PetID 활용 환경 비주얼", roles: ["Concept", "Prompt Design", "Generation"], media: "image", img: "https://unionbiometrics.com/wp-content/uploads/2026/08/ChatGPT-Image-2026%EB%85%84-8%EC%9B%94-21%EC%9D%BC-%EC%98%A4%ED%9B%84-02_07_04.jpg" },
+    { cat: "AI VISUAL", year: "2026", title: "PetID 비접촉 인식 장치 비주얼", roles: ["Prompt Design", "Generation", "Retouch"], media: "image", img: "https://unionbiometrics.com/wp-content/uploads/2026/08/ChatGPT-Image-2026%EB%85%84-8%EC%9B%94-21%EC%9D%BC-%EC%98%A4%EC%A0%84-09_42_31.png", fit: "contain", bg: "#F4F2EF" },
+    { cat: "VIDEO", year: "2026", title: "LiveGuard 제품 홍보영상", roles: ["Concept", "Storyboard", "AI Production"], media: "video" },
+    { cat: "VIDEO", year: "2025", title: "HeartID 제품 영상", roles: ["Planning", "Editing"], media: "video" },
+    { cat: "VIDEO", year: "2025", title: "전시 부스 상영 영상", roles: ["Planning", "Scene Design", "Editing"], media: "video" },
+    { cat: "VIDEO", year: "2025", title: "제품 Demo 영상", roles: ["Scenario", "Editing"], media: "video" },
+    { cat: "VIDEO", year: "2025", title: "컨퍼런스 영상", roles: ["Planning", "Editing"], media: "video" },
+    { cat: "AI VISUAL", year: "2026", title: "AI Key Visual", roles: ["Prompt Design", "Generation", "Retouch"], media: "image" },
+    { cat: "AI VISUAL", year: "2025", title: "기술 설명 비주얼", roles: ["Information Design"], media: "image" },
+    { cat: "AI VISUAL", year: "2025", title: "인포그래픽", roles: ["Information Design", "Layout"], media: "image" },
+    { cat: "WEB", year: "2025", title: "기업 홈페이지 리뉴얼", roles: ["Audience Definition", "IA", "Content Planning"], media: "web" },
+    { cat: "WEB", year: "2025", title: "Support Hub", roles: ["IA", "Access Design"], media: "web" },
+    { cat: "WEB", year: "2025", title: "제품 Landing Page", roles: ["Message Hierarchy", "Build"], media: "web" },
+    { cat: "EDITORIAL", year: "2025", title: "GEO 콘텐츠 클러스터", roles: ["Search Analysis", "Content Architecture"], media: "print" },
+    { cat: "EDITORIAL", year: "2025", title: "블로그 콘텐츠", roles: ["Planning", "Writing"], media: "print" },
+    { cat: "EDITORIAL", year: "2025", title: "뉴스레터", roles: ["Planning", "Writing", "Layout"], media: "print" },
+    { cat: "SALES", year: "2025", title: "제품 브로슈어 · 국문 / 영문", roles: ["Message Structure", "Copy", "Review"], media: "print" },
+    { cat: "SALES", year: "2025", title: "영업 매뉴얼 (Sales Manual)", roles: ["Audience Split", "Structure"], media: "print" },
+    { cat: "SALES", year: "2025", title: "현장용 Quick Guide", roles: ["Task Flow", "Layout"], media: "print" },
+    { cat: "SALES", year: "2025", title: "제안 자료 (Proposal)", roles: ["Data Analysis", "Narrative"], media: "print" },
+    { cat: "SALES", year: "2025", title: "파트너 가이드", roles: ["Structure", "Writing"], media: "print" },
+    { cat: "SOCIAL", year: "2022", title: "청년 타깃 SNS 콘텐츠", roles: ["Planning", "Message", "Design"], media: "image" },
+    { cat: "EXHIBITION", year: "2025", title: "전시 키비주얼", roles: ["Concept", "Visual"], media: "image" },
+    { cat: "EXHIBITION", year: "2025", title: "제품 Demo 시나리오", roles: ["Scenario", "Cross-team Alignment"], media: "photo" },
+    { cat: "EXHIBITION", year: "2025", title: "전시 현장 운영", roles: ["Field Operation", "Lead Flow"], media: "photo" },
+    { cat: "EXHIBITION", year: "2025", title: "컨퍼런스 콘텐츠", roles: ["Planning", "Production"], media: "photo" },
+    { cat: "EXHIBITION", year: "2024", title: "연례 캘린더", roles: ["Planning", "Review", "Delivery"], media: "print" },
+  ];
+
+  archiveMeta = {
+    ALL: "전체",
+    VIDEO: "Video",
+    "AI VISUAL": "AI Visual",
+    WEB: "Web",
+    EDITORIAL: "Editorial",
+    SALES: "Sales",
+    SOCIAL: "Social",
+    EXHIBITION: "Exhibition / Offline"
+  };
+
+  introScenes = [
+    { from: 12400, to: 15624, prefix: "", suffix: "", label: "ORGANIC TRAFFIC" },
+    { from: 10000000, to: 300000, prefix: "₩", suffix: "", label: "PRODUCTION COST" }
+  ];
+
+  introTiles = ["AI 제품 홍보영상", "SNS 숏폼 콘텐츠", "CES 출품 영상", "AI 키비주얼", "제품 브로슈어", "기술 백서", "브랜드 홈페이지", "보험 정보 페이지", "인포그래픽", "뉴스레터", "영업 매뉴얼", "4컷 만화", "전시 부스 기획", "전시 키비주얼", "제품 Demo 시나리오", "컨퍼런스 콘텐츠", "연례 캘린더", "GEO 콘텐츠", "파트너 가이드", "제안 자료"];
+
+  steps = [
+    { no: "01", en: "GOAL", name: "목표 설정", arrow: "1", desc: "어떤 행동을 만들 것인가", key: "목표 행동", altDesc: "", altKey: "" },
+    { no: "02", en: "PLAN", name: "전략 기획", arrow: "1", desc: "누구를, 무엇으로 움직일 것인가", key: "타깃 · 메시지 · 채널", altDesc: "더 많은 데이터를 빠르고 정밀하게 분석합니다", altKey: "데이터 수집 · 정밀 분석" },
+    { no: "03", en: "CREATE", name: "콘텐츠 제작", arrow: "1", desc: "전략을 실제 고객 접점으로 구현", key: "포맷 · 표현 · 경험", altDesc: "적은 리소스로 고품질 콘텐츠를 직접 제작합니다", altKey: "AI 제작 · 리소스 절감" },
+    { no: "04", en: "MEASURE", name: "성과 분석", arrow: "1", desc: "원했던 행동이 일어났는지 확인", key: "성과 지표 · 데이터", altDesc: "성과 데이터를 빠르게 분석하고 정리합니다", altKey: "분석 효율화 · 정기 보고" },
+    { no: "05", en: "IMPROVE", name: "개선", arrow: "", desc: "결과를 다음 실행에 반영", key: "최적화 · 반복", altDesc: "", altKey: "" }
+  ];
+
+  tags = ["Content Strategy", "Audience Insight", "AI Production", "Digital Experience", "Brand Experience", "Data & Performance"];
+
+  projects = [
+    {
+      no: "01", kicker: "GEO CONTENT STRATEGY",
+      title: "검색 방식이 바뀌자, 콘텐츠 만드는 방식도 바꿨습니다.", title1: "검색 방식이 바뀌자,", title2: "콘텐츠 만드는 방식도 바꿨습니다.",
+      summary: "고객의 정보 탐색이 검색어 중심에서 AI 질문·요약 중심으로 확장되는 변화를 보고, 홈페이지·백서·블로그의 정보 구조를 질문 중심으로 재설계했습니다. 검색 노출에 그치지 않고 이해·비교·문의까지 이어지는 콘텐츠 흐름을 만들었습니다.",
+      tags: ["GEO Strategy", "Content Strategy", "Performance"],
+      visualBg: "#F6F5F4",
+      figures: [
+        { value: "+26%", en: "", label: "검색 기반 웹사이트 유입", sub: "" },
+        { value: "1 → 5", en: "", label: "월 영업 문의", sub: "" }
+      ],
+      banner: { slot: "[IMAGE] 탐색 방식 변화 → GEO 분석 → WEB · WHITEPAPER · BLOG → RESULT (가로형 대표 비주얼)" },
+      meta: [
+        { k: "ROLE", v: "Content Strategy · GEO · Planning" },
+        { k: "PERIOD", v: "2025 — 2026" },
+        { k: "OUTPUT", v: "Website · Whitepaper · Blog" }
+      ],
+      steps: [
+        { no: "01", label: "목표 설정", anchor: "c1s1",
+          head: "검색 유입만 늘리는 것이 목표는 아니었습니다.", head1: "검색 유입만 늘리는 것이", head2: "목표는 아니었습니다.",
+          body: "콘텐츠가 검색되는 것에서 끝나는 것이 아니라, 고객이 필요한 답을 얻고 제품의 필요성과 차별점을 이해한 뒤 실제 도입 검토와 문의까지 이어지는 흐름을 만드는 것을 목표로 했습니다.",
+          chain: [{ v: "탐색", arrow: true }, { v: "발견", arrow: true }, { v: "이해", arrow: true }, { v: "비교", arrow: true }, { v: "도입 검토", arrow: true }, { v: "문의", arrow: false }],
+          note: "Traffic보다 중요한 것은 Decision까지 이어지는 콘텐츠였습니다." },
+
+        { no: "02", label: "전략 기획", anchor: "c1s2",
+          head: "그래서 무엇을 분석하고 어떻게 다시 설계했는지.", head1: "그래서 무엇을 분석하고", head2: "어떻게 다시 설계했는지.",
+          body: "",
+          subs: [
+            { no: "02-1", head: "사람이 찾는 방식이 달라지면, 콘텐츠가 발견되는 방식도 달라집니다.", head1: "사람이 찾는 방식이 달라지면,", head2: "콘텐츠가 발견되는 방식도 달라집니다.",
+              body: "",
+              split: [
+                { k: "BEFORE", title: "검색 중심 탐색", "bg":"#fff","border":"#EAE7E3","kColor":"#6E6A63","itemFg":"#6E6A63","dot":"#CFCAC2", steps: [{ v: "검색어 입력", arrow: true }, { v: "검색 결과 비교", arrow: true }, { v: "페이지 방문", arrow: true }, { v: "직접 정보 취합", arrow: false }] },
+                { k: "NOW", title: "AI 기반 탐색", "bg":"#FFF1EC","border":"#FFD8CA","kColor":"#FF5A2B","itemFg":"#4A4740","dot":"#FF5A2B", steps: [{ v: "질문", arrow: true }, { v: "여러 출처 탐색", arrow: true }, { v: "AI 요약 · 비교 · 추천", arrow: true }, { v: "정보 · 제품 후보 검토", arrow: false }] }
+              ],
+              note: "키워드에 노출되는 것만으로는 충분하지 않았습니다. 고객의 질문에 답할 수 있고, AI가 맥락과 근거를 이해할 수 있는 콘텐츠가 필요했습니다." },
+
+            { no: "02-2", head: "무엇을 검색하는지에서, 왜 찾는지까지 내려갔습니다.", head1: "무엇을 검색하는지에서,", head2: "왜 찾는지까지 내려갔습니다.",
+              body: "검색어 하나를 고객의 질문과 의도로 분해하고, 각 의도가 필요로 하는 콘텐츠를 정의했습니다.",
+              ladder: [
+                { k: "QUERY", items: ["인감 스캐너"], arrow: true },
+                { k: "QUESTION", items: ["왜 기존 인감 업무에 디지털 검증이 필요한가", "어떤 방식으로 인감을 검증하는가", "금융기관에서 어떻게 활용할 수 있는가", "기존 방식과 무엇이 다른가", "신뢰할 수 있는 근거는 무엇인가"], arrow: true },
+                { k: "INTENT", items: ["문제 인식", "기술 이해", "비교 · 검토", "신뢰 확인", "도입 검토"], arrow: true },
+                { k: "CONTENT NEED", items: ["문제 설명", "핵심 답변", "기술 원리", "수치 · 검증 근거", "적용 사례", "제품 · 도입 정보"], arrow: false }
+              ] },
+
+            { no: "02-3", head: "제품 설명 중심에서, 질문에 답하는 구조로 바꿨습니다.", head1: "제품 설명 중심에서,", head2: "질문에 답하는 구조로 바꿨습니다.",
+              body: "",
+              compare: [
+                { k: "BEFORE", title: "제품 중심", items: ["제품 소개", "기능 나열", "상세 사양"], "bg":"#fff","border":"#EAE7E3","kColor":"#6E6A63","itemFg":"#6E6A63","dot":"#CFCAC2" },
+                { k: "AFTER", title: "질문 중심", items: ["문제 / 질문", "핵심 답변", "기술적 근거", "수치 · 데이터", "적용 사례", "관련 제품", "도입 문의"], "bg":"#FFF1EC","border":"#FFD8CA","kColor":"#FF5A2B","itemFg":"#4A4740","dot":"#FF5A2B" }
+              ],
+              note: "정보의 순서를 회사가 말하고 싶은 기준이 아니라, 고객이 판단하는 순서에 맞췄습니다." },
+
+            { no: "02-4", head: "하나의 주제를, 여러 깊이의 콘텐츠로 연결했습니다.", head1: "하나의 주제를,", head2: "여러 깊이의 콘텐츠로 연결했습니다.",
+              body: "각 콘텐츠를 독립적으로 제작하지 않고, 같은 주제를 서로 다른 깊이에서 설명하도록 연결했습니다.",
+              ecoTopic: "금융 인감 디지털 검증",
+              ecosystem: [
+                { k: "BLOG", role: "질문을 발견하는 콘텐츠", items: ["검색 · 질문 패턴 기반 주제", "문제 해결형 콘텐츠", "초기 탐색 단계 대응"] },
+                { k: "WEBSITE", role: "제품을 이해하는 콘텐츠", items: ["핵심 답변", "제품 · 기술 정보", "활용 방식", "도입 정보"] },
+                { k: "WHITEPAPER", role: "신뢰를 만드는 콘텐츠", items: ["기술 원리", "검증 데이터", "상세 근거", "적용 사례"] }
+              ],
+              pillsLabel: "GEO CONTENT PRINCIPLES",
+              pills: ["명확한 질문과 답", "확인 가능한 근거", "주제 간 연결", "정보 일관성", "전문 정보의 깊이", "맥락이 이어지는 구조"] }
+          ] },
+
+        { no: "03", label: "콘텐츠 제작", anchor: "c1s3",
+          head: "전략을 실제 콘텐츠 체계로 구현했습니다.", head1: "전략을 실제", head2: "콘텐츠 체계로 구현했습니다.",
+          body: "특정 페이지 하나를 최적화하는 데서 끝내지 않고, 홈페이지·백서·블로그가 각자의 역할을 가지면서 서로 연결되도록 구현했습니다.",
+          subs: [
+            { no: "WEBSITE", head: "빠르게 답을 찾고, 제품까지 이해하도록", head1: "빠르게 답을 찾고,", head2: "제품까지 이해하도록",
+              body: "고객 질문과 정보 니즈 중심으로 재배치하고, 핵심 답변 → 근거 → 활용 → 제품 흐름으로 설계했습니다. 관련 블로그·백서·제품 콘텐츠를 서로 연결했습니다.",
+              slots: ["[IMAGE] 실제 홈페이지 화면", "[IMAGE] 제품 페이지 흐름"] },
+            { no: "WHITEPAPER", head: "짧은 웹 콘텐츠로 설명하기 어려운 근거까지", head1: "짧은 웹 콘텐츠로", head2: "설명하기 어려운 근거까지",
+              body: "기술의 작동 원리와 배경을 설명하고 수치·데이터·검증 정보를 강화했습니다. 금융·공공 도입 검토에 필요한 전문 정보를 제공했습니다.",
+              slots: ["[IMAGE] 백서 표지 · 내지 spread"] },
+            { no: "BLOG", head: "새로운 고객 질문을 지속적으로 콘텐츠화", head1: "새로운 고객 질문을", head2: "지속적으로 콘텐츠화",
+              body: "검색·질문 패턴에서 새로운 주제를 발굴하고, 제품명보다 문제 해결 중심으로 접근했습니다. 관련 기술·백서·제품 콘텐츠로 연결했습니다.",
+              slots: ["[IMAGE] 실제 블로그 화면"] }
+          ],
+          chain: [{ v: "BLOG", arrow: true }, { v: "WEBSITE", arrow: true }, { v: "WHITEPAPER", arrow: true }, { v: "PRODUCT · CONTACT", arrow: false }] },
+
+        { no: "04", label: "성과 확인", anchor: "c1s4",
+          head: "콘텐츠 구조를 바꾼 뒤, 실제 유입과 문의가 증가했습니다.", head1: "콘텐츠 구조를 바꾼 뒤,", head2: "실제 유입과 문의가 증가했습니다.",
+          body: "",
+          board: [
+            { value: "+26%", label: "검색 기반 웹사이트 유입" },
+            { value: "1 → 5", label: "월 영업 문의" }
+          ],
+          note: "질문 중심의 콘텐츠 구조를 홈페이지·백서·블로그에 적용한 이후 확인된 성과입니다." },
+
+        { no: "05", label: "개선", anchor: "c1s5",
+          head: "한 번의 최적화가 아니라, 다음 콘텐츠의 기준으로 남겼습니다.", head1: "한 번의 최적화가 아니라,", head2: "다음 콘텐츠의 기준으로 남겼습니다.",
+          body: "성과가 확인된 질문·주제·정보 구조를 다음 콘텐츠에도 적용할 수 있도록 정리하고, 홈페이지·백서·블로그가 같은 원칙으로 확장될 수 있는 제작 기준으로 남겼습니다.",
+          chain: [{ v: "질문 패턴", arrow: true }, { v: "콘텐츠 원칙", arrow: true }, { v: "채널 적용", arrow: true }, { v: "재사용 가능한 기준", arrow: false }],
+          note: "NEXT — 검색 유입뿐 아니라 AI 검색 결과에서 브랜드가 어떤 질문에 노출되고, 어떤 콘텐츠가 답변의 근거로 활용되는지까지 확인해 다음 콘텐츠 전략에 반영합니다." }
+      ]
+    },
+    {
+      no: "02", kicker: "AI CONTENT SYSTEM",
+      title: "AI 제작을, 팀의 자산으로 만들었습니다.", title1: "AI 제작을,", title2: "팀의 자산으로 만들었습니다.",
+      summary: "고품질 AI 이미지·영상을 직접 만드는 데서 시작했지만, 거기서 멈추면 한 사람의 기술로 남습니다. 제품 형태와 브랜드가 흔들리지 않는 제작 기준을 세우고, 검증된 프롬프트와 완성 자산을 팀이 함께 쓰는 아카이브로 정리했습니다.",
+      tags: ["AI Production", "Quality Standard", "Prompt Archive", "Knowledge Asset"],
+      visualBg: "#17171A",
+      figures: [
+        { value: "14일 → 5일", en: "", label: "영상 제작 리드타임" },
+        { value: "₩1,000만 → ₩30만", en: "", label: "대표 프로젝트 제작비" }
+      ],
+      montage: [
+        { items: ["AI 제품 홍보영상", "CES 출품 영상", "편집 타임라인", "AI 키비주얼", "프롬프트 설계", "랜딩페이지 코드", "AI 제품 홍보영상", "CES 출품 영상", "편집 타임라인", "AI 키비주얼", "프롬프트 설계", "랜딩페이지 코드"], dur: "78s", dir: "normal" },
+        { items: ["제품 이미지 생성", "스토리보드", "최종 납품본", "브랜드 필름", "장면 설계", "QA 체크리스트", "제품 이미지 생성", "스토리보드", "최종 납품본", "브랜드 필름", "장면 설계", "QA 체크리스트"], dur: "96s", dir: "reverse" }
+      ],
+      meta: [
+        { k: "ROLE", v: "AI Production · Quality Standard · Systemization" },
+        { k: "PERIOD", v: "2026" },
+        { k: "OUTPUT", v: "Video · AI Visual · Prompt Archive · Shared Asset" }
+      ],
+      steps: [
+        { no: "01", label: "목표 설정", anchor: "c2s1",
+          head: "잘 만드는 것과, 계속 만들 수 있는 것은 다릅니다.", head1: "잘 만드는 것과,", head2: "계속 만들 수 있는 것은 다릅니다.",
+          body: "AI로 고품질 이미지와 영상을 직접 만들 수 있게 되자 다음 문제가 보였습니다. 제가 만들 때만 품질이 나온다면 그것은 조직의 역량이 아닙니다. 누가 만들어도 같은 기준의 결과물이 나오는 상태를 목표로 잡았습니다.",
+          chain: [{ v: "고품질 결과물", arrow: true }, { v: "제작 기준 정립", arrow: true }, { v: "자산화", arrow: true }, { v: "팀 재사용", arrow: false }],
+          note: "목표는 AI 영상 한 편이 아니라, 반복 가능한 제작 능력이었습니다." },
+
+        { no: "02", label: "전략 기획", anchor: "c2s2",
+          head: "AI가 흔들리게 만드는 것은 품질이 아니라 브랜드였습니다.", head1: "AI가 흔들리게 만드는 것은", head2: "품질이 아니라 브랜드였습니다.",
+          body: "AI 생성물은 보기에 좋아도 제품 형태와 로고, UI, 브랜드 톤이 조금씩 달라집니다. 그래서 무엇을 반드시 지켜야 하는지를 먼저 기준으로 정하고, 그 기준을 통과한 결과만 사용했습니다.",
+          compare: [
+            { k: "BEFORE", title: "결과물 단위 제작", items: ["잘 나온 컷을 골라 사용", "판단 기준은 감각에 의존", "제품 형태 · 로고 왜곡 발생", "다음 제작에 남지 않음"], bg: "#fff", border: "#EAE7E3", kColor: "#6E6A63", fg: "#17171A", itemFg: "#6E6A63", dot: "#CFCAC2" },
+            { k: "AFTER", title: "기준 기반 제작", items: ["제품 디테일 보존 기준", "BI · 로고 훼손 금지 기준", "브랜드 톤 · 컬러 기준", "검수 통과분만 자산 등록"], bg: "#FFF1EC", border: "#FFD8CA", kColor: "#FF5A2B", fg: "#17171A", itemFg: "#4A4740", dot: "#FF5A2B" }
+          ],
+          note: "AI를 쓸 수 있다가 아니라, AI를 써도 브랜드가 유지되는 기준을 만들었습니다." },
+
+        { no: "03", label: "콘텐츠 제작", anchor: "c2s3",
+          head: "기준 위에서, 실제 결과물을 만들었습니다.", head1: "기준 위에서,", head2: "실제 결과물을 만들었습니다.",
+          body: "제품 홍보영상, CES 출품 영상, 키비주얼, 랜딩페이지 비주얼을 직접 제작했습니다. 장면 설계와 프롬프트, 레퍼런스, 결과물을 한 세트로 남겨 다음 제작의 출발점으로 사용했습니다.",
+          slots: ["[VIDEO] CES 출품 영상", "[VIDEO] 제품 홍보영상", "[IMAGE] AI 키비주얼", "[IMAGE] Prompt · Reference · Result 세트", "[IMAGE] 랜딩페이지 비주얼", "[IMAGE] 최종 납품본"] },
+
+        { no: "04", label: "성과 확인", anchor: "c2s4",
+          head: "제작 속도와 비용이 함께 내려갔습니다.", head1: "제작 속도와 비용이", head2: "함께 내려갔습니다.",
+          body: "",
+          figures: [
+            { value: "14일 → 5일", en: "", label: "영상 제작 리드타임" },
+            { value: "₩1,000만 → ₩30만", en: "", label: "대표 프로젝트 제작비" }
+          ],
+          note: "동일한 품질 기준을 유지한 상태에서 확인된 수치입니다." },
+
+        { no: "05", label: "개선", anchor: "c2s5",
+          head: "내가 없어도, 같은 기준으로 만들 수 있게.", head1: "내가 없어도,", head2: "같은 기준으로 만들 수 있게.",
+          body: "잘 작동한 프롬프트와 레퍼런스, 결과물을 Notion 아카이브에 정리하고 완성 자산은 공용 드라이브에 분류했습니다. 영업팀과 다른 담당자가 제안 자료와 현장 콘텐츠에 그대로 사용합니다.",
+          assets: [
+            { n: "Prompt Archive", d: "검증된 Prompt · Reference · Result를 한 세트로 축적" },
+            { n: "Quality Standard", d: "제품 디테일 · BI · 브랜드 톤 유지 기준을 문서화" },
+            { n: "Character Sheet", d: "인물 외형 · 의상 · 비율을 기준화해 장면 일관성 확보" },
+            { n: "Shared Asset Drive", d: "완성 이미지 · 영상을 분류해 팀이 바로 사용" },
+            { n: "Reuse by Team", d: "영업 · 마케팅 담당자가 제안 자료와 현장 콘텐츠에 활용" }
+          ],
+          note: "검증된 프롬프트·레퍼런스·완성 자산을 공용 아카이브로 축적해 다음 제작의 출발점으로 사용하고 있습니다." }
+      ]
+    },
+    {
+      no: "03", kicker: "INTEGRATED MARKETING · EXPERIENCE",
+      title: "제품을 전시한 것이 아니라, 고객이 이해하고 대화하게 되는 경험을 설계했습니다.", title1: "제품을 전시한 것이 아니라,", title2: "고객이 이해하고 대화하게 되는 경험을 설계했습니다.",
+      summary: "전시 부스를 단순한 제품 진열 공간이 아니라 고객의 행동이 이어지는 하나의 마케팅 퍼널로 설계했습니다. 부스 콘셉트와 공간 구성부터 핵심 메시지, 키비주얼, 제품 영상, Demo 시나리오, 관람 동선과 현장 운영까지 직접 기획·총괄하며 브랜드 경험을 실제 상담과 비즈니스 미팅으로 연결했습니다.",
+      tags: ["Integrated Marketing", "Brand Experience", "Exhibition", "Project Management"],
+      visualBg: "#1C1F22",
+      figures: [
+        { value: "33 → 65", en: "", label: "유효 미팅", sub: "전년 대비" },
+        { value: "+97%", en: "", label: "Qualified Meetings", sub: "YoY" }
+      ],
+      stage: {
+        slot: "[PHOTO] 전시 부스 전경 — 공간 · 방문객 · Demo가 함께 보이는 현장 사진 (가로형 대표 비주얼)",
+        flow: [{ v: "ATTENTION", arrow: true }, { v: "UNDERSTANDING", arrow: true }, { v: "EXPERIENCE", arrow: true }, { v: "CONVERSATION", arrow: true }, { v: "LEAD", arrow: false }]
+      },
+      meta: [
+        { k: "ROLE", v: "Planning · Creative Direction · Exhibition PM" },
+        { k: "SCOPE", v: "Booth · Message · Content · Demo · Operation" },
+        { k: "OUTPUT", v: "Space · Video · Graphic · Demo · Field Operation" }
+      ],
+      steps: [
+        { no: "01", label: "목표 설정", anchor: "c3s1",
+          head: "많이 방문하는 부스보다, 대화가 시작되는 부스를 만들고 싶었습니다.", head1: "많이 방문하는 부스보다,", head2: "대화가 시작되는 부스를 만들고 싶었습니다.",
+          body: "전시회의 목표를 단순 방문객 수나 제품 노출이 아니라, 실제 제품에 관심 있는 고객과의 유효한 미팅 확보로 정의했습니다. 어떤 방문객을 끌어들이고, 무엇을 이해시키고, 어떤 행동까지 이어지게 할지를 먼저 설계했습니다.",
+          chain: [{ v: "ATTENTION", arrow: true }, { v: "UNDERSTANDING", arrow: true }, { v: "EXPERIENCE", arrow: true }, { v: "CONVERSATION", arrow: true }, { v: "LEAD", arrow: false }],
+          note: "공간을 먼저 만들기보다 목표 행동과 고객 여정을 먼저 정의했습니다." },
+
+        { no: "02", label: "경험 설계", anchor: "c3s2",
+          head: "부스 전체를, 하나의 콘텐츠 흐름으로 설계했습니다.", head1: "부스 전체를,", head2: "하나의 콘텐츠 흐름으로 설계했습니다.",
+          body: "방문객이 멀리서 부스를 발견하고, 핵심 기술을 이해하고, 제품을 직접 경험한 뒤 상담으로 이동할 수 있도록 메시지와 공간의 순서를 설계했습니다.",
+          compare: [
+            { k: "01 ATTRACT", title: "시선을 멈추게 하는 메시지", items: ["멀리서도 이해되는 핵심 메시지", "키비주얼과 제품 우선순위 정리", "첫 인지 포인트 단순화"], bg: "#fff", border: "#EAE7E3", kColor: "#6E6A63", fg: "#17171A", itemFg: "#6E6A63", dot: "#CFCAC2" },
+            { k: "02 EXPLAIN", title: "빠르게 이해시키는 콘텐츠", items: ["기술 설명 구조 단순화", "제품 영상 · 그래픽 연결", "제품별 차이와 핵심 가치 명확화"], bg: "#fff", border: "#EAE7E3", kColor: "#6E6A63", fg: "#17171A", itemFg: "#6E6A63", dot: "#CFCAC2" },
+            { k: "03 EXPERIENCE", title: "직접 체험하는 Demo", items: ["핵심 기능 중심 시연 시나리오", "실제 사용 상황에 가까운 흐름 구성", "설명보다 경험 중심으로 전환"], bg: "#FFF1EC", border: "#FFD8CA", kColor: "#FF5A2B", fg: "#17171A", itemFg: "#4A4740", dot: "#FF5A2B" },
+            { k: "04 CONVERT", title: "상담으로 이어지는 동선", items: ["체험 후 자연스럽게 상담 영역 이동", "제품 관심도에 따른 대화 연결", "현장 운영 인력 역할 정리"], bg: "#fff", border: "#EAE7E3", kColor: "#6E6A63", fg: "#17171A", itemFg: "#6E6A63", dot: "#CFCAC2" }
+          ],
+          note: "MESSAGE · SPACE · CONTENT · DEMO · FLOW를 하나의 고객 경험으로 연결했습니다." },
+
+        { no: "03", label: "실행 및 총괄", anchor: "c3s3",
+          head: "기획에서 현장까지, 하나의 기준으로 직접 관리했습니다.", head1: "기획에서 현장까지,", head2: "하나의 기준으로 직접 관리했습니다.",
+          body: "부스 콘셉트와 레이아웃, 메인 키비주얼, 제품 메시지, 영상·그래픽 콘텐츠, 제품 시연 시나리오와 현장 운영까지 전시 경험 전반을 직접 기획하고 총괄했습니다.",
+          slots: ["[IMAGE] 전시 부스 전체 전경", "[IMAGE] 부스 레이아웃 / 초기 기획안", "[IMAGE] 메인 키비주얼 및 그래픽", "[VIDEO] 현장 상영 영상", "[IMAGE] 제품 Demo 구성", "[IMAGE] 실제 현장 운영"],
+          note: "공간 디자인 자체보다 전략·메시지·콘텐츠·시연·운영이 하나의 경험으로 연결되도록 관리했습니다." },
+
+        { no: "04", label: "성과 확인", anchor: "c3s4",
+          head: "공간과 콘텐츠를 바꾸자, 실제 비즈니스 대화가 늘었습니다.", head1: "공간과 콘텐츠를 바꾸자,", head2: "실제 비즈니스 대화가 늘었습니다.",
+          body: "전시 메시지와 제품 시연, 관람 동선을 재설계한 결과 유효 미팅이 전년 33건에서 65건으로 증가했습니다. 단순한 브랜드 노출보다 고객의 행동을 설계하는 경험이 실제 비즈니스 성과와 연결된다는 점을 확인했습니다.",
+          board: [
+            { value: "33 → 65", label: "유효 미팅", lines: ["전년 33건 → 65건", "상담 · 비즈니스 미팅 기준"] },
+            { value: "+97%", label: "전년 대비 증가", lines: ["Qualified Meetings", "YoY"] }
+          ],
+          note: "전시 메시지·제품 시연·관람 동선·현장 운영을 함께 개선한 프로젝트 결과입니다." },
+
+        { no: "05", label: "확장", anchor: "c3s5",
+          head: "오프라인에서도, 콘텐츠는 행동을 설계해야 했습니다.", head1: "오프라인에서도,", head2: "콘텐츠는 행동을 설계해야 했습니다.",
+          body: "웹페이지든 영상이든 전시 부스든 원리는 같았습니다. 고객이 무엇을 보고, 무엇을 이해하고, 다음에 어떤 행동을 하게 할지 설계해야 합니다. 이 경험은 이후 웹·콘텐츠·컨퍼런스 등 다른 고객 접점을 설계하는 기준으로 이어졌습니다.",
+          chain: [{ v: "MESSAGE", arrow: true }, { v: "EXPERIENCE", arrow: true }, { v: "ACTION", arrow: true }, { v: "RESULT", arrow: false }],
+          note: "콘텐츠의 범위를 화면 안의 결과물이 아니라 전체 고객 경험으로 확장한 프로젝트였습니다." }
+      ]
+    },
+    {
+      no: "04", kicker: "AUDIENCE · SOCIAL CONTENT",
+      title: "보여주고 싶은 정보보다, 보고 싶은 방식으로 바꿨습니다.", title1: "보여주고 싶은 정보보다,", title2: "보고 싶은 방식으로 바꿨습니다.",
+      summary: "양천구청 홍보팀 인턴 당시 청년층이 행정·정책 정보를 접하는 방식을 분석하고, YouTube·Instagram 특성에 맞춰 메시지와 포맷을 다시 설계했습니다. 복잡한 정책 정보를 숏폼·썸네일·SNS 콘텐츠로 바꾸며 공공 정보를 공지가 아니라 실제로 소비되는 콘텐츠로 만드는 데 집중했습니다.",
+      tags: ["Audience Insight", "Social Content", "Channel Strategy", "Performance"],
+      visualBg: "#F6F5F4",
+      figures: [
+        { value: "4K → 12K+", en: "", label: "YouTube 구독자", sub: "콘텐츠 포맷·운영 개선에 기여" },
+        { value: "2 CHANNELS", en: "", label: "YouTube · Instagram", sub: "" }
+      ],
+      orbit: [
+        { who: "FOR YOUTUBE", items: ["Short-form", "Thumbnail", "First Scene"] },
+        { who: "FOR INSTAGRAM", items: ["One Message", "Card News", "Save · Share"] },
+        { who: "FOR YOUNG AUDIENCE", items: ["일상 언어", "짧은 호흡", "필요 정보 우선"] }
+      ],
+      meta: [
+        { k: "ROLE", v: "Audience Insight · Social Planning · Production" },
+        { k: "PERIOD", v: "2022" },
+        { k: "OUTPUT", v: "YouTube · Instagram · Short-form" }
+      ],
+      steps: [
+        { no: "01", label: "목표 설정", anchor: "c4s1",
+          head: "정보를 올리는 것보다, 보게 만드는 것이 먼저였습니다.", head1: "정보를 올리는 것보다,", head2: "보게 만드는 것이 먼저였습니다.",
+          body: "행정·정책 정보는 정확하지만 청년층에게는 길고 낯선 표현이 많았습니다. 목표를 단순 게시량이 아니라, 청년층이 멈춰 보고 이해하고 필요한 정보를 기억할 수 있는 콘텐츠로 바꾸는 것으로 잡았습니다.",
+          chain: [{ v: "정책 정보", arrow: true }, { v: "관심", arrow: true }, { v: "이해", arrow: true }, { v: "채널 반응", arrow: false }],
+          note: "게시하는 일이 아니라, 보게 만드는 일로 목표를 바꿨습니다." },
+
+        { no: "02", label: "전략 기획", anchor: "c4s2",
+          head: "같은 정보도, 채널마다 보는 방식이 달랐습니다.", head1: "같은 정보도,", head2: "채널마다 보는 방식이 달랐습니다.",
+          body: "청년층의 미디어 이용 특성과 채널별 소비 방식을 기준으로 메시지 길이, 첫 화면, 썸네일, 영상 포맷을 다르게 설계했습니다.",
+          compare: [
+            { k: "YOUTUBE", title: "멈춰 보게 만드는 영상", items: ["첫 장면에서 주제 명확화", "짧은 호흡의 영상 구성", "썸네일에서 핵심 메시지 선노출"], bg: "#FFF1EC", border: "#FFD8CA", kColor: "#FF5A2B", fg: "#17171A", itemFg: "#4A4740", dot: "#FF5A2B" },
+            { k: "INSTAGRAM", title: "빠르게 이해하는 정보", items: ["한 화면에 한 메시지", "정책 용어를 일상 언어로 전환", "저장 · 공유하기 쉬운 정보 구조"], bg: "#fff", border: "#EAE7E3", kColor: "#6E6A63", fg: "#17171A", itemFg: "#6E6A63", dot: "#CFCAC2" }
+          ],
+          note: "핵심 정보는 유지하고 MESSAGE ORDER · LENGTH · FORMAT을 채널에 맞게 바꿨습니다." },
+
+        { no: "03", label: "콘텐츠 제작", anchor: "c4s3",
+          head: "정책 정보를, 청년 타깃 콘텐츠로 직접 바꿨습니다.", head1: "정책 정보를,", head2: "청년 타깃 콘텐츠로 직접 바꿨습니다.",
+          body: "YouTube·Instagram용 숏폼 콘텐츠와 썸네일을 기획·제작하고, 행정 문구를 청년층이 직관적으로 이해할 수 있는 메시지 구조로 재작성했습니다.",
+          slots: ["[VIDEO] YouTube 숏폼 콘텐츠", "[IMAGE] Instagram 콘텐츠", "[IMAGE] 썸네일 Before / After", "[IMAGE] 정책 정보 → 콘텐츠 메시지 구조"],
+          note: "기획·메시지 구조·썸네일·영상 제작까지 직접 수행했습니다." },
+
+        { no: "04", label: "성과 확인", anchor: "c4s4",
+          head: "채널 성장으로, 콘텐츠 방식의 변화를 확인했습니다.", head1: "채널 성장으로,", head2: "콘텐츠 방식의 변화를 확인했습니다.",
+          body: "청년 타깃에 맞춘 콘텐츠 포맷과 운영 개선에 참여하며 YouTube 채널 구독자 성장에 기여했습니다. 수치 자체보다, 정보의 형식을 바꾸면 공공 콘텐츠도 더 많은 사람에게 도달할 수 있다는 점을 확인했습니다.",
+          board: [
+            { value: "4K → 12K+", label: "YouTube 구독자", lines: ["약 4천 명 → 1.2만 명 이상", "콘텐츠 포맷 · 운영 전략 개선에 기여"] }
+          ],
+          note: "개인 단독 성과가 아닌 홍보팀 채널 운영 성과에 기여한 수치로 표기합니다." },
+
+        { no: "05", label: "개선", anchor: "c4s5",
+          head: "타깃과 채널을 먼저 보는 기준이 남았습니다.", head1: "타깃과 채널을 먼저 보는", head2: "기준이 남았습니다.",
+          body: "이 경험 이후 어떤 콘텐츠를 만들 때도 무엇을 말할까보다 누가 어디에서 볼까를 먼저 확인합니다. 같은 메시지도 타깃과 접점에 따라 길이·순서·포맷을 달리하는 기준으로 확장했습니다.",
+          chain: [{ v: "AUDIENCE", arrow: true }, { v: "CHANNEL", arrow: true }, { v: "MESSAGE", arrow: true }, { v: "FORMAT", arrow: true }, { v: "MEASURE", arrow: false }],
+          note: "이 원칙은 이후 B2B 웹·영상·브로슈어·전시 콘텐츠를 설계할 때도 동일하게 적용했습니다." }
+      ]
+    }
+  ];
+  impacts = [
+    { value: 0, pre: "", suf: "", display: "₩10M → ₩0.3M", label: "영상 1편 제작 비용", note: "AI 기반 제작 Workflow 구축", source: "Project 02 · AI Content System" },
+    { value: 0, pre: "", suf: "", display: "14 → 5 DAYS", label: "기획부터 최종 납품까지", note: "Character Sheet · Prompt Framework · Archive 표준화", source: "Project 02 · AI Content System" },
+    { value: 26, pre: "+", suf: "%", display: "+26%", label: "검색 기반 웹사이트 유입", note: "질문 중심 콘텐츠 구조 · GEO 아키텍처", source: "Project 01 · GEO" },
+    { value: 0, pre: "", suf: "", display: "1 → 5", label: "월 영업 문의", note: "콘텐츠 구조 개선 이후 월 문의 확대", source: "Project 01 · GEO" },
+    { value: 0, pre: "", suf: "", display: "33 → 65", label: "유효 미팅 · +97% YoY", note: "전시 메시지 · 시연 · 관람 동선 · 운영 재설계", source: "Project 03 · Exhibition" },
+    { value: 0, pre: "", suf: "", display: "4K → 12K+", label: "YouTube 구독자", note: "청년 타깃 콘텐츠 포맷 · 채널 운영 개선에 기여", source: "Project 04 · Social" },
+    { value: 80, pre: "-", suf: "%", display: "-80%", label: "설치·운용 CS 문의", note: "정보 수요자별 가이드 3종 분리", source: "Targeted Guide Project" },
+    { value: 70, pre: "-", suf: "%", display: "-70%", label: "파트너 응답 대기 시간", note: "7일 → 2일 · Support Hub 정보구조 재설계", source: "Support Hub" },
+    { value: 20, pre: "", suf: "억", display: "20억", label: "농협은행 통합인증센터 수주", note: "데이터 기반 제안 전략 및 구매 명분 설계", source: "Data-driven Proposal" }
+  ];
+
+  workflow = [
+    { no: "01", name: "Character Sheet", tag: "Consistency", problem: "장면마다 인물 외형이 달라짐", system: "캐릭터의 외형·의상·표정·비율을 기준화", impact: "씬 간 일관성 확보", slot: "[IMAGE] Character Sheet 실물" },
+    { no: "02", name: "Prompt Framework", tag: "Accuracy", problem: "사람마다 프롬프트 품질 편차 발생", system: "Subject → Action → Camera → Environment → Constraint 구조화", impact: "재시도 감소", slot: "[IMAGE] Prompt 구조 일부" },
+    { no: "03", name: "Prompt Archive", tag: "Reusability", problem: "성공한 프롬프트가 프로젝트 종료 후 사라짐", system: "성공·실패 사례와 결과물을 함께 저장", impact: "다음 프로젝트 착수 속도 향상", slot: "[IMAGE] Archive 화면" },
+    { no: "04", name: "Code / Template", tag: "Speed", problem: "비슷한 구조를 매번 처음부터 제작", system: "반복되는 웹·콘텐츠 구조를 템플릿화", impact: "초기 셋업 시간 단축", slot: "[IMAGE] 템플릿 · 코드" },
+    { no: "05", name: "Team Sharing", tag: "Scalability", problem: "노하우가 개인에게만 남음", system: "제작 기준과 자산을 팀이 쓸 수 있는 형태로 공유", impact: "팀 단위 재사용 가능", slot: "[IMAGE] 공유 문서" }
+  ];
+
+  bringItems = [
+    { no: "01", name: "Customer Insight", desc: "고객이 무엇을 궁금해하고, 어떤 상황에서 움직이는지 데이터와 맥락에서 찾습니다." },
+    { no: "02", name: "Content Strategy", desc: "목표 행동에 맞춰 메시지, 정보 구조, 채널과 고객 경험을 설계합니다." },
+    { no: "03", name: "Execution & Ownership", desc: "웹·영상·SNS·에디토리얼·전시까지 필요한 접점을 직접 구현하고 프로젝트를 끝까지 실행합니다." },
+    { no: "04", name: "Measure & Systemize", desc: "성과를 확인하고, 다음 프로젝트에서도 재사용할 수 있는 기준과 시스템으로 남깁니다." }
+  ];
+
+  runIntro() {
+    if (this._introStarted) return;
+    this._introStarted = true;
+    this._el = 0;
+    this._last = performance.now();
+    // Ticked by BOTH rAF (smooth when visible) and setInterval (still runs when hidden),
+    // accumulating clamped deltas so a background-tab load plays from the start.
+    const advance = () => {
+      const now = performance.now();
+      this._el += Math.min(now - this._last, 120);
+      this._last = now;
+      this.paintIntro(this._el);
+    };
+    this._introTick = setInterval(() => { if (!this._killIntro) advance(); }, 60);
+    const raf = () => { if (this._killIntro) return; advance(); this._introRaf = requestAnimationFrame(raf); };
+    this._introRaf = requestAnimationFrame(raf);
+    this.paintIntro(0);
+  }
+
+  paintIntro(el) {
+    if (this._killIntro) return;
+    const SCENE = 3400, HOLD = 400, ROLL = 900, OUT = 2900, MID = 2600;
+    const fmt = (v, sc) => sc.prefix + Math.round(v).toLocaleString("ko-KR") + sc.suffix;
+    {
+      const num = document.querySelector("[data-bignum]");
+      if (!num) return;
+      if (!this._introPainted) { this._introPainted = true; document.body.style.overflow = "hidden"; }
+      const lab = document.querySelector("[data-introlabel]");
+      const stage = document.querySelector("[data-scenea]");
+      const mid = document.querySelector("[data-mid]");
+      const fin = document.querySelector("[data-final]");
+      const tiles = document.querySelector("[data-tiles]");
+      const scrim = document.querySelector("[data-scrim]");
+      const btn = document.querySelector("[data-enterbtn]");
+      const NUMS = this.introScenes.length * SCENE;
+      const i = Math.floor(el / SCENE);
+
+      if (i < this.introScenes.length) {
+        const sc = this.introScenes[i];
+        const lt = el - i * SCENE;
+        lab.textContent = sc.label;
+        const k = Math.max(0, Math.min(1, (lt - HOLD) / ROLL));
+        const e = 1 - Math.pow(1 - k, 3);
+        num.textContent = fmt(sc.from + (sc.to - sc.from) * e, sc);
+        num.style.color = k >= 1 ? "#FF5A2B" : "#F7F5F2";
+        lab.style.opacity = lt > HOLD * 0.5 ? "1" : "0";
+        const out = lt > OUT;
+        stage.style.opacity = out ? "0" : "1";
+        stage.style.transform = out ? "translateY(-16px)" : "none";
+      } else if (el < NUMS + MID) {
+        const mt = el - NUMS;
+        stage.style.opacity = "0";
+        if (mid) {
+          const gone = mt > MID - 700;
+          mid.style.opacity = mt > 220 && !gone ? "1" : "0";
+          mid.style.transform = gone ? "translateY(-16px)" : mt > 220 ? "none" : "translateY(14px)";
+        }
+      } else {
+        const ft = el - NUMS - MID;
+        stage.style.opacity = "0";
+        if (mid) mid.style.opacity = "0";
+        if (tiles) tiles.style.opacity = "1";
+        if (scrim) scrim.style.opacity = "1";
+        if (fin && ft > 500) { fin.style.opacity = "1"; fin.style.transform = "none"; }
+        if (btn && ft > 1400) {
+          btn.style.color = "#fff";
+          btn.style.background = "#FF5A2B";
+          btn.style.borderColor = "#FF5A2B";
+          btn.style.boxShadow = "0 12px 32px rgba(255,90,43,.34)";
+        }
+      }
+    }
+  }
+
+  // Layout-only decision — runs on mount/resize, never per frame (per-frame height
+  // writes caused visible flicker).
+  layoutPin() {
+    const sec = document.querySelector("[data-inv]");
+    const pin = sec && sec.querySelector("[data-pin]");
+    if (!pin) return;
+    const vh = window.innerHeight;
+    pin.style.position = "static";
+    sec.style.height = "auto";
+    const ph = pin.offsetHeight;
+    // Always pin. When the content is taller than the viewport it sticks with a
+    // negative top (bottom-aligned) so the hold length is the same everywhere.
+    pin.style.position = "sticky";
+    pin.style.top = Math.min(0, Math.round(vh - ph)) + "px";
+    this._pinned = true;
+    this._pinLead = Math.max(0, ph - vh);
+    this._pinRun = Math.round(vh * 1.9);
+    sec.style.height = (ph + this._pinRun) + "px";
+  }
+
+  // Scroll-driven inversion of section 02: light page turns deep navy, text polarity flips.
+  paintInvert() {
+    const sec = document.querySelector("[data-inv]");
+    if (!sec) return;
+    if (!this._pinRun) this.layoutPin();
+    const r = sec.getBoundingClientRect();
+    // x = 0 the moment the section is fully in place, 1 when it releases.
+    const x = Math.max(0, Math.min(1, (0 - r.top - this._pinLead) / Math.max(1, this._pinRun)));
+    // Read the light version, then a quick turn, then hold dark before release.
+    const LIGHT = 0.3, TURN = 0.34;
+    this._invTarget = Math.max(0, Math.min(1, (x - LIGHT) / TURN));
+    if (this._invCur == null) this._invCur = this._invTarget;
+    this.runInvertLoop();
+    this.renderInvert(sec, this._invCur);
+  }
+
+  // Eases the painted value toward the scroll target so the transition carries
+  // weight instead of snapping frame-to-frame with the wheel.
+  runInvertLoop() {
+    if (this._invLoop) return;
+    const step = () => {
+      const sec = document.querySelector("[data-inv]");
+      if (!sec) { this._invLoop = null; return; }
+      const d = this._invTarget - this._invCur;
+      if (Math.abs(d) < 0.0012) {
+        this._invCur = this._invTarget;
+        this.renderInvert(sec, this._invCur);
+        this._invLoop = null;
+        return;
+      }
+      this._invCur += d * 0.085;
+      this.renderInvert(sec, this._invCur);
+      this._invLoop = requestAnimationFrame(step);
+    };
+    this._invLoop = requestAnimationFrame(step);
+  }
+
+  renderInvert(sec, t) {
+    const e = t * t * (3 - 2 * t);
+    const mix = (a, b) => {
+      const p = (h) => [1, 3, 5].map(i => parseInt(h.substr(i, 2), 16));
+      const [r1, g1, b1] = p(a), [r2, g2, b2] = p(b);
+      return "rgb(" + Math.round(r1 + (r2 - r1) * e) + "," + Math.round(g1 + (g2 - g1) * e) + "," + Math.round(b1 + (b2 - b1) * e) + ")";
+    };
+    sec.style.background = mix("#F6F5F4", "#101A2B");
+    const set = (sel, from, to, prop) => sec.querySelectorAll(sel).forEach(el => { el.style[prop || "color"] = mix(from, to); });
+    set("[data-inv-strong]", "#17171A", "#F4F6FA");
+    set("[data-inv-soft]", "#4A4740", "#A6B0C2");
+    set("[data-inv-dim]", "#948C83", "#5B6C87");
+    set("[data-inv-card]", "#FFFFFF", "#182437", "background");
+    set("[data-inv-card]", "#EFECE8", "#28374F", "borderColor");
+    set("[data-inv-chip]", "#6E6A63", "#A6B0C2");
+    set("[data-inv-chip]", "#FFFFFF", "#182437", "background");
+    set("[data-inv-chip]", "#EFECE8", "#28374F", "borderColor");
+    set("[data-inv-loop]", "#6E6A63", "#8C99AE");
+    set("[data-inv-loop]", "#F6F5F4", "#101A2B", "background");
+    // Headline hands over to the AI line; "with AI" joins the section label.
+    const hk = Math.max(0, Math.min(1, (e - 0.38) / 0.26));
+    const bh = sec.querySelector("[data-basehead]");
+    const ah = sec.querySelector("[data-althead]");
+    if (bh) bh.style.opacity = String(1 - hk);
+    if (ah) ah.style.opacity = String(hk);
+    const wai = sec.querySelector("[data-withai]");
+    if (wai) {
+      wai.style.opacity = String(hk);
+      wai.style.marginLeft = Math.round(-16 + 24 * hk) + "px";
+      // Reads on offwhite at rest, on navy once inverted.
+      const L = (a, b) => Math.round(a + (b - a) * hk);
+      wai.style.color = "rgb(" + L(199, 255) + "," + L(55, 138) + "," + L(14, 92) + ")";
+    }
+
+    // Steps 02–04 (the AI-accelerated stretch) flush to orange once it is dark.
+    const ak = Math.max(0, Math.min(1, (e - 0.42) / 0.28));
+    const amix = (a, b) => {
+      const p = (h) => [1, 3, 5].map(i => parseInt(h.substr(i, 2), 16));
+      const [r1, g1, b1] = p(a), [r2, g2, b2] = p(b);
+      return "rgb(" + Math.round(r1 + (r2 - r1) * ak) + "," + Math.round(g1 + (g2 - g1) * ak) + "," + Math.round(b1 + (b2 - b1) * ak) + ")";
+    };
+    ["02", "03", "04"].forEach(no => {
+      const card = sec.querySelector('[data-stepnode="' + no + '"] [data-inv-card]');
+      if (!card) return;
+      card.style.background = amix("#FFFFFF", "#1B2942");
+      card.style.borderColor = amix("#EFECE8", "#FF5A2B");
+      card.style.borderWidth = (1 + 0.8 * ak) + "px";
+      card.style.boxShadow = "0 " + (10 + 10 * ak) + "px " + (34 + 16 * ak) + "px rgba(255,90,43," + (0.05 + 0.16 * ak) + "), inset 0 0 " + (18 * ak) + "px rgba(255,90,43," + (0.14 * ak) + ")";
+      const nm = card.querySelector("[data-inv-strong]");
+      if (nm) nm.style.color = amix("#17171A", "#FFFFFF");
+      const sl = card.querySelector("[data-steplabel]");
+      if (sl) sl.style.color = amix("#C7370E", "#FF8A5C");
+      const en = card.querySelector("[data-enlabel]");
+      if (en) en.style.color = amix("#6E6A63", "#FFB596");
+      // Base copy gives way to the AI-mode copy; plain tags fade out entirely.
+      const node = card.parentElement;
+      const bd = node && node.querySelector("[data-basedesc]");
+      const ad = node && node.querySelector("[data-altdesc]");
+      if (bd && ad) { bd.style.opacity = String(1 - ak); ad.style.opacity = String(ak); }
+      const bc = node && node.querySelector("[data-basechip]");
+      const ac = node && node.querySelector("[data-altchip]");
+      if (bc) bc.style.opacity = String(1 - ak);
+      if (ac) ac.style.opacity = String(ak);
+    });
+    // Steps without an AI mode simply drop their tag as it goes dark.
+    ["01", "05"].forEach(no => {
+      const bc = sec.querySelector('[data-stepnode="' + no + '"] [data-basechip]');
+      if (bc) bc.style.opacity = String(1 - ak);
+    });
+    // Connector lines inside the AI stretch light up with it.
+    ["02", "03"].forEach(no => {
+      const ar = sec.querySelector('[data-arrow="' + no + '"] [data-arrowline]');
+      if (ar) ar.style.background = "repeating-linear-gradient(90deg," + amix("#DCD8D2", "#FF5A2B") + " 0 4px,transparent 4px 9px)";
+    });
+
+    // AI grouping bracket over steps 02–04
+    const row = sec.querySelector("[data-steprow]");
+    const bracket = sec.querySelector("[data-aibracket]");
+    const cap = sec.querySelector("[data-aicap]");
+    if (bracket && row) {
+      const a = sec.querySelector('[data-stepnode="02"] [data-inv-card]');
+      const c = sec.querySelector('[data-stepnode="04"] [data-inv-card]');
+      const host = bracket.offsetParent;
+      if (a && c && host) {
+        // Layout-box offsets, not rects: the step nodes carry an in-flight reveal
+        // transform and rects would bake that offset into the capsule.
+        const off = (el) => {
+          let x = 0, y = 0, n = el;
+          while (n && n !== host) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; }
+          return { x: x, y: y, w: el.offsetWidth, h: el.offsetHeight };
+        };
+        const oa = off(a), oc = off(c);
+        const sameRow = Math.abs(oa.y - oc.y) < 8;
+        if (sameRow && oa.h) {
+          // Keep the capsule inside the gap below the circles so its bottom arc
+          // never crosses the description text.
+          const node = a.parentElement;
+          const gap = node ? parseFloat(getComputedStyle(node).rowGap || "14") || 14 : 14;
+          const pad = Math.max(7, Math.min(oa.h * 0.09, gap - 8));
+          bracket.style.left = (oa.x - pad) + "px";
+          bracket.style.top = (oa.y - pad) + "px";
+          bracket.style.width = (oc.x + oc.w - oa.x + pad * 2) + "px";
+          bracket.style.height = (oa.h + pad * 2) + "px";
+          const k = Math.max(0, Math.min(1, (e - 0.42) / 0.24));
+          bracket.style.opacity = String(k);
+          bracket.style.transform = "scale(" + (0.97 + 0.03 * k) + ")";
+          const label = sec.querySelector("[data-ailabel]");
+          if (label) {
+            label.style.left = (oa.x + (oc.x + oc.w - oa.x) / 2) + "px";
+            label.style.top = (oa.y - pad) + "px";
+            label.style.opacity = String(k);
+          }
+        } else {
+          bracket.style.opacity = "0";
+          const label = sec.querySelector("[data-ailabel]");
+          if (label) label.style.opacity = "0";
+        }
+      }
+    }
+    if (cap) {
+      const k = Math.max(0, Math.min(1, (e - 0.5) / 0.26));
+      cap.style.opacity = String(k);
+      cap.style.transform = "translateY(" + Math.round((1 - k) * 18) + "px)";
+    }
+  }
+
+  endIntro() {
+    if (this._killIntro) return;
+    this._killIntro = true;
+    if (this._introRaf) cancelAnimationFrame(this._introRaf);
+    if (this._introTick) clearInterval(this._introTick);
+    document.body.style.overflow = "";
+    const ov = document.querySelector("[data-intro]");
+    if (ov) {
+      ov.style.opacity = "0";
+      setTimeout(() => this.setState({ introDone: true }), 900);
+    } else {
+      this.setState({ introDone: true });
+    }
+  }
+
+  componentDidMount() {
+    this.runIntro();
+    this._onResize = () => {
+      this.layoutPin();
+      this.safeMotion();
+      this.layoutEco();
+      const n = window.innerWidth < 560;
+      if (n !== this.state.narrow) this.setState({ narrow: n });
+    };
+    window.addEventListener("resize", this._onResize);
+    // scroll doesn't bubble, but it does capture — one window-level capture listener
+    // catches the case overlay's own scrolling no matter how often it remounts.
+    this._onAnyScroll = (e) => {
+      const t = e.target;
+      if (t && t.nodeType === 1 && t.hasAttribute && t.hasAttribute("data-modal")) this.paintStepNav();
+    };
+    window.addEventListener("scroll", this._onAnyScroll, true);
+    this._onKey = (e) => {
+      if (e.key === "Escape" && this.state.active !== null) this.closeCase();
+      if (e.key === "Escape" && this.state.profileOpen) this.setState({ profileOpen: false });
+      if (!this.state.introDone && (e.key === "Escape" || e.key === " " || e.key === "Enter")) this.endIntro();
+    };
+    window.addEventListener("keydown", this._onKey);
+    this._ticks = 0;
+    this._poll = setInterval(() => {
+      this._ticks++;
+      if (this._ticks < 6) this.layoutPin();
+      this.safeMotion();
+      if (this._ticks > 40) clearInterval(this._poll);
+    }, 350);
+    this.safeMotion();
+    window.addEventListener("load", () => this.safeMotion());
+  }
+  componentWillUnmount() {
+    window.removeEventListener("keydown", this._onKey);
+    if (this._onResize) window.removeEventListener("resize", this._onResize);
+    document.body.style.overflow = "";
+    this._killIntro = true;
+    if (this._introRaf) cancelAnimationFrame(this._introRaf);
+    if (this._introTick) clearInterval(this._introTick);
+    if (this._poll) clearInterval(this._poll);
+    if (this._invLoop) cancelAnimationFrame(this._invLoop);
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.introDone) document.body.style.overflow = (this.state.active !== null || this.state.profileOpen) ? "hidden" : "";
+    requestAnimationFrame(() => this.safeMotion());
+  }
+
+  // The step tracker's liveness is keyed on whether a case is open, so it survives
+  // any number of overlay remounts.
+  // Opening or switching a case is owned here, not by a lifecycle guard: the
+  // overlay is held at the top while the new case's content lays out.
+  gotoCase(i) {
+    this.setState({ active: i, step: (this.projects[i].steps[0] || {}).anchor });
+    clearInterval(this._resetTimer);
+    let held = 0;
+    // Each callback clears its OWN id: clearing the shared property would kill
+    // a newer timer and leave this one writing scrollTop = 0 forever.
+    const hold = setInterval(() => {
+      const d = document.querySelector("[data-modal]");
+      if (d) d.scrollTop = 0;
+      if (++held > 8) clearInterval(hold);
+    }, 50);
+    this._resetTimer = hold;
+    // The overlay's onScroll is the only continuous driver; these one-shots just
+    // catch the initial layout of the new case.
+    [60, 200, 450].forEach(ms => setTimeout(() => { this.paintStepNav(); this.layoutEco(); }, ms));
+  }
+
+  closeCase() {
+    clearInterval(this._resetTimer);
+    this.setState({ active: null, step: null });
+  }
+
+  safeMotion() {
+    try { this.setupMotion(); } catch (err) { console.error("[motion]", err); }
+  }
+
+  setupMotion() {
+    const root = document;
+    if (!root.querySelector("[data-reveal]")) return;
+
+    if (!this._scrollBound && root.querySelector("[data-nav]")) {
+      this._scrollBound = true;
+      const bar = root.querySelector("[data-progress]");
+      const nav = root.querySelector("[data-nav]");
+      const counter = root.querySelector("[data-counter]");
+      const menuBtn = root.querySelector("[data-menu]");
+      const sheet = root.querySelector("[data-sheet]");
+      const wide = () => window.innerWidth > 1080;
+      const onScroll = () => {
+        const h = document.documentElement;
+        const p = h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight);
+        if (bar) bar.style.transform = "scaleX(" + p + ")";
+        if (nav) nav.style.display = wide() ? "flex" : "none";
+        if (menuBtn) menuBtn.style.display = wide() ? "none" : "inline-flex";
+        if (wide() && sheet) sheet.style.display = "none";
+        const secs = [...root.querySelectorAll("section[id]")];
+        let cur = null, n = 1;
+        secs.forEach((s, i) => { if (s.getBoundingClientRect().top < window.innerHeight * 0.42) { cur = s.id; n = i + 1; } });
+        root.querySelectorAll("[data-r]").forEach(a => {
+          const on = a.getAttribute("data-r") === cur;
+          a.style.color = on ? "#17171A" : "#6E6A63";
+          a.style.background = on ? "#FF5A2B" : "transparent";
+        });
+        if (counter) counter.innerHTML = String(n).padStart(2, "0") + ' <span style="color:#6E6A63">/ ' + String(secs.length).padStart(2, "0") + '</span>';
+        this.paintInvert();
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", onScroll);
+      if (menuBtn && sheet) {
+        menuBtn.addEventListener("click", () => {
+          const open = sheet.style.display === "flex";
+          sheet.style.display = open ? "none" : "flex";
+          menuBtn.textContent = open ? "☰" : "✕";
+        });
+        root.querySelectorAll("[data-sheetlink]").forEach(a => a.addEventListener("click", () => {
+          sheet.style.display = "none"; menuBtn.textContent = "☰";
+        }));
+      }
+      onScroll();
+    }
+
+    // Pointer parallax on the execution band's work-tile backdrop.
+    const exec = root.querySelector("[data-exec]");
+    if (exec && !exec.__par) {
+      exec.__par = true;
+      const tiles = exec.querySelector("[data-exectiles]");
+      exec.addEventListener("pointermove", (ev) => {
+        const r = exec.getBoundingClientRect();
+        const x = (ev.clientX - r.left) / r.width - 0.5;
+        const y = (ev.clientY - r.top) / r.height - 0.5;
+        if (tiles) tiles.style.transform = "translate3d(" + (-x * 26).toFixed(1) + "px," + (-y * 16).toFixed(1) + "px,0)";
+      });
+      exec.addEventListener("pointerleave", () => { if (tiles) tiles.style.transform = "none"; });
+    }
+
+    // Reveals replay every time an element comes back into view, so returning to
+    // a section always plays its entrance again.
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        const el = en.target;
+        if (en.isIntersecting && en.intersectionRatio >= 0.08) {
+          el.style.opacity = "1";
+          el.style.transform = "none";
+        } else if (!en.isIntersecting && !el.closest("[data-inv]")) {
+          // Pinned section keeps its content shown: it can sit above the viewport
+          // while still being the thing the reader is held on.
+          el.style.opacity = "0";
+          el.style.transform = "translateY(30px)";
+        }
+      });
+    }, { threshold: [0, 0.08], rootMargin: "0px 0px -6% 0px" });
+    root.querySelectorAll("[data-reveal]:not([data-seen])").forEach((el, i) => {
+      el.setAttribute("data-seen", "1");
+      el.style.opacity = "0";
+      el.style.transform = "translateY(30px)";
+      el.style.willChange = "opacity, transform";
+      const d = Math.min(i % 6, 5) * 0.09;
+      const ease = "cubic-bezier(.16,.84,.28,1)";
+      el.style.transition = "opacity 1.15s " + ease + " " + d + "s, transform 1.15s " + ease + " " + d + "s";
+      io.observe(el);
+    });
+
+    const cio = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (!en.isIntersecting) return;
+        const el = en.target;
+        cio.unobserve(el);
+        const target = parseFloat(el.getAttribute("data-num"));
+        if (!target) return;
+        const pre = el.getAttribute("data-pre") || "";
+        const suf = el.getAttribute("data-suf") || "";
+        const t0 = performance.now(), dur = 1200;
+        const tick = (t) => {
+          const k = Math.min(1, (t - t0) / dur);
+          const e = 1 - Math.pow(1 - k, 3);
+          el.textContent = pre + Math.round(target * e) + suf;
+          if (k < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+    }, { threshold: 0.5 });
+    root.querySelectorAll("[data-num]:not([data-counted])").forEach(el => { el.setAttribute("data-counted", "1"); cio.observe(el); });
+
+    const w = window.innerWidth;
+    root.querySelectorAll("[data-projgrid]").forEach(el => {
+      el.style.gridTemplateColumns = w < 720 ? "minmax(0,1fr)" : "minmax(0,1fr) minmax(0,260px)";
+      el.style.gap = w < 720 ? "20px" : "32px";
+    });
+    root.querySelectorAll("[data-abilitygrid]").forEach(el => {
+      el.style.gridTemplateColumns = "repeat(" + (w < 640 ? 1 : w < 1180 ? 2 : 4) + ",minmax(0,1fr))";
+    });
+    root.querySelectorAll("[data-cvrow]").forEach(el => {
+      el.style.gridTemplateColumns = w < 480 ? "minmax(0,1fr)" : "112px 1fr";
+      el.style.gap = w < 480 ? "8px" : "16px";
+    });
+    root.querySelectorAll("[data-caseblock]").forEach(el => {
+      el.style.gridTemplateColumns = w < 640 ? "minmax(0,1fr)" : "128px minmax(0,1fr)";
+      el.style.gap = w < 640 ? "12px" : "20px";
+    });
+    const diag = root.querySelector("#s02 [data-h] > div");
+    if (diag) diag.style.width = w < 1330 ? "1270px" : "100%";
+
+    root.querySelectorAll("[data-h]").forEach(strip => {
+      if (strip.__drag) return;
+      strip.__drag = true;
+      let down = false, sx = 0, sl = 0;
+      strip.addEventListener("pointerdown", e => { down = true; sx = e.clientX; sl = strip.scrollLeft; strip.style.cursor = "grabbing"; });
+      const end = () => { down = false; strip.style.cursor = "grab"; };
+      strip.addEventListener("pointerup", end);
+      strip.addEventListener("pointerleave", end);
+      strip.addEventListener("pointermove", e => { if (down) strip.scrollLeft = sl - (e.clientX - sx); });
+      strip.style.cursor = "grab";
+    });
+  }
+
+  profileActivities = [
+    { when: "2022.02 — 2023.02", org: "GTEP 무역인재양성프로그램 16기", role: "홍보팀", keys: "Exhibition · Field Promotion · Buyer Communication", desc: "전시 콘텐츠 기획과 현장 프로모션 운영, 고객·바이어 커뮤니케이션" }
+  ];
+
+  profileExp = [
+    { when: "2023.09 — Present", org: "UNION biometrics", role: "Marketing", keys: "Content Strategy · Digital · Global · AI", desc: "제품·브랜드 콘텐츠 전략부터 웹·영상·에디토리얼 제작, 글로벌 채널·전시·컨퍼런스 프로젝트 기획 및 운영", now: true },
+    { when: "2022.12 — 2023.02", org: "UNION biometrics", role: "Product Planning Intern", keys: "Market Research · Product Content", desc: "시장·경쟁사 리서치, USP 도출 및 제품 콘텐츠 기획 지원", now: false },
+    { when: "2022.07 — 2022.08", org: "양천구청", role: "PR Intern", keys: "Social Content", desc: "청년 타깃 SNS 콘텐츠 기획·제작, YouTube·Instagram 채널 운영", now: false }
+  ];
+
+  profileExpertise = [
+    { no: "01", name: "Content Strategy", sub: "Audience · Message · Channel" },
+    { no: "02", name: "Multi-format Execution", sub: "Web · Video · Social · Offline" },
+    { no: "03", name: "Data / Performance", sub: "Analysis · Optimization · Reporting" },
+    { no: "04", name: "AI Workflow", sub: "Production · Standardization · Reuse" }
+  ];
+
+  profileTools = [
+    { cat: "PRODUCTIVITY & DATA", items: [
+      { n: "Excel", d: "Data Analysis · Functions · Automation" },
+      { n: "PowerPoint", d: "Proposal · Presentation · Brochure" },
+      { n: "Word", d: "Document · Report" },
+      { n: "GA4", d: "Traffic · Behavior Report" }
+    ] },
+    { cat: "DESIGN", items: [
+      { n: "Figma", d: "IA · UI · Prototype" },
+      { n: "Photoshop", d: "Compositing · Retouch · Product Visual" },
+      { n: "Illustrator", d: "Layout · Infographic · Print" }
+    ] },
+    { cat: "VIDEO", items: [
+      { n: "Premiere Pro", d: "Editing · Color · Sound" },
+      { n: "After Effects", d: "Motion Graphic · Title" },
+      { n: "CapCut", d: "Short-form · Quick Edit" }
+    ] },
+    { cat: "AI & AUTOMATION", items: [
+      { n: "ChatGPT", d: "Copy · Storyboard · Structure" },
+      { n: "Claude", d: "Long-form · Structure · Build" },
+      { n: "Gemini", d: "Research · Content Draft" },
+      { n: "Seedance", d: "AI Video · Scene Generation" },
+      { n: "Kling", d: "AI Video · Motion" }
+    ] },
+    { cat: "WEB & DEVELOPMENT", items: [
+      { n: "HTML", d: "Markup · Page Structure" },
+      { n: "CSS", d: "Layout · Responsive · Styling" },
+      { n: "JavaScript", d: "Landing Page · Interactive Web" },
+      { n: "Java", d: "Logic Implementation · Basic Development" },
+      { n: "Cursor", d: "Page Build · Iteration" },
+      { n: "Android Studio", d: "App Build · Basic Development" }
+    ] }
+  ];
+
+  // Driven by the overlay's own onScroll (see [data-modal]) — no global one-shot binding.
+  // Reads the scroll position and stores the active anchor; the pills are styled
+  // from render output (renderVals), never by writing inline styles React owns.
+  // The branch bar must span the real first/last drop-line centers, and must
+  // disappear once the cards stack — measure instead of guessing percentages.
+  layoutEco() {
+    document.querySelectorAll("[data-eco]").forEach(eco => {
+      const grid = eco.querySelector("[data-ecogrid]");
+      const bar = eco.querySelector("[data-ecobar]");
+      const drops = [...eco.querySelectorAll("[data-ecodrop]")];
+      if (!grid || !bar || drops.length < 2) return;
+      // Un-hide before measuring: a hidden stub reports a zero rect, which would
+      // latch the stacked branch on forever once it had been applied.
+      bar.style.display = "block";
+      drops.forEach(d => { d.style.display = "block"; });
+      const stacked = grid.clientWidth < 660;
+      grid.style.gridTemplateColumns = stacked ? "minmax(0,1fr)" : "repeat(3,minmax(0,1fr))";
+      if (stacked) {
+        bar.style.display = "none";
+        drops.forEach((d, i) => { if (i) d.style.display = "none"; });
+        return;
+      }
+      const g = grid.getBoundingClientRect();
+      const xs = drops.map(d => { const r = d.getBoundingClientRect(); return r.left + r.width / 2 - g.left; });
+      bar.style.left = Math.round(Math.min(...xs)) + "px";
+      bar.style.right = Math.round(g.width - Math.max(...xs)) + "px";
+    });
+  }
+
+  paintStepNav() {
+    const modal = document.querySelector("[data-modal]");
+    if (!modal) return;
+    const steps = [...modal.querySelectorAll("[data-casestep]")];
+    if (!steps.length) return;
+    // offsetTop against the overlay's own scrollTop — no live rect measurement,
+    // so the result can't depend on when in the frame this runs.
+    const top = modal.scrollTop, limit = modal.clientHeight * 0.4;
+    let cur = steps[0].id;
+    steps.forEach(s => { if (s.offsetTop - top < limit) cur = s.id; });
+    modal.querySelectorAll("[data-steppill]").forEach(el => {
+      const on = el.getAttribute("data-steppill") === cur;
+      el.style.setProperty("color", on ? "#17171A" : "#6E6A63", "important");
+      el.style.setProperty("background", on ? "#FF5A2B" : "#fff", "important");
+      el.style.setProperty("border-color", on ? "#FF5A2B" : "#EAE7E3", "important");
+    });
+  }
+
+
+  // Built with createElement so the active state re-patches reliably on every
+  // render; template style/conditional holes are not re-evaluated after mount.
+  buildStepRow(idx) {
+    if (idx === null) return null;
+    const steps = this.projects[idx].steps;
+    const cur = this.state.step || (steps[0] || {}).anchor;
+    const kids = [];
+    steps.forEach((s, k) => {
+      // No active/inactive colors here — paintStepNav owns them, so React has
+      // nothing to revert to and the two mechanisms can't fight.
+      kids.push(React.createElement("a", {
+        key: s.anchor, href: "#" + s.anchor, "data-steppill": s.anchor,
+        style: {
+          fontFamily: "'IBM Plex Mono',monospace", fontSize: "10px", letterSpacing: "0.1em",
+          borderStyle: "solid", borderWidth: "1px", borderRadius: "999px", padding: "8px 13px",
+          whiteSpace: "nowrap", textDecoration: "none", transition: "all .3s ease"
+        }
+      }, s.no + " " + s.label));
+      if (k < steps.length - 1) kids.push(React.createElement("span", {
+        key: s.anchor + "-a", "aria-hidden": "true", style: { color: "#DCD6CE", fontSize: "10px" }
+      }, "→"));
+    });
+    return React.createElement("div", {
+      style: { display: "flex", alignItems: "center", gap: "8px", width: "max-content" }
+    }, kids);
+  }
+
+  renderProfile() {
+    return {
+      profileExp: this.profileExp,
+      profileActivities: this.profileActivities,
+      profileExpertise: this.profileExpertise,
+      profileTools: this.profileTools,
+      profileOpen: !!this.state.profileOpen,
+      openProfile: () => this.setState({ profileOpen: true }),
+      closeProfile: () => this.setState({ profileOpen: false })
+    };
+  }
+
+  renderVals() {
+    const idx = this.state.active;
+    const open = (i) => () => { this.gotoCase(i); };
+    const tab = this.state.tab;
+    const total = this.archive.length;
+    const formats = new Set(this.archive.map(a => a.cat)).size;
+    const narrow = this.state.narrow;
+    const yr = (a) => parseInt(String(a.year).slice(-4), 10) || 0;
+    const pool = (tab === "ALL" ? [...this.archive].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0) || yr(b) - yr(a)) : this.archive.filter(a => a.cat === tab));
+    const step = 12;
+    const shown = this.state.archiveAll ? pool.length : Math.min(step, pool.length);
+    const items = pool.slice(0, shown)
+      .map((a, i) => ({
+        ...a,
+        key: a.cat + i,
+        span: "span 1",
+        pad: "66.7%",
+        isVideo: a.media === "video",
+        live: a.url || null,
+        img: a.img || null,
+        noImg: !a.img,
+        fit: a.fit || "cover",
+        bg: a.bg || "#F2EFEB",
+        alt: a.title + " 썸네일"
+      }));
+    const present = Object.keys(this.archiveMeta).filter(k => k === "ALL" || this.archive.some(a => a.cat === k));
+    const tabs = present.map(k => {
+      const on = k === tab;
+      return {
+        key: k,
+        label: this.archiveMeta[k],
+        on: on,
+        count: k === "ALL" ? this.archive.length : this.archive.filter(a => a.cat === k).length,
+        weight: on ? "600" : "500",
+        color: on ? "#17171A" : "#4A4740",
+        bg: on ? "#FF5A2B" : "#ffffff",
+        border: on ? "#FF5A2B" : "#EAE7E3",
+        pick: () => this.setState({ tab: k, archiveAll: false })
+      };
+    });
+    return {
+      archiveTabs: tabs,
+      archiveItems: items,
+      archiveMoreOn: shown < pool.length,
+      archiveMoreLabel: "작업물 " + (pool.length - shown) + "건 더 보기",
+      archiveMore: () => this.setState({ archiveAll: true }),
+      archiveStats: [
+        { value: String(total), label: "WORKS DELIVERED" },
+        { value: String(formats), label: "CONTENT FORMATS" },
+        { value: "CES 2027", label: "출품 프로젝트" },
+        { value: "END-TO-END", label: "PLANNING → PRODUCTION" }
+      ],
+      archiveSpan: this.archiveSpan,
+      archiveFormatLine: present.filter(k => k !== "ALL").map(k => this.archiveMeta[k].toUpperCase()).join(" · "),
+      archiveCount: (tab === "ALL" ? "ALL WORK" : this.archiveMeta[tab]) + " · " + pool.length + " CONTENT ASSETS",
+      introOn: !this.state.introDone,
+      introRows: [
+        { items: [...this.introTiles.slice(0, 6), ...this.introTiles.slice(0, 6), ...this.introTiles.slice(0, 6), ...this.introTiles.slice(0, 6)], dur: "68s", dir: "normal" },
+        { items: [...this.introTiles.slice(6, 12), ...this.introTiles.slice(6, 12), ...this.introTiles.slice(6, 12), ...this.introTiles.slice(6, 12)], dur: "88s", dir: "reverse" },
+        { items: [...this.introTiles.slice(12, 18), ...this.introTiles.slice(12, 18), ...this.introTiles.slice(12, 18), ...this.introTiles.slice(12, 18)], dur: "76s", dir: "normal" }
+      ],
+      skipIntro: () => this.endIntro(),
+      steps: this.steps,
+      tags: this.tags,
+      ...this.renderProfile(),
+      impacts: this.impacts.map(i => ({ ...i, plain: !i.link })),
+      workflow: this.workflow,
+      bringItems: this.bringItems,
+      projects: this.projects.map((p, i) => ({ ...p, open: open(i), aria: p.title + " 상세 보기" })),
+      activeCase: idx === null ? null : this.projects[idx],
+      onCaseScroll: () => this.paintStepNav(),
+      paintStepNav: () => this.paintStepNav(),
+      // The overlay node is remounted on every render, so bind on mount via ref
+      // rather than querying the DOM once.
+
+      caseStepRow: this.buildStepRow(idx),
+      close: () => this.closeCase(),
+      prev: () => this.gotoCase((this.state.active + this.projects.length - 1) % this.projects.length),
+      next: () => this.gotoCase((this.state.active + 1) % this.projects.length)
+    };
+  }
+}
+</script>
+</body>
+</html>
