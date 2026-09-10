@@ -1,0 +1,6 @@
+"no","name","tag","problem","system","impact","slot"
+"01","Character Sheet","Consistency","장면마다 인물 외형이 달라짐","캐릭터의 외형·의상·표정·비율을 기준화","씬 간 일관성 확보","[IMAGE] Character Sheet 실물"
+"02","Prompt Framework","Accuracy","사람마다 프롬프트 품질 편차 발생","Subject → Action → Camera → Environment → Constraint 구조화","재시도 감소","[IMAGE] Prompt 구조 일부"
+"03","Prompt Archive","Reusability","성공한 프롬프트가 프로젝트 종료 후 사라짐","성공·실패 사례와 결과물을 함께 저장","다음 프로젝트 착수 속도 향상","[IMAGE] Archive 화면"
+"04","Code / Template","Speed","비슷한 구조를 매번 처음부터 제작","반복되는 웹·콘텐츠 구조를 템플릿화","초기 셋업 시간 단축","[IMAGE] 템플릿 · 코드"
+"05","Team Sharing","Scalability","노하우가 개인에게만 남음","제작 기준과 자산을 팀이 쓸 수 있는 형태로 공유","팀 단위 재사용 가능","[IMAGE] 공유 문서"
