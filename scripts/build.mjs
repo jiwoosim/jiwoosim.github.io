@@ -1,14 +1,14 @@
 // 데이터 → 사이트 빌드.
-//   1) SHEET_ID 환경변수가 있으면 구글 시트 각 탭을 CSV로 내려받아 data/*.csv 갱신
-//   2) data/*.csv 를 portfolio.dc.html 에 주입
-//   3) index.html 출력
+//   SHEET_ID = "포트폴리오 아카이브" 스프레드시트 ID
+//   01_MASTER  탭 → 사이트 ARCHIVE (포폴 반영 = YES 인 프로젝트)
+//   04_METRICS 탭 → 사이트 IMPACT
+//   그 외(tags·introTiles·bringItems·workflow·meta) → 커밋된 data/*.csv (코드 관리)
 //
 //   node scripts/build.mjs
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
-import { csvToObjects, locateAssignment, jsLiteral } from "./lib.mjs";
-import { TABS, SCALARS } from "./schema.mjs";
+import { parseCSV, csvToObjects, locateAssignment, jsLiteral } from "./lib.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SRC = join(ROOT, "portfolio.dc.html");
@@ -18,77 +18,157 @@ const SHEET_ID = process.env.SHEET_ID?.trim();
 
 mkdirSync(DATA, { recursive: true });
 
-// ── 1. 시트 → data/*.csv ─────────────────────────────────────────
-async function pullSheet() {
-  if (!SHEET_ID) { console.log("SHEET_ID 없음 — 커밋된 data/*.csv 로 빌드"); return; }
-  const tabs = [...Object.keys(TABS), "meta"];
-  for (const tab of tabs) {
-    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(tab)}`;
-    try {
-      const res = await fetch(url, { redirect: "follow" });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const text = await res.text();
-      if (text.includes("<!DOCTYPE html>") || text.startsWith("<HTML")) throw new Error("HTML 반환 (시트 미공개 또는 탭 이름 불일치)");
-      writeFileSync(join(DATA, `${tab}.csv`), text, "utf8");
-      console.log(`↓ ${tab}.csv`);
-    } catch (e) {
-      console.warn(`⚠ ${tab} 시트 읽기 실패: ${e.message} — 기존 data/${tab}.csv 유지`);
-    }
-  }
+// ── 시트 탭 CSV 받기 ────────────────────────────────────────────
+async function fetchTab(tab) {
+  const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(tab)}`;
+  const res = await fetch(url, { redirect: "follow" });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const text = await res.text();
+  if (text.startsWith("<!DOCTYPE") || text.startsWith("<HTML"))
+    throw new Error("HTML 반환 — 시트 미공개 또는 탭 이름 불일치");
+  return text;
 }
 
-// ── 2. 주입 ──────────────────────────────────────────────────────
-function readCSV(name) {
+/** headerMarker 를 포함한 행을 헤더로 잡고 객체 배열로 변환 */
+function rowsAsObjects(csv, headerMarker) {
+  const rows = parseCSV(csv);
+  let hi = rows.findIndex((r) => r.some((c) => c.includes(headerMarker)));
+  if (hi < 0) hi = 0;
+  const header = rows[hi].map((h) => h.replace(/^METRICS\s+/, "").trim());
+  return rows.slice(hi + 1).map((r) => {
+    const o = {};
+    header.forEach((h, i) => (o[h] = (r[i] ?? "").trim()));
+    return o;
+  });
+}
+
+// ── 01_MASTER → archive ────────────────────────────────────────
+const CAT_BY_TYPE = {
+  "영상": "VIDEO", "웹": "WEB", "콘텐츠": "EDITORIAL", "브로슈어/백서": "EDITORIAL",
+  "전시/이벤트": "EXHIBITION", "캠페인": "SOCIAL", "인터랙티브": "WEB", "기타": "EDITORIAL",
+};
+const MEDIA_BY_TYPE = {
+  "영상": "video", "웹": "web", "인터랙티브": "web", "전시/이벤트": "photo",
+  "캠페인": "image", "콘텐츠": "print", "브로슈어/백서": "print", "기타": "print",
+};
+
+function masterToArchive(objs) {
+  return objs
+    .filter((o) => o["프로젝트명"] && /^(YES|Y|예|포함)$/i.test(o["포폴 반영"] || ""))
+    .map((o) => {
+      const type = (o["유형"] || "").trim();
+      const yearMatch = (o["기간"] || "").match(/20\d{2}/);
+      const roles = (o["내 역할"] || "")
+        .split(/[\/·,]/).map((s) => s.trim()).filter(Boolean);
+      const url = (o["공개 URL"] || "").trim();
+      const img = (o["대표 썸네일"] || "").trim();
+      const item = {
+        cat: CAT_BY_TYPE[type] || "EDITORIAL",
+        year: yearMatch ? yearMatch[0] : "",
+        title: o["프로젝트명"].trim(),
+        roles: roles.length ? roles : ["Content"],
+        media: MEDIA_BY_TYPE[type] || "print",
+      };
+      if (/^S$/i.test((o["포폴 등급"] || "").trim())) item.featured = true;
+      if (/^https?:\/\//.test(url)) item.url = url;
+      if (/^https?:\/\//.test(img)) item.img = img;
+      return item;
+    });
+}
+
+// ── 04_METRICS → impacts ───────────────────────────────────────
+function metricsToImpacts(objs, masterObjs) {
+  const nameById = {};
+  masterObjs.forEach((o) => (nameById[(o["ID"] || "").trim()] = (o["프로젝트명"] || "").trim()));
+  return objs
+    .filter((o) => (o["Metric"] || "").trim() && /확인|verified|yes/i.test(o["Verified"] || ""))
+    .map((o) => {
+      const change = (o["Change"] || "").trim();
+      const phrase = (o["Portfolio Phrase"] || "").trim();
+      const before = (o["Before"] || "").trim();
+      const after = (o["After"] || "").trim();
+      const unit = (o["Unit"] || "").trim();
+      // 표기는 사람이 쓴 Portfolio Phrase 우선. 숫자 카운트업은 쓰지 않음(단위가 제각각).
+      return {
+        value: 0, pre: "", suf: "",
+        display: phrase || (before && after ? `${before} → ${after}${unit ? " " + unit : ""}` : change),
+        label: (o["Metric"] || "").trim(),
+        note: (o["Evidence / Source"] || "").trim(),
+        source: nameById[(o["Project ID"] || "").trim()] || (o["Project ID"] || "").trim(),
+      };
+    });
+}
+
+// ── 코드 관리 배열 (data/*.csv) ────────────────────────────────
+function fromCSV(name, mapRow) {
   const f = join(DATA, `${name}.csv`);
-  return existsSync(f) ? csvToObjects(readFileSync(f, "utf8")) : null;
+  if (!existsSync(f)) return null;
+  const objs = csvToObjects(readFileSync(f, "utf8"));
+  return objs.map(mapRow);
 }
 
-function injectArrays(src) {
-  let out = src;
-  // 뒤에서 앞으로 치환해야 인덱스가 안 밀림 → 위치 수집 후 역순 적용
-  const edits = [];
-  for (const [tab, def] of Object.entries(TABS)) {
-    const rows = readCSV(tab);
-    if (!rows) { console.warn(`⚠ data/${tab}.csv 없음 — ${def.array} 원본 유지`); continue; }
-    const value = rows.map(def.toObj);
-    const loc = locateAssignment(out, def.array);
-    if (!loc) { console.warn(`⚠ ${def.array} 주입 위치 못 찾음`); continue; }
-    const literal = jsLiteral(value, loc.indent || "  ");
-    edits.push({ start: loc.valueStart, end: loc.valueEnd, text: literal, name: def.array, n: value.length });
-  }
-  edits.sort((a, b) => b.start - a.start);
-  for (const e of edits) {
-    out = out.slice(0, e.start) + e.text + out.slice(e.end);
-    console.log(`✔ ${e.name}  (${e.n})`);
-  }
-  return out;
+// ── 주입 ───────────────────────────────────────────────────────
+function replaceArray(src, name, value) {
+  const loc = locateAssignment(src, name);
+  if (!loc) { console.warn(`⚠ ${name} 주입 위치 못 찾음`); return src; }
+  const literal = jsLiteral(value, loc.indent || "  ");
+  console.log(`✔ ${name} (${Array.isArray(value) ? value.length : "?"})`);
+  return src.slice(0, loc.valueStart) + literal + src.slice(loc.valueEnd);
 }
 
-function injectScalars(src) {
-  let out = src;
-  const meta = readCSV("meta");
-  if (!meta) return out;
-  const get = (k) => meta.find((r) => r.key === k)?.value ?? "";
-  for (const [key, def] of Object.entries(SCALARS)) {
-    const v = get(key);
-    if (v === "") continue;
-    if (def.kind === "field") {
-      out = out.replace(new RegExp(`(${def.array}\\s*=\\s*)(["'\`])[\\s\\S]*?\\2`), `$1"${v.replace(/"/g, '\\"')}"`);
-    } else if (def.kind === "helmet-title") {
-      out = out.replace(/<title>[\s\S]*?<\/title>/, `<title>${v}</title>`);
-    } else if (def.kind === "helmet-desc") {
-      out = out.replace(/(<meta\s+name="description"\s+content=")[^"]*(")/,`$1${v.replace(/"/g, "&quot;")}$2`);
+function replaceScalarField(src, name, val) {
+  if (!val) return src;
+  return src.replace(new RegExp(`(${name}\\s*=\\s*)(["'\`])[\\s\\S]*?\\2`), `$1"${String(val).replace(/"/g, '\\"')}"`);
+}
+
+// ── 실행 ───────────────────────────────────────────────────────
+let archive = null, impacts = null;
+if (SHEET_ID) {
+  try {
+    const masterCsv = await fetchTab("01_MASTER");
+    const metricsCsv = await fetchTab("04_METRICS");
+    writeFileSync(join(DATA, "01_MASTER.csv"), masterCsv, "utf8");
+    writeFileSync(join(DATA, "04_METRICS.csv"), metricsCsv, "utf8");
+    const masterObjs = rowsAsObjects(masterCsv, "프로젝트명");
+    const metricObjs = rowsAsObjects(metricsCsv, "Portfolio Phrase");
+    archive = masterToArchive(masterObjs);
+    impacts = metricsToImpacts(metricObjs, masterObjs);
+    console.log(`↓ 01_MASTER ${masterObjs.length}행 → archive ${archive.length}`);
+    console.log(`↓ 04_METRICS ${metricObjs.length}행 → impacts ${impacts.length}`);
+  } catch (e) {
+    console.warn(`⚠ 시트 읽기 실패: ${e.message} — 커밋된 스냅샷/원본 유지`);
+    const mPath = join(DATA, "01_MASTER.csv");
+    if (existsSync(mPath)) {
+      const mo = rowsAsObjects(readFileSync(mPath, "utf8"), "프로젝트명");
+      archive = masterToArchive(mo);
+      const kPath = join(DATA, "04_METRICS.csv");
+      if (existsSync(kPath)) impacts = metricsToImpacts(rowsAsObjects(readFileSync(kPath, "utf8"), "Portfolio Phrase"), mo);
     }
-    console.log(`✔ ${key}`);
   }
-  return out;
+} else {
+  console.log("SHEET_ID 없음 — archive/impacts 원본 유지");
 }
 
-// ── 실행 ─────────────────────────────────────────────────────────
-await pullSheet();
 let html = readFileSync(SRC, "utf8");
-html = injectArrays(html);
-html = injectScalars(html);
+if (archive && archive.length) html = replaceArray(html, "archive", archive);
+if (impacts && impacts.length) html = replaceArray(html, "impacts", impacts);
+
+// 코드 관리 배열
+const tags = fromCSV("tags", (r) => r.tag);
+const introTiles = fromCSV("introTiles", (r) => r.tile);
+const bringItems = fromCSV("bringItems", (r) => ({ no: r.no, name: r.name, desc: r.desc }));
+const workflow = fromCSV("workflow", (r) => ({ no: r.no, name: r.name, tag: r.tag, problem: r.problem, system: r.system, impact: r.impact, slot: r.slot }));
+if (tags) html = replaceArray(html, "tags", tags);
+if (introTiles) html = replaceArray(html, "introTiles", introTiles);
+if (bringItems) html = replaceArray(html, "bringItems", bringItems);
+if (workflow) html = replaceArray(html, "workflow", workflow);
+
+// meta.csv → archiveSpan / title / description
+const meta = existsSync(join(DATA, "meta.csv")) ? csvToObjects(readFileSync(join(DATA, "meta.csv"), "utf8")) : [];
+const metaGet = (k) => meta.find((r) => r.key === k)?.value ?? "";
+html = replaceScalarField(html, "archiveSpan", metaGet("archiveSpan"));
+if (metaGet("title")) html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${metaGet("title")}</title>`);
+if (metaGet("description")) html = html.replace(/(<meta\s+name="description"\s+content=")[^"]*(")/, `$1${metaGet("description")}$2`);
+
 writeFileSync(OUT, html, "utf8");
-// 시트에서 받은 최신 data/*.csv 도 함께 커밋되도록 workflow 에서 처리
 console.log(`\n✅ index.html 생성 (${(html.length / 1024).toFixed(0)} KB)`);
