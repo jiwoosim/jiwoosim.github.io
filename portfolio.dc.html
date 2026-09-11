@@ -675,7 +675,7 @@
     <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;margin-top:60px;padding-top:24px;border-top:1px solid #EAE7E3;font-size:12px;letter-spacing:0.04em;color:#6E6A63">
       <span>2026 SIM JIWOO · CONTENT MARKETING PORTFOLIO</span>
     </div>
-    <div style="margin-top:34px;text-align:center;font-size:11px;letter-spacing:0.06em;color:#6E6A63">© 2026 Sim Jiwoo. All rights reserved.</div>
+    <div style="margin-top:34px;text-align:center;font-size:11px;letter-spacing:0.06em;color:#6E6A63">© 2026 Sim Jiwoo. All rights reserved. <button type="button" onClick="{{ syncFromSheet }}" title="{{ syncTitle }}" aria-label="데이터 새로고침" style="all:unset;cursor:pointer;display:inline-block;width:5px;height:5px;border-radius:50%;background:{{ syncDotColor }};margin-left:9px;vertical-align:middle;transition:background .35s ease"></button></div>
   </div>
 </section>
 
@@ -957,10 +957,13 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900}}">
 class Component extends DCLogic {
-  state = { active: null, step: null, intro: 0, introDone: false, tab: "ALL", narrow: typeof window !== "undefined" && window.innerWidth < 560, asset: null };
+  state = { active: null, step: null, intro: 0, introDone: false, tab: "ALL", narrow: typeof window !== "undefined" && window.innerWidth < 560, asset: null, syncStatus: null };
 
   // 숫자는 확정 자료 확인 후 여기만 수정하면 됩니다.
   archiveSpan = "2022 — 2026";
+
+  // 시트 실시간 새로고침용 (공개 조회 링크라 비밀값 아님) — scripts/build.mjs 가 빌드 시 채워넣음
+  sheetId = "";
 
   // 실제 확인된 작업물만 등록합니다. 자료를 주시면 한 건씩 추가합니다.
   archive = [
@@ -1736,6 +1739,131 @@ class Component extends DCLogic {
     this.setState({ asset: null });
   }
 
+  // ── 시트 실시간 새로고침 (숨은 버튼용) ──────────────────────────
+  // 빌드를 새로 돌리지 않고, 브라우저에서 바로 구글 시트 SITE/04_METRICS 탭을
+  // 읽어 archive/impacts 를 갱신한다. 매핑 로직은 scripts/build.mjs 와 동일하게 유지.
+  async syncFromSheet() {
+    if (!this.sheetId || this._syncing) return;
+    this._syncing = true;
+    this.setState({ syncStatus: "loading" });
+    try {
+      const [siteCsv, metricsCsv] = await Promise.all([
+        this.fetchSheetTab("SITE"),
+        this.fetchSheetTab("04_METRICS")
+      ]);
+      const siteObjs = this.csvRowsToObjects(siteCsv, "제목");
+      const metricObjs = this.csvRowsToObjects(metricsCsv, "Portfolio Phrase");
+      const nameById = {};
+      siteObjs.forEach((o) => { nameById[this.pick(o, "ID")] = this.pick(o, "제목"); });
+      const newArchive = this.siteRowsToArchive(siteObjs);
+      const newImpacts = this.metricRowsToImpacts(metricObjs, nameById);
+      if (newArchive.length) this.archive = newArchive;
+      if (newImpacts.length) this.impacts = newImpacts;
+      this._syncing = false;
+      this.setState({ syncStatus: "done", tab: "ALL", archiveAll: false });
+    } catch (err) {
+      console.error("[syncFromSheet]", err);
+      this._syncing = false;
+      this.setState({ syncStatus: "error" });
+    } finally {
+      clearTimeout(this._syncMsgTimer);
+      this._syncMsgTimer = setTimeout(() => this.setState({ syncStatus: null }), 2400);
+    }
+  }
+
+  async fetchSheetTab(tab) {
+    const url = `https://docs.google.com/spreadsheets/d/${this.sheetId}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(tab)}&headers=1&_=${Date.now()}`;
+    const res = await fetch(url, { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const text = await res.text();
+    if (text.startsWith("<!DOCTYPE") || text.startsWith("<HTML")) throw new Error("시트 미공개 또는 탭 이름 불일치");
+    return text;
+  }
+
+  // RFC4180 CSV 파서 (scripts/lib.mjs parseCSV 와 동일 로직)
+  parseCSVText(text) {
+    const rows = [];
+    let row = [], field = "", inQuotes = false;
+    const s = text.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+    for (let i = 0; i < s.length; i++) {
+      const c = s[i];
+      if (inQuotes) {
+        if (c === '"') { if (s[i + 1] === '"') { field += '"'; i++; } else inQuotes = false; }
+        else field += c;
+      } else {
+        if (c === '"') inQuotes = true;
+        else if (c === ",") { row.push(field); field = ""; }
+        else if (c === "\n") { row.push(field); rows.push(row); row = []; field = ""; }
+        else field += c;
+      }
+    }
+    if (field.length || row.length) { row.push(field); rows.push(row); }
+    return rows.filter((r) => r.some((v) => v.trim() !== ""));
+  }
+
+  csvRowsToObjects(csv, headerMarker) {
+    const rows = this.parseCSVText(csv);
+    let hi = rows.findIndex((r) => r.some((c) => c.includes(headerMarker)));
+    if (hi < 0) hi = 0;
+    const header = rows[hi].map((h) => h.replace(/^METRICS\s+/, "").trim());
+    return rows.slice(hi + 1).map((r) => {
+      const o = {};
+      header.forEach((h, i) => { o[h] = (r[i] ?? "").trim(); });
+      return o;
+    });
+  }
+
+  pick(o, ...keys) {
+    for (const k of keys) { const v = (o[k] || "").trim(); if (v) return v; }
+    return "";
+  }
+
+  // scripts/build.mjs 의 siteToArchive 와 동일 매핑
+  siteRowsToArchive(objs) {
+    const CAT_BY_TYPE = { "영상": "VIDEO", "웹": "WEB", "콘텐츠": "EDITORIAL", "브로슈어/백서": "EDITORIAL", "전시/이벤트": "EXHIBITION", "캠페인": "SOCIAL", "인터랙티브": "WEB", "기타": "EDITORIAL" };
+    const MEDIA_BY_TYPE = { "영상": "video", "웹": "web", "인터랙티브": "web", "전시/이벤트": "photo", "캠페인": "image", "콘텐츠": "print", "브로슈어/백서": "print", "기타": "print" };
+    const isUrl = (v) => /^https?:\/\//.test(v);
+    return objs
+      .filter((o) => this.pick(o, "제목") && /^(YES|Y|예|포함)$/i.test(this.pick(o, "포폴반영", "포폴 반영")))
+      .map((o) => {
+        const type = this.pick(o, "유형");
+        const period = this.pick(o, "기간");
+        const yearMatch = period.match(/20\d{2}/);
+        const item = { cat: CAT_BY_TYPE[type] || "EDITORIAL", year: yearMatch ? yearMatch[0] : "", title: this.pick(o, "제목"), media: MEDIA_BY_TYPE[type] || "print" };
+        if (/^S$/i.test(this.pick(o, "포폴등급", "포폴 등급"))) item.featured = true;
+        if (period) item.period = period;
+        const contribution = this.pick(o, "기여도"); if (contribution) item.contribution = contribution;
+        const impact = this.pick(o, "핵심성과", "핵심 성과"); if (impact) item.impact = impact;
+        const tools = this.pick(o, "사용툴", "사용 툴"); if (tools) item.tools = tools;
+        const videoUrl = this.pick(o, "영상"); if (isUrl(videoUrl)) item.videoUrl = videoUrl;
+        const imageUrl = this.pick(o, "이미지"); if (isUrl(imageUrl)) item.imageUrl = imageUrl;
+        const docUrl = this.pick(o, "문서"); if (isUrl(docUrl)) item.docUrl = docUrl;
+        const webUrl = this.pick(o, "공개URL", "공개 URL"); if (isUrl(webUrl)) item.webUrl = webUrl;
+        const thumbUrl = this.pick(o, "썸네일"); if (isUrl(thumbUrl)) item.thumbUrl = thumbUrl;
+        return item;
+      });
+  }
+
+  // scripts/build.mjs 의 metricsToImpacts 와 동일 매핑
+  metricRowsToImpacts(objs, nameById) {
+    return objs
+      .filter((o) => (o["Metric"] || "").trim() && /확인|verified|yes/i.test(o["Verified"] || ""))
+      .map((o) => {
+        const phrase = (o["Portfolio Phrase"] || "").trim();
+        const before = (o["Before"] || "").trim();
+        const after = (o["After"] || "").trim();
+        const unit = (o["Unit"] || "").trim();
+        const change = (o["Change"] || "").trim();
+        return {
+          value: 0, pre: "", suf: "",
+          display: phrase || (before && after ? `${before} → ${after}${unit ? " " + unit : ""}` : change),
+          label: (o["Metric"] || "").trim(),
+          note: (o["Evidence / Source"] || "").trim(),
+          source: nameById[(o["Project ID"] || "").trim()] || (o["Project ID"] || "").trim()
+        };
+      });
+  }
+
   safeMotion() {
     try { this.setupMotion(); } catch (err) { console.error("[motion]", err); }
   }
@@ -2105,7 +2233,18 @@ class Component extends DCLogic {
       caseStepRow: this.buildStepRow(idx),
       close: () => this.closeCase(),
       prev: () => this.gotoCase((this.state.active + this.projects.length - 1) % this.projects.length),
-      next: () => this.gotoCase((this.state.active + 1) % this.projects.length)
+      next: () => this.gotoCase((this.state.active + 1) % this.projects.length),
+
+      // 숨은 새로고침 버튼 (footer 저작권 옆 작은 점)
+      syncFromSheet: () => this.syncFromSheet(),
+      syncDotColor: this.state.syncStatus === "loading" ? "#FF5A2B"
+        : this.state.syncStatus === "done" ? "#3FAE58"
+        : this.state.syncStatus === "error" ? "#E4483C"
+        : "#D8D3CB",
+      syncTitle: this.state.syncStatus === "loading" ? "불러오는 중…"
+        : this.state.syncStatus === "done" ? "최신 데이터로 업데이트 완료"
+        : this.state.syncStatus === "error" ? "불러오기 실패 — 다시 시도"
+        : "최신 데이터 불러오기"
     };
   }
 }
