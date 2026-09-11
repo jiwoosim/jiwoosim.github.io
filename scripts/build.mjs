@@ -85,6 +85,8 @@ function siteToArchive(objs) {
       if (isUrl(docUrl)) item.docUrl = docUrl;
       const webUrl = get(o, "공개URL", "공개 URL");
       if (isUrl(webUrl)) item.webUrl = webUrl;
+      const thumbUrl = get(o, "썸네일");
+      if (isUrl(thumbUrl)) item.thumbUrl = thumbUrl;
       return item;
     });
 }
