@@ -518,9 +518,6 @@
               <span style="color:#C7370E">{{ a.cat }}</span><span style="color:#CFCAC2">·</span><span style="color:#6E6A63">{{ a.year }}</span>
             </div>
             <div style="font-size:13.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.45;text-wrap:pretty">{{ a.title }}</div>
-            <sc-if value="{{ a.clickable }}" hint-placeholder-val="{{ false }}">
-              <div style="display:inline-flex;align-items:center;gap:5px;margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#C7370E">{{ a.assetLabel }}</div>
-            </sc-if>
           </div>
         </article>
       </sc-for>
@@ -541,27 +538,27 @@
   </div>
 </section>
 
-<section id="s08" style="padding:clamp(96px,13vw,140px) clamp(16px,4vw,22px) clamp(96px,13vw,140px);background:#17171A;color:#F7F5F2">
+<section id="s08" style="padding:clamp(96px,13vw,140px) clamp(16px,4vw,22px) clamp(96px,13vw,140px);background:#101A2B;color:#F4F6FA">
   <div style="max-width:1240px;margin:0 auto">
     <div data-reveal="1" style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:20px">
-      <span style="font-size:clamp(30px,4vw,48px);font-weight:300;color:#6E6A63;letter-spacing:-0.03em;line-height:1">05</span>
-      <span style="font-size:clamp(22px,3vw,34px);font-weight:600;letter-spacing:-0.035em;color:#F7F5F2">Impact</span>
+      <span style="font-size:clamp(30px,4vw,48px);font-weight:300;color:#5B6C87;letter-spacing:-0.03em;line-height:1">05</span>
+      <span style="font-size:clamp(22px,3vw,34px);font-weight:600;letter-spacing:-0.035em;color:#F4F6FA">Impact</span>
     </div>
-    <h2 data-reveal="1" style="margin:0 0 14px;font-size:clamp(27px,4.3vw,52px);font-weight:700;letter-spacing:-0.044em;line-height:1.24;color:#F7F5F2">확인 가능한 숫자만<br>적었습니다.</h2>
-    <p data-reveal="1" style="margin:0 0 46px;font-size:15.5px;line-height:1.85;color:#A9A39B;max-width:560px">숫자보다 중요한 것은 무엇을 바꿨는지입니다. 각 수치는 서로 다른 프로젝트의 결과입니다.</p>
+    <h2 data-reveal="1" style="margin:0 0 14px;font-size:clamp(27px,4.3vw,52px);font-weight:700;letter-spacing:-0.044em;line-height:1.24;color:#F4F6FA">확인 가능한 숫자만<br>적었습니다.</h2>
+    <p data-reveal="1" style="margin:0 0 46px;font-size:15.5px;line-height:1.85;color:#A6B0C2;max-width:560px">숫자보다 중요한 것은 무엇을 바꿨는지입니다. 각 수치는 서로 다른 프로젝트의 결과입니다.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:16px">
       <sc-for list="{{ impacts }}" as="i" hint-placeholder-count="6">
-        <div data-reveal="1" style="position:relative;background:#1E1E22;border:1px solid #2E2E33;border-radius:24px;padding:30px 26px 26px;display:flex;flex-direction:column;gap:10px;min-height:230px;overflow:hidden;transition:transform .45s cubic-bezier(.2,.7,.3,1),border-color .45s ease" style-hover="transform:translateY(-5px);border-color:#FF5A2B">
-          <span aria-hidden="true" style="position:absolute;top:-40px;right:-40px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(255,90,43,.22),rgba(23,23,26,0) 68%);pointer-events:none"></span>
+        <div data-reveal="1" style="position:relative;background:#182437;border:1px solid #28374F;border-radius:24px;padding:30px 26px 26px;display:flex;flex-direction:column;gap:10px;min-height:230px;overflow:hidden;transition:transform .45s cubic-bezier(.2,.7,.3,1),border-color .45s ease" style-hover="transform:translateY(-5px);border-color:#FF5A2B">
+          <span aria-hidden="true" style="position:absolute;top:-40px;right:-40px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(255,90,43,.22),rgba(16,26,43,0) 68%);pointer-events:none"></span>
           <div data-num="{{ i.value }}" data-pre="{{ i.pre }}" data-suf="{{ i.suf }}" style="font-size:clamp(40px,5.6vw,62px);font-weight:300;letter-spacing:-0.05em;line-height:1;color:#FF5A2B">{{ i.display }}</div>
-          <div style="font-size:15.5px;font-weight:600;letter-spacing:-0.02em;color:#F7F5F2">{{ i.label }}</div>
-          <div style="font-size:13px;line-height:1.75;color:#A9A39B">{{ i.note }}</div>
+          <div style="font-size:15.5px;font-weight:600;letter-spacing:-0.02em;color:#F4F6FA">{{ i.label }}</div>
+          <div style="font-size:13px;line-height:1.75;color:#A6B0C2">{{ i.note }}</div>
           <div style="margin-top:auto;padding-top:16px">
             <sc-if value="{{ i.link }}" hint-placeholder-val="{{ false }}">
               <a href="{{ i.link }}" style="display:inline-flex;align-items:center;gap:7px;font-size:11px;color:#FF8A5C;background:rgba(255,90,43,.1);border:1px solid rgba(255,90,43,.34);border-radius:999px;padding:6px 12px;transition:all .3s ease" style-hover="background:rgba(255,90,43,.2);color:#FFB596">{{ i.source }} <span>→</span></a>
             </sc-if>
             <sc-if value="{{ i.plain }}" hint-placeholder-val="{{ true }}">
-              <span style="font-size:11px;color:#A9A39B;background:rgba(255,255,255,.05);border:1px solid #33333A;border-radius:999px;padding:6px 12px">{{ i.source }}</span>
+              <span style="font-size:11px;color:#8C99AE;background:rgba(255,255,255,.04);border:1px solid #28374F;border-radius:999px;padding:6px 12px">{{ i.source }}</span>
             </sc-if>
           </div>
         </div>
@@ -675,7 +672,7 @@
     <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;margin-top:60px;padding-top:24px;border-top:1px solid #EAE7E3;font-size:12px;letter-spacing:0.04em;color:#6E6A63">
       <span>2026 SIM JIWOO · CONTENT MARKETING PORTFOLIO</span>
     </div>
-    <div style="margin-top:34px;text-align:center;font-size:11px;letter-spacing:0.06em;color:#6E6A63">© 2026 Sim Jiwoo. All rights reserved.</div>
+    <div style="margin-top:34px;text-align:center;font-size:11px;letter-spacing:0.06em;color:#6E6A63">© 2026 Sim Jiwoo. All rights reserved. <button type="button" onClick="{{ syncFromSheet }}" title="{{ syncTitle }}" aria-label="데이터 새로고침" style="all:unset;cursor:pointer;display:inline-block;width:5px;height:5px;border-radius:50%;background:{{ syncDotColor }};margin-left:9px;vertical-align:middle;transition:background .35s ease"></button></div>
   </div>
 </section>
 
@@ -957,23 +954,16 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900}}">
 class Component extends DCLogic {
-  state = { active: null, step: null, intro: 0, introDone: false, tab: "ALL", narrow: typeof window !== "undefined" && window.innerWidth < 560, asset: null };
+  state = { active: null, step: null, intro: 0, introDone: false, tab: "ALL", narrow: typeof window !== "undefined" && window.innerWidth < 560, asset: null, syncStatus: null };
 
   // 숫자는 확정 자료 확인 후 여기만 수정하면 됩니다.
   archiveSpan = "2022 — 2026";
 
+  // 시트 실시간 새로고침용 (공개 조회 링크라 비밀값 아님) — scripts/build.mjs 가 빌드 시 채워넣음
+  sheetId = "1hGcfYYJu7kTk8S1Jb1V5oWqgsYLN39O98XISxmhnvVU";
+
   // 실제 확인된 작업물만 등록합니다. 자료를 주시면 한 건씩 추가합니다.
   archive = [
-    {
-      "cat": "WEB",
-      "year": "",
-      "title": "금융 콘텐츠 / 보험 안내 페이지",
-      "media": "web",
-      "featured": true,
-      "contribution": "콘텐츠 기획 · 카피 · 웹 구성",
-      "impact": "복잡한 금융 정보를 행동 가능한 콘텐츠로 구조화",
-      "tools": "Figma / HTML / AI"
-    },
     {
       "cat": "VIDEO",
       "year": "",
@@ -984,28 +974,55 @@ class Component extends DCLogic {
       "contribution": "100%",
       "impact": "기술 스펙을 Apple-style AI 영상 경험으로 번역",
       "tools": "GPT / Seedance / Capcut / Figma / Aftereffect",
-      "videoUrl": "https://drive.google.com/file/d/12jGlH7UocEE36Nwa7xasmXFjHsSRss5g/view?usp=drive_link"
+      "videoUrl": "https://drive.google.com/file/d/12jGlH7UocEE36Nwa7xasmXFjHsSRss5g/view?usp=drive_link",
+      "thumbUrl": "https://drive.google.com/file/d/1BHGCLyHX-4ziQFoYXZ8R1PY3SXpaG6Lo/view?usp=drive_link"
+    },
+    {
+      "cat": "VIDEO",
+      "year": "2026",
+      "title": "효성 파트너 컨퍼런스용 솔루션 영상",
+      "media": "video",
+      "featured": true,
+      "period": "2026.09",
+      "contribution": "100%",
+      "impact": "다양한 솔루션 시나리오를 한 번 영상으로 압축",
+      "tools": "GPT / Seedance / Capcut / Cling",
+      "videoUrl": "https://drive.google.com/file/d/1UD31o125z6YPvU_6LKyxk5ImV4H_S8y5/view?usp=drive_link",
+      "thumbUrl": "https://drive.google.com/file/d/1KYGX053Qu_6mrrzDaqASf-xFYXeSqsIP/view?usp=drive_link"
     },
     {
       "cat": "WEB",
       "year": "2026",
-      "title": "LiveGuard 인터랙티브 3D 제품 웹",
+      "title": "LiveGuard 인터랙티브 웹",
       "media": "web",
       "featured": true,
       "period": "2026.08~",
-      "contribution": "기획 · UX · HTML·JS 구현",
+      "contribution": "100%",
       "impact": "콘텐츠 기획을 실제 인터랙티브 웹 구현까지 연결",
-      "tools": "HTML / CSS / JavaScript / GLB / AI"
+      "tools": "HTML / CSS / JavaScript / GLB / Claude / GPT",
+      "docUrl": "https://unionbiometrics.com/ces2027/ubio-x-liveguard/"
     },
     {
-      "cat": "EXHIBITION",
+      "cat": "WEB",
       "year": "2026",
-      "title": "INTERSEC 2026 전시 마케팅",
-      "media": "photo",
-      "period": "2026",
-      "contribution": "B2B 마케팅 · 콘텐츠 · 전시 운영",
-      "impact": "전시 콘텐츠를 실제 파트너 미팅 성과로 연결",
-      "tools": "PPT / Adobe / AI"
+      "title": "PetID 인터랙티브 웹",
+      "media": "web",
+      "period": "2026.07~",
+      "contribution": "100%",
+      "impact": "브랜드 스토리를 웹 인터랙션으로 확장",
+      "tools": "HTML / CSS / JavaScript / Claude / GPT",
+      "docUrl": "https://unionbiometrics.com/ces2027/ubio-petid/"
+    },
+    {
+      "cat": "WEB",
+      "year": "2026",
+      "title": "HeartID 인터랙티브 웹",
+      "media": "web",
+      "period": "2026.07~",
+      "contribution": "100%",
+      "impact": "브랜드 스토리를 웹 인터랙션으로 확장",
+      "tools": "HTML / CSS / JavaScript / Claude / GPT",
+      "docUrl": "https://unionbiometrics.com/ces2027/ubio-heartid/"
     },
     {
       "cat": "EDITORIAL",
@@ -1014,7 +1031,6 @@ class Component extends DCLogic {
       "media": "print",
       "featured": true,
       "period": "2026",
-      "contribution": "프로세스 설계 · 제작 · 문서화 · 팀 공유",
       "impact": "AI를 툴이 아니라 반복 가능한 업무 프로세스로 내재화",
       "tools": "GPT / Gemini / AI Video / Figma / Premiere"
     },
@@ -1024,7 +1040,6 @@ class Component extends DCLogic {
       "title": "GEO 콘텐츠 개선",
       "media": "print",
       "period": "2026",
-      "contribution": "콘텐츠 전략 · 분석 · 개선",
       "impact": "콘텐츠 제작을 검색 성과 개선까지 연결",
       "tools": "GA4 / AI / Web"
     },
@@ -1033,22 +1048,38 @@ class Component extends DCLogic {
       "year": "",
       "title": "PetID CES 2027 혁신상 홍보영상",
       "media": "video",
+      "featured": true,
       "period": "26.08",
       "contribution": "100%",
       "impact": "특허 기반 비문 인식 기술을 반려동물 평생 ID로 확장해 설명한 3분 제품 스토리",
       "tools": "GPT / Seedance / Capcut / Figma / Aftereffect",
-      "videoUrl": "https://drive.google.com/file/d/17tZGrBe9AFOH69RxWi-PdOsJxPVOKzCJ/view?usp=drivesdk"
+      "videoUrl": "https://drive.google.com/file/d/17tZGrBe9AFOH69RxWi-PdOsJxPVOKzCJ/view?usp=drivesdk",
+      "thumbUrl": "https://drive.google.com/file/d/1aIvrWdbYAlrdymDV-kKZ2DcYy_R61fFW/view?usp=drive_link"
     },
     {
       "cat": "VIDEO",
-      "year": "",
+      "year": "2026",
       "title": "HeartID CES 2027 혁신상 홍보영상",
       "media": "video",
-      "period": "26.08~26.09",
+      "featured": true,
+      "period": "2026.09",
       "contribution": "100%",
       "impact": "특허 기반 비문 인식 기술을 반려동물 평생 ID로 확장해 설명한 3분 제품 스토리",
       "tools": "GPT / Seedance / Capcut / Figma / Aftereffect",
-      "videoUrl": "https://drive.google.com/file/d/1GA-SwFYmdNZTQF-RBGPcIYTOSsHc0pbi/view?usp=drive_link"
+      "videoUrl": "https://drive.google.com/file/d/1GA-SwFYmdNZTQF-RBGPcIYTOSsHc0pbi/view?usp=drive_link",
+      "thumbUrl": "https://drive.google.com/file/d/1k815Yj5HNKpHeCPrWgow68FoG10-nci_/view?usp=drive_link"
+    },
+    {
+      "cat": "EDITORIAL",
+      "year": "2025",
+      "title": "농협은행 통합인증센터 구축 제안서",
+      "media": "print",
+      "period": "2025.09",
+      "contribution": "30%",
+      "impact": "제안서 작업 중 자료조사 및 앞단 설계 및 제작",
+      "tools": "GPT / Word / PowerPoint",
+      "docUrl": "https://drive.google.com/file/d/1ivWx4HNq9DZMdIXF9y0ciQqIpZDW5qrA/view?usp=drive_link",
+      "thumbUrl": "https://drive.google.com/file/d/1ivWx4HNq9DZMdIXF9y0ciQqIpZDW5qrA/view?usp=drive_link"
     }
   ];
 
@@ -1904,6 +1935,131 @@ class Component extends DCLogic {
     this.setState({ asset: null });
   }
 
+  // ── 시트 실시간 새로고침 (숨은 버튼용) ──────────────────────────
+  // 빌드를 새로 돌리지 않고, 브라우저에서 바로 구글 시트 SITE/04_METRICS 탭을
+  // 읽어 archive/impacts 를 갱신한다. 매핑 로직은 scripts/build.mjs 와 동일하게 유지.
+  async syncFromSheet() {
+    if (!this.sheetId || this._syncing) return;
+    this._syncing = true;
+    this.setState({ syncStatus: "loading" });
+    try {
+      const [siteCsv, metricsCsv] = await Promise.all([
+        this.fetchSheetTab("SITE"),
+        this.fetchSheetTab("04_METRICS")
+      ]);
+      const siteObjs = this.csvRowsToObjects(siteCsv, "제목");
+      const metricObjs = this.csvRowsToObjects(metricsCsv, "Portfolio Phrase");
+      const nameById = {};
+      siteObjs.forEach((o) => { nameById[this.pick(o, "ID")] = this.pick(o, "제목"); });
+      const newArchive = this.siteRowsToArchive(siteObjs);
+      const newImpacts = this.metricRowsToImpacts(metricObjs, nameById);
+      if (newArchive.length) this.archive = newArchive;
+      if (newImpacts.length) this.impacts = newImpacts;
+      this._syncing = false;
+      this.setState({ syncStatus: "done", tab: "ALL", archiveAll: false });
+    } catch (err) {
+      console.error("[syncFromSheet]", err);
+      this._syncing = false;
+      this.setState({ syncStatus: "error" });
+    } finally {
+      clearTimeout(this._syncMsgTimer);
+      this._syncMsgTimer = setTimeout(() => this.setState({ syncStatus: null }), 2400);
+    }
+  }
+
+  async fetchSheetTab(tab) {
+    const url = `https://docs.google.com/spreadsheets/d/${this.sheetId}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(tab)}&headers=1&_=${Date.now()}`;
+    const res = await fetch(url, { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const text = await res.text();
+    if (text.startsWith("<!DOCTYPE") || text.startsWith("<HTML")) throw new Error("시트 미공개 또는 탭 이름 불일치");
+    return text;
+  }
+
+  // RFC4180 CSV 파서 (scripts/lib.mjs parseCSV 와 동일 로직)
+  parseCSVText(text) {
+    const rows = [];
+    let row = [], field = "", inQuotes = false;
+    const s = text.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+    for (let i = 0; i < s.length; i++) {
+      const c = s[i];
+      if (inQuotes) {
+        if (c === '"') { if (s[i + 1] === '"') { field += '"'; i++; } else inQuotes = false; }
+        else field += c;
+      } else {
+        if (c === '"') inQuotes = true;
+        else if (c === ",") { row.push(field); field = ""; }
+        else if (c === "\n") { row.push(field); rows.push(row); row = []; field = ""; }
+        else field += c;
+      }
+    }
+    if (field.length || row.length) { row.push(field); rows.push(row); }
+    return rows.filter((r) => r.some((v) => v.trim() !== ""));
+  }
+
+  csvRowsToObjects(csv, headerMarker) {
+    const rows = this.parseCSVText(csv);
+    let hi = rows.findIndex((r) => r.some((c) => c.includes(headerMarker)));
+    if (hi < 0) hi = 0;
+    const header = rows[hi].map((h) => h.replace(/^METRICS\s+/, "").trim());
+    return rows.slice(hi + 1).map((r) => {
+      const o = {};
+      header.forEach((h, i) => { o[h] = (r[i] ?? "").trim(); });
+      return o;
+    });
+  }
+
+  pick(o, ...keys) {
+    for (const k of keys) { const v = (o[k] || "").trim(); if (v) return v; }
+    return "";
+  }
+
+  // scripts/build.mjs 의 siteToArchive 와 동일 매핑
+  siteRowsToArchive(objs) {
+    const CAT_BY_TYPE = { "영상": "VIDEO", "웹": "WEB", "콘텐츠": "EDITORIAL", "브로슈어/백서": "EDITORIAL", "전시/이벤트": "EXHIBITION", "캠페인": "SOCIAL", "인터랙티브": "WEB", "기타": "EDITORIAL" };
+    const MEDIA_BY_TYPE = { "영상": "video", "웹": "web", "인터랙티브": "web", "전시/이벤트": "photo", "캠페인": "image", "콘텐츠": "print", "브로슈어/백서": "print", "기타": "print" };
+    const isUrl = (v) => /^https?:\/\//.test(v);
+    return objs
+      .filter((o) => this.pick(o, "제목") && /^(YES|Y|예|포함)$/i.test(this.pick(o, "포폴반영", "포폴 반영")))
+      .map((o) => {
+        const type = this.pick(o, "유형");
+        const period = this.pick(o, "기간");
+        const yearMatch = period.match(/20\d{2}/);
+        const item = { cat: CAT_BY_TYPE[type] || "EDITORIAL", year: yearMatch ? yearMatch[0] : "", title: this.pick(o, "제목"), media: MEDIA_BY_TYPE[type] || "print" };
+        if (/^S$/i.test(this.pick(o, "포폴등급", "포폴 등급"))) item.featured = true;
+        if (period) item.period = period;
+        const contribution = this.pick(o, "기여도"); if (contribution) item.contribution = contribution;
+        const impact = this.pick(o, "핵심성과", "핵심 성과"); if (impact) item.impact = impact;
+        const tools = this.pick(o, "사용툴", "사용 툴"); if (tools) item.tools = tools;
+        const videoUrl = this.pick(o, "영상"); if (isUrl(videoUrl)) item.videoUrl = videoUrl;
+        const imageUrl = this.pick(o, "이미지"); if (isUrl(imageUrl)) item.imageUrl = imageUrl;
+        const docUrl = this.pick(o, "문서"); if (isUrl(docUrl)) item.docUrl = docUrl;
+        const webUrl = this.pick(o, "공개URL", "공개 URL"); if (isUrl(webUrl)) item.webUrl = webUrl;
+        const thumbUrl = this.pick(o, "썸네일"); if (isUrl(thumbUrl)) item.thumbUrl = thumbUrl;
+        return item;
+      });
+  }
+
+  // scripts/build.mjs 의 metricsToImpacts 와 동일 매핑
+  metricRowsToImpacts(objs, nameById) {
+    return objs
+      .filter((o) => (o["Metric"] || "").trim() && /확인|verified|yes/i.test(o["Verified"] || ""))
+      .map((o) => {
+        const phrase = (o["Portfolio Phrase"] || "").trim();
+        const before = (o["Before"] || "").trim();
+        const after = (o["After"] || "").trim();
+        const unit = (o["Unit"] || "").trim();
+        const change = (o["Change"] || "").trim();
+        return {
+          value: 0, pre: "", suf: "",
+          display: phrase || (before && after ? `${before} → ${after}${unit ? " " + unit : ""}` : change),
+          label: (o["Metric"] || "").trim(),
+          note: (o["Evidence / Source"] || "").trim(),
+          source: nameById[(o["Project ID"] || "").trim()] || (o["Project ID"] || "").trim()
+        };
+      });
+  }
+
   safeMotion() {
     try { this.setupMotion(); } catch (err) { console.error("[motion]", err); }
   }
@@ -2273,7 +2429,18 @@ class Component extends DCLogic {
       caseStepRow: this.buildStepRow(idx),
       close: () => this.closeCase(),
       prev: () => this.gotoCase((this.state.active + this.projects.length - 1) % this.projects.length),
-      next: () => this.gotoCase((this.state.active + 1) % this.projects.length)
+      next: () => this.gotoCase((this.state.active + 1) % this.projects.length),
+
+      // 숨은 새로고침 버튼 (footer 저작권 옆 작은 점)
+      syncFromSheet: () => this.syncFromSheet(),
+      syncDotColor: this.state.syncStatus === "loading" ? "#FF5A2B"
+        : this.state.syncStatus === "done" ? "#3FAE58"
+        : this.state.syncStatus === "error" ? "#E4483C"
+        : "#D8D3CB",
+      syncTitle: this.state.syncStatus === "loading" ? "불러오는 중…"
+        : this.state.syncStatus === "done" ? "최신 데이터로 업데이트 완료"
+        : this.state.syncStatus === "error" ? "불러오기 실패 — 다시 시도"
+        : "최신 데이터 불러오기"
     };
   }
 }
