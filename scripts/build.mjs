@@ -170,6 +170,10 @@ let html = readFileSync(SRC, "utf8");
 if (archive && archive.length) html = replaceArray(html, "archive", archive);
 if (impacts && impacts.length) html = replaceArray(html, "impacts", impacts);
 
+// 숨은 새로고침 버튼이 브라우저에서 직접 시트를 읽을 수 있도록 시트 ID 주입
+// (gviz 공개 조회 링크에 쓰이는 값이라 비밀이 아님)
+if (SHEET_ID) html = replaceScalarField(html, "sheetId", SHEET_ID);
+
 // 코드 관리 배열
 const tags = fromCSV("tags", (r) => r.tag);
 const introTiles = fromCSV("introTiles", (r) => r.tile);
