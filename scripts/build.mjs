@@ -1,4 +1,4 @@
-// 데이터 → 사이트 빌드.
+// 데이터 → 사이트 빌드. (trigger rebuild)
 //   SHEET_ID = "포트폴리오 아카이브" 스프레드시트 ID
 //   01_MASTER  탭 → 사이트 ARCHIVE (포폴 반영 = YES 인 프로젝트)
 //   04_METRICS 탭 → 사이트 IMPACT
