@@ -487,7 +487,7 @@
 
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(232px,44vw),1fr));gap:clamp(10px,2vw,14px);align-items:start">
       <sc-for list="{{ archiveItems }}" as="a" hint-placeholder-count="16">
-        <article style="grid-column:{{ a.span }};background:#fff;border:1px solid #EFECE8;border-radius:14px;overflow:hidden;transition:border-color .35s ease,box-shadow .35s ease" style-hover="border-color:#DCD6CE;box-shadow:0 12px 28px rgba(23,23,26,.07)">
+        <article onClick="{{ a.open }}" role="button" aria-label="{{ a.title }} 산출물 보기" style="grid-column:{{ a.span }};background:#fff;border:1px solid #EFECE8;border-radius:14px;overflow:hidden;cursor:{{ a.cursor }};transition:border-color .35s ease,box-shadow .35s ease" style-hover="border-color:#DCD6CE;box-shadow:0 12px 28px rgba(23,23,26,.07)">
           <div style="position:relative;width:100%;padding-top:{{ a.pad }};background:{{ a.bg }};overflow:hidden">
             <sc-if value="{{ a.img }}" hint-placeholder-val="{{ false }}">
               <img src="{{ a.img }}" alt="{{ a.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:{{ a.fit }};padding:8px;transition:transform .5s cubic-bezier(.2,.7,.3,1)" style-hover="transform:scale(1.03)">
@@ -498,10 +498,19 @@
             <sc-if value="{{ a.isVideo }}" hint-placeholder-val="{{ false }}">
               <span aria-hidden="true" style="position:absolute;top:11px;left:11px;width:22px;height:22px;border-radius:50%;background:rgba(23,23,26,.55);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;padding-left:2px">▶</span>
             </sc-if>
-            <div style="position:absolute;inset:0;background:rgba(23,23,26,.86);opacity:0;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;padding:12px;transition:opacity .35s ease" style-hover="opacity:1">
-              <sc-for list="{{ a.roles }}" as="r" hint-placeholder-count="3">
-                <span style="font-size:11.5px;line-height:1.4;color:#F7F5F2">{{ r }}</span>
-              </sc-for>
+            <div style="position:absolute;inset:0;background:rgba(23,23,26,.86);opacity:0;display:flex;flex-direction:column;justify-content:flex-end;gap:5px;padding:12px;transition:opacity .35s ease" style-hover="opacity:1">
+              <sc-if value="{{ a.impact }}" hint-placeholder-val="{{ true }}">
+                <div style="font-size:12px;line-height:1.5;color:#FF9B7A;font-weight:700">{{ a.impact }}</div>
+              </sc-if>
+              <sc-if value="{{ a.period }}" hint-placeholder-val="{{ true }}">
+                <div style="font-size:11px;line-height:1.5;color:#F7F5F2"><span style="color:#9C978F">기간 · </span>{{ a.period }}</div>
+              </sc-if>
+              <sc-if value="{{ a.contribution }}" hint-placeholder-val="{{ true }}">
+                <div style="font-size:11px;line-height:1.5;color:#F7F5F2"><span style="color:#9C978F">기여도 · </span>{{ a.contribution }}</div>
+              </sc-if>
+              <sc-if value="{{ a.tools }}" hint-placeholder-val="{{ true }}">
+                <div style="font-size:11px;line-height:1.5;color:#F7F5F2"><span style="color:#9C978F">TOOLS · </span>{{ a.tools }}</div>
+              </sc-if>
             </div>
           </div>
           <div style="padding:12px 13px 15px">
@@ -509,8 +518,8 @@
               <span style="color:#C7370E">{{ a.cat }}</span><span style="color:#CFCAC2">·</span><span style="color:#6E6A63">{{ a.year }}</span>
             </div>
             <div style="font-size:13.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.45;text-wrap:pretty">{{ a.title }}</div>
-            <sc-if value="{{ a.live }}" hint-placeholder-val="{{ false }}">
-              <a href="{{ a.live }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#C7370E;border:1px solid #FFD8CA;border-radius:999px;padding:5px 10px;transition:background .3s ease" style-hover="background:#FFF1EC;color:#FF5A2B">VIEW LIVE ↗</a>
+            <sc-if value="{{ a.clickable }}" hint-placeholder-val="{{ false }}">
+              <div style="display:inline-flex;align-items:center;gap:5px;margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#C7370E">{{ a.assetLabel }}</div>
             </sc-if>
           </div>
         </article>
@@ -926,12 +935,29 @@
   </div>
 </sc-if>
 
+<sc-if value="{{ asset }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeAsset }}" style="position:fixed;inset:0;z-index:90;background:rgba(15,14,13,.92);display:flex;align-items:center;justify-content:center;padding:clamp(16px,4vw,40px);animation:mkFade .25s ease both">
+    <button type="button" onClick="{{ closeAsset }}" aria-label="닫기" style="all:unset;cursor:pointer;position:absolute;top:20px;right:24px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;transition:background .3s ease" style-hover="background:rgba(255,255,255,.2)">✕</button>
+    <div onClick="{{ stopAssetClick }}" style="max-width:min(1100px,92vw);width:100%">
+      <sc-if value="{{ asset.isVideoTag }}" hint-placeholder-val="{{ false }}">
+        <video src="{{ asset.url }}" controls autoplay style="display:block;width:100%;max-height:86vh;border-radius:10px;background:#000"></video>
+      </sc-if>
+      <sc-if value="{{ asset.isFrame }}" hint-placeholder-val="{{ false }}">
+        <iframe src="{{ asset.url }}" allow="autoplay" style="display:block;width:100%;height:80vh;border:0;border-radius:10px;background:#000"></iframe>
+      </sc-if>
+      <sc-if value="{{ asset.isImage }}" hint-placeholder-val="{{ false }}">
+        <img src="{{ asset.url }}" alt="{{ asset.title }}" style="display:block;max-width:100%;max-height:86vh;margin:0 auto;border-radius:10px">
+      </sc-if>
+    </div>
+  </div>
+</sc-if>
+
 </div>
 
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900}}">
 class Component extends DCLogic {
-  state = { active: null, step: null, intro: 0, introDone: false, tab: "ALL", narrow: typeof window !== "undefined" && window.innerWidth < 560 };
+  state = { active: null, step: null, intro: 0, introDone: false, tab: "ALL", narrow: typeof window !== "undefined" && window.innerWidth < 560, asset: null };
 
   // 숫자는 확정 자료 확인 후 여기만 수정하면 됩니다.
   archiveSpan = "2022 — 2026";
@@ -1600,6 +1626,7 @@ class Component extends DCLogic {
     window.addEventListener("scroll", this._onAnyScroll, true);
     this._onKey = (e) => {
       if (e.key === "Escape" && this.state.active !== null) this.closeCase();
+      if (e.key === "Escape" && this.state.asset) this.closeAsset();
       if (e.key === "Escape" && this.state.profileOpen) this.setState({ profileOpen: false });
       if (!this.state.introDone && (e.key === "Escape" || e.key === " " || e.key === "Enter")) this.endIntro();
     };
@@ -1653,6 +1680,50 @@ class Component extends DCLogic {
   closeCase() {
     clearInterval(this._resetTimer);
     this.setState({ active: null, step: null });
+  }
+
+  // 아카이브 카드 클릭 → 산출물 종류에 맞는 방식으로 오픈.
+  // 웹은 새 탭, 영상/이미지/문서는 모달.
+  resolveAsset(a) {
+    const driveId = (u) => {
+      const m = u.match(/\/file\/d\/([^/]+)/) || u.match(/[?&]id=([^&]+)/);
+      return m ? m[1] : null;
+    };
+    if (a.media === "video" && a.videoUrl) {
+      const id = driveId(a.videoUrl);
+      if (id) return { type: "video-frame", url: `https://drive.google.com/file/d/${id}/preview`, label: "영상 재생 ▶" };
+      if (/\.(mp4|webm|mov|m4v)(\?|$)/i.test(a.videoUrl)) return { type: "video", url: a.videoUrl, label: "영상 재생 ▶" };
+      return { type: "web", url: a.videoUrl, label: "영상 보기 ↗" };
+    }
+    if (a.imageUrl) {
+      const id = driveId(a.imageUrl);
+      return { type: "image", url: id ? `https://drive.google.com/thumbnail?id=${id}&sz=w1600` : a.imageUrl, label: "이미지 크게 보기" };
+    }
+    if (a.docUrl) {
+      const id = driveId(a.docUrl);
+      if (id) return { type: "doc-frame", url: `https://drive.google.com/file/d/${id}/preview`, label: "기획안 보기" };
+      return { type: "web", url: a.docUrl, label: "기획안 보기 ↗" };
+    }
+    if (a.webUrl) return { type: "web", url: a.webUrl, label: "사이트 방문 ↗" };
+    return null;
+  }
+
+  openAsset(asset, title) {
+    if (!asset) return;
+    if (asset.type === "web") { window.open(asset.url, "_blank", "noopener"); return; }
+    this.setState({
+      asset: {
+        url: asset.url,
+        title,
+        isVideoTag: asset.type === "video",
+        isFrame: asset.type === "video-frame" || asset.type === "doc-frame",
+        isImage: asset.type === "image"
+      }
+    });
+  }
+
+  closeAsset() {
+    this.setState({ asset: null });
   }
 
   safeMotion() {
@@ -1948,19 +2019,25 @@ class Component extends DCLogic {
     const step = 12;
     const shown = this.state.archiveAll ? pool.length : Math.min(step, pool.length);
     const items = pool.slice(0, shown)
-      .map((a, i) => ({
-        ...a,
-        key: a.cat + i,
-        span: "span 1",
-        pad: "66.7%",
-        isVideo: a.media === "video",
-        live: a.url || null,
-        img: a.img || null,
-        noImg: !a.img,
-        fit: a.fit || "cover",
-        bg: a.bg || "#F2EFEB",
-        alt: a.title + " 썸네일"
-      }));
+      .map((a, i) => {
+        const asset = this.resolveAsset(a);
+        return {
+          ...a,
+          key: a.cat + i,
+          span: "span 1",
+          pad: "66.7%",
+          isVideo: a.media === "video",
+          img: a.img || null,
+          noImg: !a.img,
+          fit: a.fit || "cover",
+          bg: a.bg || "#F2EFEB",
+          alt: a.title + " 썸네일",
+          clickable: !!asset,
+          cursor: asset ? "pointer" : "default",
+          assetLabel: asset ? asset.label : "",
+          open: asset ? () => this.openAsset(asset, a.title) : () => {}
+        };
+      });
     const present = Object.keys(this.archiveMeta).filter(k => k === "ALL" || this.archive.some(a => a.cat === k));
     const tabs = present.map(k => {
       const on = k === tab;
@@ -1989,6 +2066,9 @@ class Component extends DCLogic {
         { value: "END-TO-END", label: "PLANNING → PRODUCTION" }
       ],
       archiveSpan: this.archiveSpan,
+      asset: this.state.asset,
+      closeAsset: () => this.closeAsset(),
+      stopAssetClick: (e) => e.stopPropagation(),
       archiveFormatLine: present.filter(k => k !== "ALL").map(k => this.archiveMeta[k].toUpperCase()).join(" · "),
       archiveCount: (tab === "ALL" ? "ALL WORK" : this.archiveMeta[tab]) + " · " + pool.length + " CONTENT ASSETS",
       introOn: !this.state.introDone,
