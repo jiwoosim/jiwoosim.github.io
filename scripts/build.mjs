@@ -60,7 +60,8 @@ function masterToArchive(objs) {
       const yearMatch = (o["기간"] || "").match(/20\d{2}/);
       const roles = (o["내 역할"] || "")
         .split(/[\/·,]/).map((s) => s.trim()).filter(Boolean);
-      const url = (o["공개 URL"] || "").trim();
+      // 클릭 링크: 공개 URL 우선, 없으면 최종 영상 링크로 대체
+      const url = (o["공개 URL"] || "").trim() || (o["최종 영상"] || "").trim();
       const img = (o["대표 썸네일"] || "").trim();
       const item = {
         cat: CAT_BY_TYPE[type] || "EDITORIAL",
