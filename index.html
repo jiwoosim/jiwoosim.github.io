@@ -487,7 +487,7 @@
 
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(232px,44vw),1fr));gap:clamp(10px,2vw,14px);align-items:start">
       <sc-for list="{{ archiveItems }}" as="a" hint-placeholder-count="16">
-        <article style="grid-column:{{ a.span }};background:#fff;border:1px solid #EFECE8;border-radius:14px;overflow:hidden;transition:border-color .35s ease,box-shadow .35s ease" style-hover="border-color:#DCD6CE;box-shadow:0 12px 28px rgba(23,23,26,.07)">
+        <article onClick="{{ a.open }}" role="button" aria-label="{{ a.title }} 산출물 보기" style="grid-column:{{ a.span }};background:#fff;border:1px solid #EFECE8;border-radius:14px;overflow:hidden;cursor:{{ a.cursor }};transition:border-color .35s ease,box-shadow .35s ease" style-hover="border-color:#DCD6CE;box-shadow:0 12px 28px rgba(23,23,26,.07)">
           <div style="position:relative;width:100%;padding-top:{{ a.pad }};background:{{ a.bg }};overflow:hidden">
             <sc-if value="{{ a.img }}" hint-placeholder-val="{{ false }}">
               <img src="{{ a.img }}" alt="{{ a.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:{{ a.fit }};padding:8px;transition:transform .5s cubic-bezier(.2,.7,.3,1)" style-hover="transform:scale(1.03)">
@@ -498,10 +498,19 @@
             <sc-if value="{{ a.isVideo }}" hint-placeholder-val="{{ false }}">
               <span aria-hidden="true" style="position:absolute;top:11px;left:11px;width:22px;height:22px;border-radius:50%;background:rgba(23,23,26,.55);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;padding-left:2px">▶</span>
             </sc-if>
-            <div style="position:absolute;inset:0;background:rgba(23,23,26,.86);opacity:0;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;padding:12px;transition:opacity .35s ease" style-hover="opacity:1">
-              <sc-for list="{{ a.roles }}" as="r" hint-placeholder-count="3">
-                <span style="font-size:11.5px;line-height:1.4;color:#F7F5F2">{{ r }}</span>
-              </sc-for>
+            <div style="position:absolute;inset:0;background:rgba(23,23,26,.86);opacity:0;display:flex;flex-direction:column;justify-content:flex-end;gap:5px;padding:12px;transition:opacity .35s ease" style-hover="opacity:1">
+              <sc-if value="{{ a.impact }}" hint-placeholder-val="{{ true }}">
+                <div style="font-size:12px;line-height:1.5;color:#FF9B7A;font-weight:700">{{ a.impact }}</div>
+              </sc-if>
+              <sc-if value="{{ a.period }}" hint-placeholder-val="{{ true }}">
+                <div style="font-size:11px;line-height:1.5;color:#F7F5F2"><span style="color:#9C978F">기간 · </span>{{ a.period }}</div>
+              </sc-if>
+              <sc-if value="{{ a.contribution }}" hint-placeholder-val="{{ true }}">
+                <div style="font-size:11px;line-height:1.5;color:#F7F5F2"><span style="color:#9C978F">기여도 · </span>{{ a.contribution }}</div>
+              </sc-if>
+              <sc-if value="{{ a.tools }}" hint-placeholder-val="{{ true }}">
+                <div style="font-size:11px;line-height:1.5;color:#F7F5F2"><span style="color:#9C978F">TOOLS · </span>{{ a.tools }}</div>
+              </sc-if>
             </div>
           </div>
           <div style="padding:12px 13px 15px">
@@ -509,8 +518,8 @@
               <span style="color:#C7370E">{{ a.cat }}</span><span style="color:#CFCAC2">·</span><span style="color:#6E6A63">{{ a.year }}</span>
             </div>
             <div style="font-size:13.5px;font-weight:600;letter-spacing:-0.015em;line-height:1.45;text-wrap:pretty">{{ a.title }}</div>
-            <sc-if value="{{ a.live }}" hint-placeholder-val="{{ false }}">
-              <a href="{{ a.live }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#C7370E;border:1px solid #FFD8CA;border-radius:999px;padding:5px 10px;transition:background .3s ease" style-hover="background:#FFF1EC;color:#FF5A2B">VIEW LIVE ↗</a>
+            <sc-if value="{{ a.clickable }}" hint-placeholder-val="{{ false }}">
+              <div style="display:inline-flex;align-items:center;gap:5px;margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#C7370E">{{ a.assetLabel }}</div>
             </sc-if>
           </div>
         </article>
@@ -926,56 +935,121 @@
   </div>
 </sc-if>
 
+<sc-if value="{{ asset }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeAsset }}" style="position:fixed;inset:0;z-index:90;background:rgba(15,14,13,.92);display:flex;align-items:center;justify-content:center;padding:clamp(16px,4vw,40px);animation:mkFade .25s ease both">
+    <button type="button" onClick="{{ closeAsset }}" aria-label="닫기" style="all:unset;cursor:pointer;position:absolute;top:20px;right:24px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;transition:background .3s ease" style-hover="background:rgba(255,255,255,.2)">✕</button>
+    <div onClick="{{ stopAssetClick }}" style="max-width:min(1100px,92vw);width:100%">
+      <sc-if value="{{ asset.isVideoTag }}" hint-placeholder-val="{{ false }}">
+        <video src="{{ asset.url }}" controls autoplay style="display:block;width:100%;max-height:86vh;border-radius:10px;background:#000"></video>
+      </sc-if>
+      <sc-if value="{{ asset.isFrame }}" hint-placeholder-val="{{ false }}">
+        <iframe src="{{ asset.url }}" allow="autoplay" style="display:block;width:100%;height:80vh;border:0;border-radius:10px;background:#000"></iframe>
+      </sc-if>
+      <sc-if value="{{ asset.isImage }}" hint-placeholder-val="{{ false }}">
+        <img src="{{ asset.url }}" alt="{{ asset.title }}" style="display:block;max-width:100%;max-height:86vh;margin:0 auto;border-radius:10px">
+      </sc-if>
+    </div>
+  </div>
+</sc-if>
+
 </div>
 
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900}}">
 class Component extends DCLogic {
-  state = { active: null, step: null, intro: 0, introDone: false, tab: "ALL", narrow: typeof window !== "undefined" && window.innerWidth < 560 };
+  state = { active: null, step: null, intro: 0, introDone: false, tab: "ALL", narrow: typeof window !== "undefined" && window.innerWidth < 560, asset: null };
 
   // 숫자는 확정 자료 확인 후 여기만 수정하면 됩니다.
   archiveSpan = "2022 — 2026";
 
   // 실제 확인된 작업물만 등록합니다. 자료를 주시면 한 건씩 추가합니다.
   archive = [
-    { cat: "EXHIBITION", year: "2025", title: "전시 부스 기획 · 공간 구성", roles: ["Concept", "Space Planning", "Message", "Field Operation"], media: "photo", featured: true },
-    { cat: "VIDEO", year: "2026", title: "CES Innovation Award 출품 영상", roles: ["Concept", "Storyboard", "AI Production", "Editing"], media: "video", featured: true },
-    { cat: "WEB", year: "2026", title: "UBio-X LiveGuard — CES 2027 출품 랜딩페이지", roles: ["Audience Definition", "IA", "Narrative", "Build"], media: "web", featured: true, url: "https://unionbiometrics.com/ces2027/ubio-x-liveguard/", bg: "#17171A" },
-    { cat: "EDITORIAL", year: "2025", title: "기술 백서 (Whitepaper)", roles: ["Structure", "Writing", "Editing"], media: "print", featured: true },
-    { cat: "WEB", year: "2024", title: "보험 정보 설명 페이지 (외주)", roles: ["Information Priority", "Build"], media: "web", featured: true },
-    { cat: "SOCIAL", year: "2022", title: "청년 타깃 숏폼 콘텐츠", roles: ["Audience Insight", "Concept", "Editing"], media: "video", featured: true },
-    { cat: "SALES", year: "2025", title: "SK쉴더스 영업용 4컷 만화", roles: ["Scenario", "Panel Design"], media: "image", featured: true },
-    { cat: "SALES", year: "2026", title: "PetID 영문 3단 브로슈어", roles: ["Message Structure", "Copy", "Layout"], media: "print", featured: true, url: "https://unionbiometrics.com/wp-content/uploads/2026/08/260511-%EC%98%81%EB%AC%B8-ProjectPet-3%EB%8B%A8-%EB%B8%8C%EB%A1%9C%EC%8A%88%EC%96%B4-0.1.pdf" },
-    { cat: "WEB", year: "2026", title: "UBio PetID — CES 2027 출품 랜딩페이지", roles: ["Audience Definition", "IA", "Narrative", "Build"], media: "web", url: "https://unionbiometrics.com/ces2027/ubio-petid", img: "https://unionbiometrics.com/wp-content/uploads/2026/08/2.2958.png", fit: "contain", bg: "#F0EDE8" },
-    { cat: "VIDEO", year: "2026", title: "PetID 4-in-1 등록 시연 영상", roles: ["Scenario", "Scene Design", "Editing"], media: "video", url: "https://unionbiometrics.com/wp-content/uploads/2026/08/0821-CES-2027-%ED%98%81%EC%8B%A0%EC%83%81-%EC%B6%9C%ED%92%88-%ED%99%88%ED%8E%98%EC%9D%B4%EC%A7%80_PetID.mp4" },
-    { cat: "AI VISUAL", year: "2026", title: "PetID 생애주기 일러스트", roles: ["Concept", "Prompt Design", "Generation"], media: "image", img: "https://unionbiometrics.com/wp-content/uploads/2026/08/Puppy.png", fit: "contain", bg: "#F4F2EF" },
-    { cat: "AI VISUAL", year: "2026", title: "PetID 활용 환경 비주얼", roles: ["Concept", "Prompt Design", "Generation"], media: "image", img: "https://unionbiometrics.com/wp-content/uploads/2026/08/ChatGPT-Image-2026%EB%85%84-8%EC%9B%94-21%EC%9D%BC-%EC%98%A4%ED%9B%84-02_07_04.jpg" },
-    { cat: "AI VISUAL", year: "2026", title: "PetID 비접촉 인식 장치 비주얼", roles: ["Prompt Design", "Generation", "Retouch"], media: "image", img: "https://unionbiometrics.com/wp-content/uploads/2026/08/ChatGPT-Image-2026%EB%85%84-8%EC%9B%94-21%EC%9D%BC-%EC%98%A4%EC%A0%84-09_42_31.png", fit: "contain", bg: "#F4F2EF" },
-    { cat: "VIDEO", year: "2026", title: "LiveGuard 제품 홍보영상", roles: ["Concept", "Storyboard", "AI Production"], media: "video" },
-    { cat: "VIDEO", year: "2025", title: "HeartID 제품 영상", roles: ["Planning", "Editing"], media: "video" },
-    { cat: "VIDEO", year: "2025", title: "전시 부스 상영 영상", roles: ["Planning", "Scene Design", "Editing"], media: "video" },
-    { cat: "VIDEO", year: "2025", title: "제품 Demo 영상", roles: ["Scenario", "Editing"], media: "video" },
-    { cat: "VIDEO", year: "2025", title: "컨퍼런스 영상", roles: ["Planning", "Editing"], media: "video" },
-    { cat: "AI VISUAL", year: "2026", title: "AI Key Visual", roles: ["Prompt Design", "Generation", "Retouch"], media: "image" },
-    { cat: "AI VISUAL", year: "2025", title: "기술 설명 비주얼", roles: ["Information Design"], media: "image" },
-    { cat: "AI VISUAL", year: "2025", title: "인포그래픽", roles: ["Information Design", "Layout"], media: "image" },
-    { cat: "WEB", year: "2025", title: "기업 홈페이지 리뉴얼", roles: ["Audience Definition", "IA", "Content Planning"], media: "web" },
-    { cat: "WEB", year: "2025", title: "Support Hub", roles: ["IA", "Access Design"], media: "web" },
-    { cat: "WEB", year: "2025", title: "제품 Landing Page", roles: ["Message Hierarchy", "Build"], media: "web" },
-    { cat: "EDITORIAL", year: "2025", title: "GEO 콘텐츠 클러스터", roles: ["Search Analysis", "Content Architecture"], media: "print" },
-    { cat: "EDITORIAL", year: "2025", title: "블로그 콘텐츠", roles: ["Planning", "Writing"], media: "print" },
-    { cat: "EDITORIAL", year: "2025", title: "뉴스레터", roles: ["Planning", "Writing", "Layout"], media: "print" },
-    { cat: "SALES", year: "2025", title: "제품 브로슈어 · 국문 / 영문", roles: ["Message Structure", "Copy", "Review"], media: "print" },
-    { cat: "SALES", year: "2025", title: "영업 매뉴얼 (Sales Manual)", roles: ["Audience Split", "Structure"], media: "print" },
-    { cat: "SALES", year: "2025", title: "현장용 Quick Guide", roles: ["Task Flow", "Layout"], media: "print" },
-    { cat: "SALES", year: "2025", title: "제안 자료 (Proposal)", roles: ["Data Analysis", "Narrative"], media: "print" },
-    { cat: "SALES", year: "2025", title: "파트너 가이드", roles: ["Structure", "Writing"], media: "print" },
-    { cat: "SOCIAL", year: "2022", title: "청년 타깃 SNS 콘텐츠", roles: ["Planning", "Message", "Design"], media: "image" },
-    { cat: "EXHIBITION", year: "2025", title: "전시 키비주얼", roles: ["Concept", "Visual"], media: "image" },
-    { cat: "EXHIBITION", year: "2025", title: "제품 Demo 시나리오", roles: ["Scenario", "Cross-team Alignment"], media: "photo" },
-    { cat: "EXHIBITION", year: "2025", title: "전시 현장 운영", roles: ["Field Operation", "Lead Flow"], media: "photo" },
-    { cat: "EXHIBITION", year: "2025", title: "컨퍼런스 콘텐츠", roles: ["Planning", "Production"], media: "photo" },
-    { cat: "EXHIBITION", year: "2024", title: "연례 캘린더", roles: ["Planning", "Review", "Delivery"], media: "print" },
+    {
+      "cat": "WEB",
+      "year": "",
+      "title": "금융 콘텐츠 / 보험 안내 페이지",
+      "media": "web",
+      "featured": true,
+      "contribution": "콘텐츠 기획 · 카피 · 웹 구성",
+      "impact": "복잡한 금융 정보를 행동 가능한 콘텐츠로 구조화",
+      "tools": "Figma / HTML / AI"
+    },
+    {
+      "cat": "VIDEO",
+      "year": "",
+      "title": "LiveGuard CES 2027 혁신상 홍보영상",
+      "media": "video",
+      "featured": true,
+      "period": "26.08",
+      "contribution": "100%",
+      "impact": "기술 스펙을 Apple-style AI 영상 경험으로 번역",
+      "tools": "GPT / Seedance / Capcut / Figma / Aftereffect",
+      "videoUrl": "https://drive.google.com/file/d/12jGlH7UocEE36Nwa7xasmXFjHsSRss5g/view?usp=drive_link"
+    },
+    {
+      "cat": "WEB",
+      "year": "2026",
+      "title": "LiveGuard 인터랙티브 3D 제품 웹",
+      "media": "web",
+      "featured": true,
+      "period": "2026.08~",
+      "contribution": "기획 · UX · HTML·JS 구현",
+      "impact": "콘텐츠 기획을 실제 인터랙티브 웹 구현까지 연결",
+      "tools": "HTML / CSS / JavaScript / GLB / AI"
+    },
+    {
+      "cat": "EXHIBITION",
+      "year": "2026",
+      "title": "INTERSEC 2026 전시 마케팅",
+      "media": "photo",
+      "period": "2026",
+      "contribution": "B2B 마케팅 · 콘텐츠 · 전시 운영",
+      "impact": "전시 콘텐츠를 실제 파트너 미팅 성과로 연결",
+      "tools": "PPT / Adobe / AI"
+    },
+    {
+      "cat": "EDITORIAL",
+      "year": "2026",
+      "title": "AI 콘텐츠 제작 프로세스 혁신",
+      "media": "print",
+      "featured": true,
+      "period": "2026",
+      "contribution": "프로세스 설계 · 제작 · 문서화 · 팀 공유",
+      "impact": "AI를 툴이 아니라 반복 가능한 업무 프로세스로 내재화",
+      "tools": "GPT / Gemini / AI Video / Figma / Premiere"
+    },
+    {
+      "cat": "EDITORIAL",
+      "year": "2026",
+      "title": "GEO 콘텐츠 개선",
+      "media": "print",
+      "period": "2026",
+      "contribution": "콘텐츠 전략 · 분석 · 개선",
+      "impact": "콘텐츠 제작을 검색 성과 개선까지 연결",
+      "tools": "GA4 / AI / Web"
+    },
+    {
+      "cat": "VIDEO",
+      "year": "",
+      "title": "PetID CES 2027 혁신상 홍보영상",
+      "media": "video",
+      "period": "26.08",
+      "contribution": "100%",
+      "impact": "특허 기반 비문 인식 기술을 반려동물 평생 ID로 확장해 설명한 3분 제품 스토리",
+      "tools": "GPT / Seedance / Capcut / Figma / Aftereffect",
+      "videoUrl": "https://drive.google.com/file/d/17tZGrBe9AFOH69RxWi-PdOsJxPVOKzCJ/view?usp=drivesdk"
+    },
+    {
+      "cat": "VIDEO",
+      "year": "",
+      "title": "HeartID CES 2027 혁신상 홍보영상",
+      "media": "video",
+      "period": "26.08~26.09",
+      "contribution": "100%",
+      "impact": "특허 기반 비문 인식 기술을 반려동물 평생 ID로 확장해 설명한 3분 제품 스토리",
+      "tools": "GPT / Seedance / Capcut / Figma / Aftereffect",
+      "videoUrl": "https://drive.google.com/file/d/1GA-SwFYmdNZTQF-RBGPcIYTOSsHc0pbi/view?usp=drive_link"
+    }
   ];
 
   archiveMeta = {
@@ -1311,15 +1385,51 @@ class Component extends DCLogic {
     }
   ];
   impacts = [
-    { value: 0, pre: "", suf: "", display: "₩10M → ₩0.3M", label: "영상 1편 제작 비용", note: "AI 기반 제작 Workflow 구축", source: "Project 02 · AI Content System" },
-    { value: 0, pre: "", suf: "", display: "14 → 5 DAYS", label: "기획부터 최종 납품까지", note: "Character Sheet · Prompt Framework · Archive 표준화", source: "Project 02 · AI Content System" },
-    { value: 26, pre: "+", suf: "%", display: "+26%", label: "검색 기반 웹사이트 유입", note: "질문 중심 콘텐츠 구조 · GEO 아키텍처", source: "Project 01 · GEO" },
-    { value: 0, pre: "", suf: "", display: "1 → 5", label: "월 영업 문의", note: "콘텐츠 구조 개선 이후 월 문의 확대", source: "Project 01 · GEO" },
-    { value: 0, pre: "", suf: "", display: "33 → 65", label: "유효 미팅 · +97% YoY", note: "전시 메시지 · 시연 · 관람 동선 · 운영 재설계", source: "Project 03 · Exhibition" },
-    { value: 0, pre: "", suf: "", display: "4K → 12K+", label: "YouTube 구독자", note: "청년 타깃 콘텐츠 포맷 · 채널 운영 개선에 기여", source: "Project 04 · Social" },
-    { value: 80, pre: "-", suf: "%", display: "-80%", label: "설치·운용 CS 문의", note: "정보 수요자별 가이드 3종 분리", source: "Targeted Guide Project" },
-    { value: 70, pre: "-", suf: "%", display: "-70%", label: "파트너 응답 대기 시간", note: "7일 → 2일 · Support Hub 정보구조 재설계", source: "Support Hub" },
-    { value: 20, pre: "", suf: "억", display: "20억", label: "농협은행 통합인증센터 수주", note: "데이터 기반 제안 전략 및 구매 명분 설계", source: "Data-driven Proposal" }
+    {
+      "value": 0,
+      "pre": "",
+      "suf": "",
+      "display": "14일 → 5일로 단축",
+      "label": "제작 기간",
+      "note": "프로젝트 기록",
+      "source": "AI 콘텐츠 제작 프로세스 혁신"
+    },
+    {
+      "value": 0,
+      "pre": "",
+      "suf": "",
+      "display": "1,000만원 → 30만원 수준으로 절감",
+      "label": "제작 비용",
+      "note": "프로젝트 기록",
+      "source": "AI 콘텐츠 제작 프로세스 혁신"
+    },
+    {
+      "value": 0,
+      "pre": "",
+      "suf": "",
+      "display": "파트너 미팅 33건 → 65건",
+      "label": "전시 미팅 수",
+      "note": "전시 결과 기록",
+      "source": "INTERSEC 2026 전시 마케팅"
+    },
+    {
+      "value": 0,
+      "pre": "",
+      "suf": "",
+      "display": "GEO 성과 +26%",
+      "label": "GEO 성과 지수",
+      "note": "성과 기록",
+      "source": "GEO 콘텐츠 개선"
+    },
+    {
+      "value": 0,
+      "pre": "",
+      "suf": "",
+      "display": "OSMU 제작 리소스 40% 절감",
+      "label": "OSMU 제작 리소스",
+      "note": "업무 기록",
+      "source": "B2B 브로슈어·백서·뉴스레터 콘텐츠"
+    }
   ];
 
   workflow = [
@@ -1684,6 +1794,7 @@ class Component extends DCLogic {
     window.addEventListener("scroll", this._onAnyScroll, true);
     this._onKey = (e) => {
       if (e.key === "Escape" && this.state.active !== null) this.closeCase();
+      if (e.key === "Escape" && this.state.asset) this.closeAsset();
       if (e.key === "Escape" && this.state.profileOpen) this.setState({ profileOpen: false });
       if (!this.state.introDone && (e.key === "Escape" || e.key === " " || e.key === "Enter")) this.endIntro();
     };
@@ -1737,6 +1848,60 @@ class Component extends DCLogic {
   closeCase() {
     clearInterval(this._resetTimer);
     this.setState({ active: null, step: null });
+  }
+
+  // 구글 드라이브 공유 링크(/file/d/ID/... 또는 ?id=ID)에서 파일 ID 추출.
+  driveFileId(u) {
+    const m = u.match(/\/file\/d\/([^/]+)/) || u.match(/[?&]id=([^&]+)/);
+    return m ? m[1] : null;
+  }
+
+  // 카드 그리드 썸네일. 드라이브 개별 파일 링크는 썸네일 API로, 그 외는 URL 그대로.
+  thumbImg(url) {
+    if (!url) return null;
+    const id = this.driveFileId(url);
+    return id ? `https://drive.google.com/thumbnail?id=${id}&sz=w800` : url;
+  }
+
+  // 아카이브 카드 클릭 → 산출물 종류에 맞는 방식으로 오픈.
+  // 웹은 새 탭, 영상/이미지/문서는 모달.
+  resolveAsset(a) {
+    const driveId = (u) => this.driveFileId(u);
+    if (a.media === "video" && a.videoUrl) {
+      const id = driveId(a.videoUrl);
+      if (id) return { type: "video-frame", url: `https://drive.google.com/file/d/${id}/preview`, label: "영상 재생 ▶" };
+      if (/\.(mp4|webm|mov|m4v)(\?|$)/i.test(a.videoUrl)) return { type: "video", url: a.videoUrl, label: "영상 재생 ▶" };
+      return { type: "web", url: a.videoUrl, label: "영상 보기 ↗" };
+    }
+    if (a.imageUrl) {
+      const id = driveId(a.imageUrl);
+      return { type: "image", url: id ? `https://drive.google.com/thumbnail?id=${id}&sz=w1600` : a.imageUrl, label: "이미지 크게 보기" };
+    }
+    if (a.docUrl) {
+      const id = driveId(a.docUrl);
+      if (id) return { type: "doc-frame", url: `https://drive.google.com/file/d/${id}/preview`, label: "기획안 보기" };
+      return { type: "web", url: a.docUrl, label: "기획안 보기 ↗" };
+    }
+    if (a.webUrl) return { type: "web", url: a.webUrl, label: "사이트 방문 ↗" };
+    return null;
+  }
+
+  openAsset(asset, title) {
+    if (!asset) return;
+    if (asset.type === "web") { window.open(asset.url, "_blank", "noopener"); return; }
+    this.setState({
+      asset: {
+        url: asset.url,
+        title,
+        isVideoTag: asset.type === "video",
+        isFrame: asset.type === "video-frame" || asset.type === "doc-frame",
+        isImage: asset.type === "image"
+      }
+    });
+  }
+
+  closeAsset() {
+    this.setState({ asset: null });
   }
 
   safeMotion() {
@@ -2032,19 +2197,26 @@ class Component extends DCLogic {
     const step = 12;
     const shown = this.state.archiveAll ? pool.length : Math.min(step, pool.length);
     const items = pool.slice(0, shown)
-      .map((a, i) => ({
-        ...a,
-        key: a.cat + i,
-        span: "span 1",
-        pad: "66.7%",
-        isVideo: a.media === "video",
-        live: a.url || null,
-        img: a.img || null,
-        noImg: !a.img,
-        fit: a.fit || "cover",
-        bg: a.bg || "#F2EFEB",
-        alt: a.title + " 썸네일"
-      }));
+      .map((a, i) => {
+        const asset = this.resolveAsset(a);
+        const img = this.thumbImg(a.thumbUrl) || a.img || null;
+        return {
+          ...a,
+          key: a.cat + i,
+          span: "span 1",
+          pad: "66.7%",
+          isVideo: a.media === "video",
+          img,
+          noImg: !img,
+          fit: a.fit || "cover",
+          bg: a.bg || "#F2EFEB",
+          alt: a.title + " 썸네일",
+          clickable: !!asset,
+          cursor: asset ? "pointer" : "default",
+          assetLabel: asset ? asset.label : "",
+          open: asset ? () => this.openAsset(asset, a.title) : () => {}
+        };
+      });
     const present = Object.keys(this.archiveMeta).filter(k => k === "ALL" || this.archive.some(a => a.cat === k));
     const tabs = present.map(k => {
       const on = k === tab;
@@ -2073,6 +2245,9 @@ class Component extends DCLogic {
         { value: "END-TO-END", label: "PLANNING → PRODUCTION" }
       ],
       archiveSpan: this.archiveSpan,
+      asset: this.state.asset,
+      closeAsset: () => this.closeAsset(),
+      stopAssetClick: (e) => e.stopPropagation(),
       archiveFormatLine: present.filter(k => k !== "ALL").map(k => this.archiveMeta[k].toUpperCase()).join(" · "),
       archiveCount: (tab === "ALL" ? "ALL WORK" : this.archiveMeta[tab]) + " · " + pool.length + " CONTENT ASSETS",
       introOn: !this.state.introDone,
