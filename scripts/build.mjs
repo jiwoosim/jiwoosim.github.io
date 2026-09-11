@@ -1,6 +1,6 @@
 // 데이터 → 사이트 빌드.
 //   SHEET_ID = "포트폴리오 아카이브" 스프레드시트 ID
-//   01_MASTER  탭 → 사이트 ARCHIVE (포폴 반영 = YES 인 프로젝트)
+//   SITE       탭 → 사이트 ARCHIVE (포폴반영 = YES 인 프로젝트만)
 //   04_METRICS 탭 → 사이트 IMPACT
 //   그 외(tags·introTiles·bringItems·workflow·meta) → 커밋된 data/*.csv (코드 관리)
 //
@@ -20,7 +20,9 @@ mkdirSync(DATA, { recursive: true });
 
 // ── 시트 탭 CSV 받기 ────────────────────────────────────────────
 async function fetchTab(tab) {
-  const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(tab)}`;
+  // headers=1: 시트 첫 행을 확실히 헤더로 취급 (없으면 gviz가 열 타입을 자동추론하면서
+  // 텍스트/숫자가 섞인 열의 앞 몇 행을 헤더와 뭉개버리는 경우가 있음)
+  const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(tab)}&headers=1`;
   const res = await fetch(url, { redirect: "follow" });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const text = await res.text();
@@ -41,8 +43,10 @@ function rowsAsObjects(csv, headerMarker) {
     return o;
   });
 }
+const get = (o, ...keys) => { for (const k of keys) { const v = (o[k] || "").trim(); if (v) return v; } return ""; };
+const isUrl = (v) => /^https?:\/\//.test(v);
 
-// ── 01_MASTER → archive ────────────────────────────────────────
+// ── SITE → archive ──────────────────────────────────────────────
 const CAT_BY_TYPE = {
   "영상": "VIDEO", "웹": "WEB", "콘텐츠": "EDITORIAL", "브로슈어/백서": "EDITORIAL",
   "전시/이벤트": "EXHIBITION", "캠페인": "SOCIAL", "인터랙티브": "WEB", "기타": "EDITORIAL",
@@ -52,35 +56,41 @@ const MEDIA_BY_TYPE = {
   "캠페인": "image", "콘텐츠": "print", "브로슈어/백서": "print", "기타": "print",
 };
 
-function masterToArchive(objs) {
+function siteToArchive(objs) {
   return objs
-    .filter((o) => o["프로젝트명"] && /^(YES|Y|예|포함)$/i.test(o["포폴 반영"] || ""))
+    .filter((o) => get(o, "제목") && /^(YES|Y|예|포함)$/i.test(get(o, "포폴반영", "포폴 반영")))
     .map((o) => {
-      const type = (o["유형"] || "").trim();
-      const yearMatch = (o["기간"] || "").match(/20\d{2}/);
-      const roles = (o["내 역할"] || "")
-        .split(/[\/·,]/).map((s) => s.trim()).filter(Boolean);
-      // 클릭 링크: 공개 URL 우선, 없으면 최종 영상 링크로 대체
-      const url = (o["공개 URL"] || "").trim() || (o["최종 영상"] || "").trim();
-      const img = (o["대표 썸네일"] || "").trim();
+      const type = get(o, "유형");
+      const period = get(o, "기간");
+      const yearMatch = period.match(/20\d{2}/);
       const item = {
         cat: CAT_BY_TYPE[type] || "EDITORIAL",
         year: yearMatch ? yearMatch[0] : "",
-        title: o["프로젝트명"].trim(),
-        roles: roles.length ? roles : ["Content"],
+        title: get(o, "제목"),
         media: MEDIA_BY_TYPE[type] || "print",
       };
-      if (/^S$/i.test((o["포폴 등급"] || "").trim())) item.featured = true;
-      if (/^https?:\/\//.test(url)) item.url = url;
-      if (/^https?:\/\//.test(img)) item.img = img;
+      if (/^S$/i.test(get(o, "포폴등급", "포폴 등급"))) item.featured = true;
+      if (period) item.period = period;
+      const contribution = get(o, "기여도");
+      if (contribution) item.contribution = contribution;
+      const impact = get(o, "핵심성과", "핵심 성과");
+      if (impact) item.impact = impact;
+      const tools = get(o, "사용툴", "사용 툴");
+      if (tools) item.tools = tools;
+      const videoUrl = get(o, "영상");
+      if (isUrl(videoUrl)) item.videoUrl = videoUrl;
+      const imageUrl = get(o, "이미지");
+      if (isUrl(imageUrl)) item.imageUrl = imageUrl;
+      const docUrl = get(o, "문서");
+      if (isUrl(docUrl)) item.docUrl = docUrl;
+      const webUrl = get(o, "공개URL", "공개 URL");
+      if (isUrl(webUrl)) item.webUrl = webUrl;
       return item;
     });
 }
 
 // ── 04_METRICS → impacts ───────────────────────────────────────
-function metricsToImpacts(objs, masterObjs) {
-  const nameById = {};
-  masterObjs.forEach((o) => (nameById[(o["ID"] || "").trim()] = (o["프로젝트명"] || "").trim()));
+function metricsToImpacts(objs, nameById) {
   return objs
     .filter((o) => (o["Metric"] || "").trim() && /확인|verified|yes/i.test(o["Verified"] || ""))
     .map((o) => {
@@ -126,24 +136,28 @@ function replaceScalarField(src, name, val) {
 let archive = null, impacts = null;
 if (SHEET_ID) {
   try {
-    const masterCsv = await fetchTab("01_MASTER");
+    const siteCsv = await fetchTab("SITE");
     const metricsCsv = await fetchTab("04_METRICS");
-    writeFileSync(join(DATA, "01_MASTER.csv"), masterCsv, "utf8");
+    writeFileSync(join(DATA, "SITE.csv"), siteCsv, "utf8");
     writeFileSync(join(DATA, "04_METRICS.csv"), metricsCsv, "utf8");
-    const masterObjs = rowsAsObjects(masterCsv, "프로젝트명");
+    const siteObjs = rowsAsObjects(siteCsv, "제목");
     const metricObjs = rowsAsObjects(metricsCsv, "Portfolio Phrase");
-    archive = masterToArchive(masterObjs);
-    impacts = metricsToImpacts(metricObjs, masterObjs);
-    console.log(`↓ 01_MASTER ${masterObjs.length}행 → archive ${archive.length}`);
+    const nameById = {};
+    siteObjs.forEach((o) => (nameById[get(o, "ID")] = get(o, "제목")));
+    archive = siteToArchive(siteObjs);
+    impacts = metricsToImpacts(metricObjs, nameById);
+    console.log(`↓ SITE ${siteObjs.length}행 → archive ${archive.length}`);
     console.log(`↓ 04_METRICS ${metricObjs.length}행 → impacts ${impacts.length}`);
   } catch (e) {
     console.warn(`⚠ 시트 읽기 실패: ${e.message} — 커밋된 스냅샷/원본 유지`);
-    const mPath = join(DATA, "01_MASTER.csv");
-    if (existsSync(mPath)) {
-      const mo = rowsAsObjects(readFileSync(mPath, "utf8"), "프로젝트명");
-      archive = masterToArchive(mo);
+    const sPath = join(DATA, "SITE.csv");
+    if (existsSync(sPath)) {
+      const so = rowsAsObjects(readFileSync(sPath, "utf8"), "제목");
+      const nameById = {};
+      so.forEach((o) => (nameById[get(o, "ID")] = get(o, "제목")));
+      archive = siteToArchive(so);
       const kPath = join(DATA, "04_METRICS.csv");
-      if (existsSync(kPath)) impacts = metricsToImpacts(rowsAsObjects(readFileSync(kPath, "utf8"), "Portfolio Phrase"), mo);
+      if (existsSync(kPath)) impacts = metricsToImpacts(rowsAsObjects(readFileSync(kPath, "utf8"), "Portfolio Phrase"), nameById);
     }
   }
 } else {
