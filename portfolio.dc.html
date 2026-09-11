@@ -1682,13 +1682,23 @@ class Component extends DCLogic {
     this.setState({ active: null, step: null });
   }
 
+  // 구글 드라이브 공유 링크(/file/d/ID/... 또는 ?id=ID)에서 파일 ID 추출.
+  driveFileId(u) {
+    const m = u.match(/\/file\/d\/([^/]+)/) || u.match(/[?&]id=([^&]+)/);
+    return m ? m[1] : null;
+  }
+
+  // 카드 그리드 썸네일. 드라이브 개별 파일 링크는 썸네일 API로, 그 외는 URL 그대로.
+  thumbImg(url) {
+    if (!url) return null;
+    const id = this.driveFileId(url);
+    return id ? `https://drive.google.com/thumbnail?id=${id}&sz=w800` : url;
+  }
+
   // 아카이브 카드 클릭 → 산출물 종류에 맞는 방식으로 오픈.
   // 웹은 새 탭, 영상/이미지/문서는 모달.
   resolveAsset(a) {
-    const driveId = (u) => {
-      const m = u.match(/\/file\/d\/([^/]+)/) || u.match(/[?&]id=([^&]+)/);
-      return m ? m[1] : null;
-    };
+    const driveId = (u) => this.driveFileId(u);
     if (a.media === "video" && a.videoUrl) {
       const id = driveId(a.videoUrl);
       if (id) return { type: "video-frame", url: `https://drive.google.com/file/d/${id}/preview`, label: "영상 재생 ▶" };
@@ -2021,14 +2031,15 @@ class Component extends DCLogic {
     const items = pool.slice(0, shown)
       .map((a, i) => {
         const asset = this.resolveAsset(a);
+        const img = this.thumbImg(a.thumbUrl) || a.img || null;
         return {
           ...a,
           key: a.cat + i,
           span: "span 1",
           pad: "66.7%",
           isVideo: a.media === "video",
-          img: a.img || null,
-          noImg: !a.img,
+          img,
+          noImg: !img,
           fit: a.fit || "cover",
           bg: a.bg || "#F2EFEB",
           alt: a.title + " 썸네일",
